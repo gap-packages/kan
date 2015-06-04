@@ -2,29 +2,29 @@
 ##
 #W  PackageInfo.g                 GAP 4 Package `kan'           Chris Wensley
 #W                                                              Anne Heyworth
-##  version 1.11, 10/12/2014
+##  version 1.22, 03/06/2015
 ##
 
 SetPackageInfo( rec(
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 
-Version := "1.11",
-Date := "10/12/2014",
+Version := "1.22",
+Date := "03/06/2015",
 
 ##  duplicate these values for inclusion in the manual: 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "1.11">
-##  <!ENTITY TARFILENAME "kan-1.11.tar.gz">
-##  <!ENTITY HTMLFILENAME "kan111.html">
-##  <!ENTITY RELEASEDATE "10/12/2014">
-##  <!ENTITY LONGRELEASEDATE "10th December 2014">
+##  <!ENTITY VERSION "1.22">
+##  <!ENTITY TARFILENAME "kan-1.22.tar.gz">
+##  <!ENTITY HTMLFILENAME "kan122.html">
+##  <!ENTITY RELEASEDATE "03/06/2015">
+##  <!ENTITY LONGRELEASEDATE "3rd June 2015">
 ##  <#/GAPDoc>
 
 PackageWWWHome := 
-  "http://pages.bangor.ac.uk/chda/kan/",
+  "http://pages.bangor.ac.uk/~mas023/chda/kan/",
 
-ArchiveURL := "http://pages.bangor.ac.uk/~mas023/chda/kan/kan-1.11", 
+ArchiveURL := "http://pages.bangor.ac.uk/~mas023/chda/kan/kan-1.22", 
 ArchiveFormats := ".tar.gz",
 
 Persons := [
@@ -32,8 +32,9 @@ Persons := [
     LastName      := "Heyworth",
     FirstNames    := "Anne",
     IsAuthor      := true,
-    IsMaintainer  := false
-    ## Email         := "" 
+    IsMaintainer  := false, 
+    Place         := "Open University" 
+    ## Email         := "anne.heyworth@gmail.com" 
   ),
   rec(
     LastName      := "Wensley",
@@ -55,9 +56,9 @@ Persons := [
   )
 ],
 
-Status := "deposited",
-## CommunicatedBy := "",
-## AcceptDate := "",
+Status := "accepted",
+CommunicatedBy := "Leonard Soicher (QMUL)",
+AcceptDate := "05/2015",
 
 README_URL := 
   Concatenation( ~.PackageWWWHome, "README" ),

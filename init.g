@@ -2,7 +2,7 @@
 ##
 #W  init.g                    GAP package `kan'                 Chris Wensley
 #W                                                            & Anne Heyworth
-##  version 1.11, 10/11/2014
+##  version 1.21, 01/06/2015
 ##
 
 ##  read the function declarations

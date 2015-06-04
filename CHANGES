@@ -1,5 +1,21 @@
                        CHANGES to the Kan package 
 
+ToDo: 
+ - long-standing: see secion 3.2 in the manual 
+ - (02/06/15) fix problem with the language langT mentioned on p.5 of the manual 
+
+##############################################################################
+1.21 -> 1.22  (03/06/2015) 
+
+ - 
+
+##############################################################################
+1.11 -> 1.21  (01/06/2015) 
+
+ - (01/06/15) PackageInfo.g: Kan is now an acceptyed package  
+ - (01/06/15) converted the bibliography to BibXMLext format 
+              and added an URL to Anne's thesis (heyworth.ps.gz)  
+
 ##############################################################################
 1.07 -> 1.11  (10/12/2014) 
 

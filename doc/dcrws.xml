@@ -2,7 +2,7 @@
 <!--                                                                     -->
 <!--  dcrws.xml             KAN documentation             Chris Wensley  -->
 <!--                                                    & Anne Heyworth  -->
-<!--  version 1.11, 10/11/2014                                           -->
+<!--  version 1.21, 02/06/2015                                           -->
 <!--                                                                     -->
 <!-- ------------------------------------------------------------------- -->
 
@@ -74,8 +74,8 @@ gap> DisplayRwsRules( rws1 );;
 <Description>
 A <E>double coset rewriting system</E> for the double cosets 
 <M>H \backslash G / K</M> 
-requires as data a finitely presented group <M>G =</M><C>grp</C>, 
-generators <C>genH, genK</C> for subgroups <M>H, K</M>, 
+requires as data a finitely presented group <M>G =</M><C>grp</C>; 
+generators <C>genH</C>, <C>genK</C> for subgroups <M>H, K</M>; 
 and a rewriting system <C>rws</C> for <M>G</M>.
 <P/>
 A simple example is given by taking <M>G</M> to be the free group on two
@@ -202,7 +202,7 @@ aaUAA)BUH(a(aBUB)UABUB))(a(a(aa*BUB)UB)UA(AA*BUB)UB)*(a(aKUK)UAKUK)UH(aKUK)
 It may happen that, even when <M>G</M> has a finite rewriting system, 
 the double coset rewriting system is infinite.
 This is the case with the trefoil group <M>T</M> with generators 
-<M>[x,y]</M> and relator <M>[x^3 = y^2]</M> if the wreath product ordering 
+<M>[x,y]</M> and relator <M>[x^3 = y^2]</M> when the wreath product ordering 
 is used with <M>X > x > Y > y</M>. 
 The group itself has a rewriting system with just 6 rules. 
 </Description>
@@ -239,7 +239,7 @@ The given languages are not over the same alphabet
 false
 ]]>
 </Example>
-In a previous version the expression <C>r</C>, 
+In a previous version of this package the expression <C>r</C>, 
 which does not involve the letter <C>X</C>, 
 was returned as the language <C>langT</C>. 
 This discrepancy should be investigated. 
@@ -319,8 +319,8 @@ gap> validT := List( wordsT, w -> IsRecognizedByAutomaton( paccT, w ) );
 <Description>
 When the group <M>G</M> has an infinite rewriting system, 
 the double coset rewriting system will also be infinite.
-In this case we try the function <C>KBMagWordAcceptor</C> 
-which calls the package <Package>KBMAG</Package> 
+In this case we may use the function <C>KBMagWordAcceptor</C> 
+which calls <Package>KBMAG</Package> 
 to compute a word acceptor for <M>G</M>,
 and <C>KBMagFSAtoAutomataDFA</C> to convert this to a deterministic automaton 
 as used by the <Package>automata</Package> package.
@@ -418,7 +418,6 @@ gap> ok := DCrules(dcrws3);;
 gap> alph3e := dcrws3!.alphabet;;
 gap> Print("H-rules:\n");  DisplayAsString( Hrules(dcrws3), alph3e, true );
 H-rules:
-H-rules:
 [ HB, Ha ]
 [ HaB, Hb ]
 [ Hab, H ]
@@ -429,8 +428,8 @@ H-rules:
 [ HbAbAbAbAbAB, HAbAbAbAbAba ]
 [ HbAbAbAbAbAbAB, HAbAbAbAbAbAba ]
 [ HbAbAbAbAbAbAbAB, HAbAbAbAbAbAbAba ]
-gap>     Print(" K-rules:\n");  DisplayAsString( Krules(dcrws3), alph3e, true );;
- K-rules:
+gap> Print("K-rules:\n");  DisplayAsString( Krules(dcrws3), alph3e, true );;
+K-rules:
 [ BK, aK ]
 [ BaK, bK ]
 [ baK, K ]

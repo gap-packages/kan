@@ -2,7 +2,7 @@
 <!--                                                                     -->
 <!--  history.xml              KAN documentation          Chris Wensley  -->
 <!--                                                    & Anne Heyworth  -->
-<!--  version 1.11, 10/12/2014                                           -->
+<!--  version 1.21, 01/06/2015                                           -->
 <!--                                                                     -->
 <!-- ------------------------------------------------------------------- -->
 
@@ -17,9 +17,9 @@ The first version of the package, written for &GAP; 3,
 formed part of Anne Heyworth's thesis <Cite Key="anne-thesis" /> in 1999,
 but was not made generally available.
 <P/>
-Version, &kan; 0.91, was prepared to run under &GAP; 4.4.6, in July 2005.
+Version 0.91 was prepared to run under &GAP; 4.4.6, in July 2005.
 <P/>
-Version, &kan; 0.94, differed in two significant ways. 
+Version 0.94 differed in two significant ways. 
 <List>
 <Item>
 The manual was produced using the <Package>GAPDoc</Package> package. 
@@ -46,6 +46,8 @@ was replaced by the pair <F>fulltest.tst</F> and <F>parttest.tst</F>.
 <P/>
 Version 1.11, of December 2014 was required when the &kan; website moved yet again.  At the same time a bitbucket repository for the package was started. 
 <P/> 
+&kan; became an accepted &GAP; package in May 2015. 
+<P/>
 The latest version is &VERSION;, released on &LONGRELEASEDATE;. 
 </Section>
 
