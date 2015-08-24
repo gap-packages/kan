@@ -2,7 +2,7 @@
 <!--                                                                     -->
 <!--  intro.xml             KAN documentation             Chris Wensley  -->
 <!--                                                    & Anne Heyworth  -->
-<!--  version 1.21, 01/06/2015                                           -->
+<!--  version 1.22, 26/06/2015                                           -->
 <!--                                                                     -->
 <!-- ------------------------------------------------------------------- -->
 
@@ -55,12 +55,11 @@ is correct by running a test file of the manual examples with the
 following command. 
 (The test file itself is <F>tst/fulltest.tst</F> or <F>tst/parttest.tst</F>, 
 depending whether or not <Package>kbmag</Package> is available. 
-The 'all' in the log below indicates that the full test has been run.)
 <Example>
 <![CDATA[
 gap> ReadPackage( "kan", "tst/testall.g" );
-+ Testing all example commands in the Kan manual
-+ GAP4stones: 6
+#I  Testing /Applications/gap/my-dev/pkg/kan/tst/fulltest.tst
+#I  No errors detected while testing package kan
 true
 ]]>
 </Example>

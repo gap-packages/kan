@@ -2,7 +2,7 @@
 <!--                                                                     -->
 <!--  dcrws.xml             KAN documentation             Chris Wensley  -->
 <!--                                                    & Anne Heyworth  -->
-<!--  version 1.21, 02/06/2015                                           -->
+<!--  version 1.22, 26/06/2015                                           -->
 <!--                                                                     -->
 <!-- ------------------------------------------------------------------- -->
 
@@ -164,9 +164,8 @@ obtain a rational expression for the language of the automaton.
 <Example>
 <![CDATA[
 gap> waG1 := WordAcceptorOfReducedRws( rws1 );
-Automaton("nondet",6,"aAbB",[ [ [ 1 ], [ 4 ], [ 1 ], [ 4 ], [ 4 ], [ 4 ] ], [ \
-[ 1 ], [ 3 ], [ 3 ], [ 1 ], [ 3 ], [ 3 ] ], [ [ 1 ], [ 6 ], [ 6 ], [ 6 ], [ 1 \
-], [ 6 ] ], [ [ 1 ], [ 5 ], [ 5 ], [ 5 ], [ 5 ], [ 1 ] ] ],[ 2 ],[ 1 ]);;
+Automaton("det",6,"aAbB",[ [ 1, 4, 1, 4, 4, 4 ], [ 1, 3, 3, 1, 3, 3 ], [ 1, 2,\
+ 2, 2, 1, 2 ], [ 1, 1, 5, 5, 5, 5 ] ],[ 6 ],[ 2, 3, 4, 5, 6 ]);;
 gap> wadc1 := WordAcceptorOfDoubleCosetRws( dcrws1 );
 < deterministic automaton on 6 letters with 15 states >
 gap> Print( wadc1 );
@@ -210,40 +209,62 @@ The group itself has a rewriting system with just 6 rules.
 <Example>
 <![CDATA[
 gap> FT := FreeGroup( 2 );;
-gap> relsT := [ FT.1^3*FT.2^-2 ];;
-gap> T := FT/relsT;;
-gap> genT := GeneratorsOfGroup( T );;
-gap> x := genT[1];  y := genT[2];
-gap> alphT := "XxYy";;
-gap> ordT := [4,3,2,1];;
-gap> orderT := "wreath";;
-gap> rwsT := ReducedConfluentRewritingSystem( T, ordT, orderT, 0, alphT );
+gap> relsT := [ FT.1^3*FT.2^-2 ];;  T := FT/relsT;;
+gap> genT := GeneratorsOfGroup( T );;  x := genT[1];  y := genT[2];
+gap> alphT := "XxYy";;  ordT := [4,3,2,1];;  orderT := "wreath";;
+gap> rwsT := ReducedConfluentRewritingSystem( T, ordT, orderT, 0, alphT );;
 gap> DisplayRwsRules( rwsT );;
 [ [ Yy, id ], [ yY, id ], [ xxx, yy ], [ yyx, xyy ], [ X, xxYY ], [ Yx, yxYY ]\
  ]
 gap> accT := WordAcceptorOfReducedRws( rwsT );
 < deterministic automaton on 4 letters with 7 states >
 gap> Print( accT );
-Automaton("nondet",7,"yYxX",[ [ [ 1 ], [ 4 ], [ 1 ], [ 4, 7 ], [ 4 ], [ 4 ], [\
- 4, 7 ] ], [ [ 1 ], [ 3 ], [ 3 ], [ 1 ], [ 3 ], [ 3 ], [ 1 ] ], [ [ 1 ], [ 5 ]\
-, [ 1 ], [ 5 ], [ 5, 6 ], [ 1 ], [ 1 ] ], [ [ 1 ], [ 1 ], [ 1 ], [ 1 ], [ 1 ],\
- [ 1 ], [ 1 ] ] ],[ 2 ],[ 1 ]);;
+Automaton("det",7,"yYxX",[ [ 6, 2, 2, 4, 6, 4, 6 ], [ 3, 2, 3, 2, 3, 2, 3 ], [\
+ 7, 2, 2, 2, 2, 7, 5 ], [ 2, 2, 2, 2, 2, 2, 2 ] ],[ 1 ],[ 1, 3, 4, 5, 6, 7 ]);\
+;
 gap> langT := FAtoRatExp( accT );
-(xx*(xyUy)Uy)(xx*(xyUy)Uyy*yUy)*(xx*((xYUY)Y*(yUxUX)Ux(xUX)UX)(yUYUxUX)*U(yy*(\
-YUxUX)UYUX)(yUYUxUX)*)Uxx*((xYUY)Y*(yUxUX)Ux(xUX)UX)(yUYUxUX)*U(YY*(yUxUX)UX)(\
-yUYUxUX)*(yxUx)((xyUy)x)*
-gap> r := RationalExpression( "((xyUy)y*UxY*UY*)Uyy*UY*" ); 
-(xyUy)y*UxY*UY*Uyy*UY*
-gap> AreEqualLang( langT, r );
-The given languages are not over the same alphabet
+(yxUx)((xyUy)x)*((xyUy)(yy*U@)Ux(YY*U@)UYY*U@)Uy(yy*U@)UYY*U@
+gap> IsRecognizedByAutomaton( accT, "X" );
 false
+gap> IsRecognizedByAutomaton( accT, "yxyxyxYY" );      
+true
 ]]>
 </Example>
-In a previous version of this package the expression <C>r</C>, 
-which does not involve the letter <C>X</C>, 
-was returned as the language <C>langT</C>. 
-This discrepancy should be investigated. 
-<P/>
+
+In versions of &kan;, from about 1.01 up to 1.21, 
+the complementary automaton and language were returned in the example above. 
+This error has now been rectified. 
+<P/> 
+In earlier versions of &kan; (in 0.95 for example) a shorter rational 
+expression for the language was obtained from <Package>Automata</Package>. 
+In what follows, we check that the two expressions define the same language. 
+
+<Example>
+<![CDATA[
+gap> alph := AlphabetOfRatExpAsList( langT );; 
+gap> a1 := RatExpOnnLetters( alph, [ ], [1] );;   ## y
+gap> a2 := RatExpOnnLetters( alph, [ ], [2] );;   ## Y
+gap> a3 := RatExpOnnLetters( alph, [ ], [3] );;   ## x
+gap> a4 := RatExpOnnLetters( alph, [ ], [4] );;   ## X
+gap> s1 := RatExpOnnLetters( alph, "star", a1 );; ## y*
+gap> s2 := RatExpOnnLetters( alph, "star", a2 );; ## Y*
+gap> a1a3 := RatExpOnnLetters( alph, "product", [ a1, a3 ] );;  ## yx 
+gap> u1 := RatExpOnnLetters( alph, "union", [ a1a3, a3 ] );;    ## yxUx
+gap> a3a1 := RatExpOnnLetters( alph, "product", [ a3, a1 ] );;  ## xy
+gap> u2 := RatExpOnnLetters( alph, "union", [ a3a1, a1 ] );;    ## xyUy
+gap> u2a3 := RatExpOnnLetters( alph, "product", [ u2, a3 ] );;  ## (xyUy)x
+gap> su2a3 := RatExpOnnLetters( alph, "star", u2a3 );;          ## ((xyUy)x)*
+gap> u2s1 := RatExpOnnLetters( alph, "product", [ u2, s1 ] );;  ## (xyUy)y*
+gap> a3s2 := RatExpOnnLetters( alph, "product", [ a3, s2 ] );;  ## xY*
+gap> u3 := RatExpOnnLetters( alph, "union", [u2s1,a3s2,s2] );; 
+gap> prod := RatExpOnnLetters( alph, "product", [u1,su2a3,u3] );;  
+gap> a1s1 := RatExpOnnLetters( alph, "product", [ a1, s1 ] );;  ## yy*
+gap> r := RatExpOnnLetters( alph, "union", [ prod, a1s1, s2] );
+(yxUx)((xyUy)x)*((xyUy)y*UxY*UY*)Uyy*UY*
+gap> AreEqualLang( langT, r ); 
+true
+]]>
+</Example>
 
 Taking subgroups <M>H</M>, <M>K</M> to be generated by 
 <M>x</M> and <M>y</M> respectively, 
@@ -283,6 +304,7 @@ K-rules:
 
 This list of partial rules is then used by a modified 
 word acceptor function.
+<P/>
 <Example>
 <![CDATA[
 gap> paccT := WordAcceptorOfPartialDoubleCosetRws( T, prwsT );;

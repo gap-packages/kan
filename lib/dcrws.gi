@@ -2,9 +2,9 @@
 ##
 #W  dcrws.gi                     Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-##  version 1.11, 10/11/2014
+##  version 1.22, 26/06/2015
 ##
-#Y  Copyright (C) 1996-2014, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2015, Chris Wensley and Anne Heyworth 
 ##
 ##  This file contains generic methods for double coset rewriting systems
 ##
@@ -234,7 +234,7 @@ function( rws )
 
     local  rules, numr, order, fam, ogens, id, numgens, pf, numpf, 
            i, j, k, l, p, u, v, w, pos, pos2, numstates, sh, row, transmx, 
-           rhs, ugens, len, sink, accept, init, alph, alpht, nfa, mfa, 
+           rhs, ugens, len, sink, accept, init, alph, alpht, nfa, mfa, dfa, 
            ok, ls, lu, perm, IsSuffix;
 
     IsSuffix := function( u, s )
@@ -345,11 +345,12 @@ function( rws )
     init := [ sh+1 ];
     nfa := Automaton( "nondet", numstates, alpht, transmx, init, accept );
     Info( InfoKan, 2, "initial NFA: ", nfa ); 
-    Info( InfoKan, 2, "initial NFA has alphabet ", 
-                      AlphabetOfAutomatonAsList( nfa ) ); 
-    mfa := MinimalAutomaton( ComplementDA( NFAtoDFA( nfa ) ) );
+    dfa := NFAtoDFA( nfa ); 
+    Info( InfoKan, 2, "initial DFA: ", dfa ); 
+    mfa := MinimalAutomaton( ComplementDA( dfa ) );
+    Info( InfoKan, 2, "minimal DFA: ", mfa ); 
     SetWordAcceptorOfReducedRws( rws, mfa );
-    return nfa;
+    return mfa; 
 end );
 
 #############################################################################

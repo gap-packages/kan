@@ -2,9 +2,9 @@
 ##
 #W  parttest.tst                 Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-##  version 1.11, 10/11/2014
+##  version 1.22, 26/06/2015
 ##
-#Y  Copyright (C) 1996-2014, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2015, Chris Wensley and Anne Heyworth 
 ##
 
 gap> SetInfoLevel( InfoKan, 0 );;
@@ -44,9 +44,8 @@ H-K-rules:
   [ HAK, HaK ] ]
 gap> waG1 := WordAcceptorOfReducedRws( rws1 );;
 gap> Print( waG1 );
-Automaton("nondet",6,"aAbB",[ [ [ 1 ], [ 4 ], [ 1 ], [ 4 ], [ 4 ], [ 4 ] ], [ \
-[ 1 ], [ 3 ], [ 3 ], [ 1 ], [ 3 ], [ 3 ] ], [ [ 1 ], [ 6 ], [ 6 ], [ 6 ], [ 1 \
-], [ 6 ] ], [ [ 1 ], [ 5 ], [ 5 ], [ 5 ], [ 5 ], [ 1 ] ] ],[ 2 ],[ 1 ]);;
+Automaton("det",6,"aAbB",[ [ 1, 4, 1, 4, 4, 4 ], [ 1, 3, 3, 1, 3, 3 ], [ 1, 2,\
+ 2, 2, 1, 2 ], [ 1, 1, 5, 5, 5, 5 ] ],[ 6 ],[ 2, 3, 4, 5, 6 ]);;
 gap> wadc1 := WordAcceptorOfDoubleCosetRws( dcrws1 );
 < deterministic automaton on 6 letters with 15 states >
 gap> words1 := [ "HK","HaK","HbK","HAK","HaaK","HbbK","HabK","HbaK","HbaabK"];;
@@ -59,6 +58,8 @@ gap> lang1 := FAtoRatExp( wadc1 );
 (AA*BUB)UB)*(a(a(aa*bUb)Ub)UA(AA*bUb))Ua(a(aa*bUb)Ub)UA(AA*bUb)Ub)*((a(a(aa*BU\
 B)UB)UA(AA*BUB))(a(a(aa*BUB)UB)UA(AA*BUB)UB)*(a(aKUK)UAKUK)Ua(aKUK)UAKUK)U(H(a\
 aaUAA)BUH(a(aBUB)UABUB))(a(a(aa*BUB)UB)UA(AA*BUB)UB)*(a(aKUK)UAKUK)UH(aKUK)
+
+## Example 2 
 gap> FT := FreeGroup( 2 );;
 gap> relsT := [ FT.1^3*FT.2^-2 ];;
 gap> T := FT/relsT;;
@@ -72,21 +73,39 @@ gap> DisplayRwsRules( rwsT );;
 [ [ Yy, id ], [ yY, id ], [ xxx, yy ], [ yyx, xyy ], [ X, xxYY ], [ Yx, yxYY ]\
  ]
 gap> accT := WordAcceptorOfReducedRws( rwsT );
-< non deterministic automaton on 4 letters with 7 states >
+< deterministic automaton on 4 letters with 7 states >
 gap> Print( accT );
-Automaton("nondet",7,"yYxX",[ [ [ 1 ], [ 4 ], [ 1 ], [ 4, 7 ], [ 4 ], [ 4 ], [\
- 4, 7 ] ], [ [ 1 ], [ 3 ], [ 3 ], [ 1 ], [ 3 ], [ 3 ], [ 1 ] ], [ [ 1 ], [ 5 ]\
-, [ 1 ], [ 5 ], [ 5, 6 ], [ 1 ], [ 1 ] ], [ [ 1 ], [ 1 ], [ 1 ], [ 1 ], [ 1 ],\
- [ 1 ], [ 1 ] ] ],[ 2 ],[ 1 ]);;
+Automaton("det",7,"yYxX",[ [ 6, 2, 2, 4, 6, 4, 6 ], [ 3, 2, 3, 2, 3, 2, 3 ], [\
+ 7, 2, 2, 2, 2, 7, 5 ], [ 2, 2, 2, 2, 2, 2, 2 ] ],[ 1 ],[ 1, 3, 4, 5, 6, 7 ]);\
+;
 gap> langT := FAtoRatExp( accT );
-(xx*(xyUy)Uy)(xx*(xyUy)Uyy*yUy)*(xx*((xYUY)Y*(yUxUX)Ux(xUX)UX)(yUYUxUX)*U(yy*(\
-YUxUX)UYUX)(yUYUxUX)*)Uxx*((xYUY)Y*(yUxUX)Ux(xUX)UX)(yUYUxUX)*U(YY*(yUxUX)UX)(\
-yUYUxUX)*
-gap> r := RationalExpression( "((xyUy)y*UxY*UY*)Uyy*UY*" ); 
-(xyUy)y*UxY*UY*Uyy*UY*
-gap> AreEqualLang( langT, r );
-The given languages are not over the same alphabet
+(yxUx)((xyUy)x)*((xyUy)(yy*U@)Ux(YY*U@)UYY*U@)Uy(yy*U@)UYY*U@
+gap> IsRecognizedByAutomaton( accT, "X" );
 false
+gap> IsRecognizedByAutomaton( accT, "yxyxyxYY" );      
+true
+gap> alph := AlphabetOfRatExpAsList( langT );; 
+gap> a1 := RatExpOnnLetters( alph, [ ], [1] );;   ## y
+gap> a2 := RatExpOnnLetters( alph, [ ], [2] );;   ## Y
+gap> a3 := RatExpOnnLetters( alph, [ ], [3] );;   ## x
+gap> a4 := RatExpOnnLetters( alph, [ ], [4] );;   ## X
+gap> s1 := RatExpOnnLetters( alph, "star", a1 );; ## y*
+gap> s2 := RatExpOnnLetters( alph, "star", a2 );; ## Y*
+gap> a1a3 := RatExpOnnLetters( alph, "product", [ a1, a3 ] );;  ## yx 
+gap> u1 := RatExpOnnLetters( alph, "union", [ a1a3, a3 ] );;    ## yxUx
+gap> a3a1 := RatExpOnnLetters( alph, "product", [ a3, a1 ] );;  ## xy
+gap> u2 := RatExpOnnLetters( alph, "union", [ a3a1, a1 ] );;    ## xyUy
+gap> u2a3 := RatExpOnnLetters( alph, "product", [ u2, a3 ] );;  ## (xyUy)x
+gap> su2a3 := RatExpOnnLetters( alph, "star", u2a3 );;          ## ((xyUy)x)*
+gap> u2s1 := RatExpOnnLetters( alph, "product", [ u2, s1 ] );;  ## (xyUy)y*
+gap> a3s2 := RatExpOnnLetters( alph, "product", [ a3, s2 ] );;  ## xY*
+gap> u3 := RatExpOnnLetters( alph, "union", [u2s1,a3s2,s2] );; 
+gap> prod := RatExpOnnLetters( alph, "product", [u1,su2a3,u3] );;  
+gap> a1s1 := RatExpOnnLetters( alph, "product", [ a1, s1 ] );;  ## yy*
+gap> r := RatExpOnnLetters( alph, "union", [ prod, a1s1, s2] );
+(yxUx)((xyUy)x)*((xyUy)y*UxY*UY*)Uyy*UY*
+gap> AreEqualLang( langT, r );
+true
 gap> ## find a partial dcrws with a maximum of 20 rules
 gap> prwsT :=  PartialDoubleCosetRewritingSystem( T, [x], [y], rwsT, 20 );;
 gap> DisplayRwsRules( prwsT );;

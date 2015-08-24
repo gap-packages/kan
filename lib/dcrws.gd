@@ -2,9 +2,9 @@
 ##
 #W  dcrws.gd                     Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-##  version 1.11, 10/11/2014
+##  version 1.22, 26/06/2015
 ##
-#Y  Copyright (C) 1996-2014, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2015, Chris Wensley and Anne Heyworth 
 ##
 ##  This file contains generic methods for double coset rewriting systems
 ##
@@ -41,6 +41,8 @@ DeclareOperation( "DisplayRwsRules", [ IsRewritingSystem ] );
 
 ############################################################################# 
 ## 
+#A  InitialRewritingSystem
+#A  CompleteRewritingSystem
 #A  WordAcceptorOfReducedRws
 ## 
 DeclareAttribute( "InitialRewritingSystem", IsFpGroup );

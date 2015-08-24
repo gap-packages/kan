@@ -2,7 +2,7 @@
 ##
 #W  PackageInfo.g                 GAP 4 Package `kan'           Chris Wensley
 #W                                                              Anne Heyworth
-##  version 1.22, 03/06/2015
+##  version 1.22, 24/08/2015
 ##
 
 SetPackageInfo( rec(
@@ -10,15 +10,15 @@ PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 
 Version := "1.22",
-Date := "03/06/2015",
+Date := "24/08/2015",
 
 ##  duplicate these values for inclusion in the manual: 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "1.22">
 ##  <!ENTITY TARFILENAME "kan-1.22.tar.gz">
 ##  <!ENTITY HTMLFILENAME "kan122.html">
-##  <!ENTITY RELEASEDATE "03/06/2015">
-##  <!ENTITY LONGRELEASEDATE "3rd June 2015">
+##  <!ENTITY RELEASEDATE "24/08/2015">
+##  <!ENTITY LONGRELEASEDATE "24th August 2015">
 ##  <#/GAPDoc>
 
 PackageWWWHome := 
