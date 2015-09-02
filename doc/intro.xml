@@ -2,7 +2,7 @@
 <!--                                                                     -->
 <!--  intro.xml             KAN documentation             Chris Wensley  -->
 <!--                                                    & Anne Heyworth  -->
-<!--  version 1.22, 26/06/2015                                           -->
+<!--  version 1.23, 01/09/2015                                           -->
 <!--                                                                     -->
 <!-- ------------------------------------------------------------------- -->
 
@@ -28,13 +28,13 @@ gap> LoadPackage( "kan" );
 ]]>
 </Example>
 
-The current version is &VERSION; for &GAP; 4.7, released on &LONGRELEASEDATE;. 
+The current version is &VERSION; for &GAP; 4.7, released on &KANRELEASEDATE;. 
 <P/> 
 The package may be obtained as a compressed tar file 
-<File>&TARFILENAME;</File>
+<File>&KANTARFILE;</File>
 by ftp from one of the sites with a &GAP; 4 archive,
 or from the Bangor Mathematics website pages using the URL: 
-<URL>http://pages.bangor.ac.uk/~mas023/chda/kan/&HTMLFILENAME;</URL>
+<URL>http://pages.bangor.ac.uk/~mas023/chda/kan/&KANHTMLFILE;</URL>
 <P/>
 Some of the functions in the <Package>automata</Package> package 
 are used to compute word acceptors and regular expressions 

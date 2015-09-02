@@ -2,7 +2,7 @@
 <!--                                                                     -->
 <!--  history.xml              KAN documentation          Chris Wensley  -->
 <!--                                                    & Anne Heyworth  -->
-<!--  version 1.21, 01/06/2015                                           -->
+<!--  version 1.23, 01/09/2015                                           -->
 <!--                                                                     -->
 <!-- ------------------------------------------------------------------- -->
 
@@ -48,7 +48,7 @@ Version 1.11, of December 2014 was required when the &kan; website moved yet aga
 <P/> 
 &kan; became an accepted &GAP; package in May 2015. 
 <P/>
-The latest version is &VERSION;, released on &LONGRELEASEDATE;. 
+The latest version is &VERSION;, released on &KANRELEASEDATE;. 
 </Section>
 
 
