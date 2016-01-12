@@ -2,7 +2,7 @@
 <!--                                                                     -->
 <!--  intro.xml             KAN documentation             Chris Wensley  -->
 <!--                                                    & Anne Heyworth  -->
-<!--  version 1.23, 01/09/2015                                           -->
+<!--  version 1.23, 12/01/2016                                           -->
 <!--                                                                     -->
 <!-- ------------------------------------------------------------------- -->
 
@@ -28,14 +28,28 @@ gap> LoadPackage( "kan" );
 ]]>
 </Example>
 
-The current version is &VERSION; for &GAP; 4.7, released on &KANRELEASEDATE;. 
+The current version is &KANVERSION; for &GAP; 4.8, 
+released on &KANLONGRELEASEDATE;. 
 <P/> 
 The package may be obtained as a compressed tar file 
-<File>&KANTARFILE;</File>
-by ftp from one of the sites with a &GAP; 4 archive,
-or from the Bangor Mathematics website pages using the URL: 
-<URL>http://pages.bangor.ac.uk/~mas023/chda/kan/&KANHTMLFILE;</URL>
+<File>&KANTARFILENAME;</File>
+by ftp from one of the following sites: 
+<List>
+<Item>
+any &GAP; archive, e.g. 
+<URL>http://www.gap-system.org/Packages/packages.html</URL>; 
+</Item>
+<Item>
+the Bangor site: 
+<URL>http://www.maths.bangor.ac.uk/chda/gap4/kan/&KANHTMLFILENAME;</URL>;
+</Item>
+<Item>
+the package GitHub repository: 
+<URL>https://github.com/gap-packages/kan</URL>. 
+</Item>
+</List>
 <P/>
+
 Some of the functions in the <Package>automata</Package> package 
 are used to compute word acceptors and regular expressions 
 for the languages they accept.
@@ -54,7 +68,7 @@ Once the package is loaded, it is possible to check the installation
 is correct by running a test file of the manual examples with the
 following command. 
 (The test file itself is <F>tst/fulltest.tst</F> or <F>tst/parttest.tst</F>, 
-depending whether or not <Package>kbmag</Package> is available. 
+depending whether or not <Package>kbmag</Package> is available.) 
 <Example>
 <![CDATA[
 gap> ReadPackage( "kan", "tst/testall.g" );
