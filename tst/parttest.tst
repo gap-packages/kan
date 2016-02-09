@@ -2,9 +2,9 @@
 ##
 #W  parttest.tst                 Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-##  version 1.22, 26/06/2015
+##  version 1.23, 09/02/2016
 ##
-#Y  Copyright (C) 1996-2015, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2016, Chris Wensley and Anne Heyworth 
 ##
 
 gap> SetInfoLevel( InfoKan, 0 );;
@@ -75,8 +75,10 @@ gap> DisplayRwsRules( rwsT );;
 gap> accT := WordAcceptorOfReducedRws( rwsT );
 < deterministic automaton on 4 letters with 7 states >
 gap> Print( accT );
-Automaton("det",7,"yYxX",[ [ 6, 2, 2, 4, 6, 4, 6 ], [ 3, 2, 3, 2, 3, 2, 3 ], [\
- 7, 2, 2, 2, 2, 7, 5 ], [ 2, 2, 2, 2, 2, 2, 2 ] ],[ 1 ],[ 1, 3, 4, 5, 6, 7 ]);\
+Automaton("det",7,"yYxX",[ [ 1, 2, 1, 5, 2, 5, 5 ], [ 1, 1, 3, 3, 1, 3, 3 ], [\
+\
+ 1, 1, 1, 7, 7, 1, 6 ], [ 1, 1, 1, 1, 1, 1, 1 ] ],[ 4 ],[ 2, 3, 4, 5, 6, 7 ]);\
+\
 ;
 gap> langT := FAtoRatExp( accT );
 (yxUx)((xyUy)x)*((xyUy)(yy*U@)Ux(YY*U@)UYY*U@)Uy(yy*U@)UYY*U@

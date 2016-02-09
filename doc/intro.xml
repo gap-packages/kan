@@ -2,7 +2,7 @@
 <!--                                                                     -->
 <!--  intro.xml             KAN documentation             Chris Wensley  -->
 <!--                                                    & Anne Heyworth  -->
-<!--  version 1.23, 12/01/2016                                           -->
+<!--  version 1.23, 09/02/2016                                           -->
 <!--                                                                     -->
 <!-- ------------------------------------------------------------------- -->
 
@@ -43,11 +43,9 @@ any &GAP; archive, e.g.
 the Bangor site: 
 <URL>http://www.maths.bangor.ac.uk/chda/gap4/kan/&KANHTMLFILENAME;</URL>;
 </Item>
-<Item>
-the package GitHub repository: 
-<URL>https://github.com/gap-packages/kan</URL>. 
-</Item>
 </List>
+Alternatively, fork the GitHub repository: 
+<URL>https://github.com/gap-packages/kan</URL>. 
 <P/>
 
 Some of the functions in the <Package>automata</Package> package 
@@ -61,8 +59,6 @@ If <Package>kbmag</Package> is not available
 (the user is not on a UNIX system, or the C-programs have not been compiled), 
 the file <File>dckbmag.gi</File> will not be read, 
 so methods for the functions detailed in section 2.4.1 will not be available. 
-The information parameter <C>InfoKan</C> takes default value <C>0</C>.
-When raised to a higher value, additional information is printed out.
 <P/>
 Once the package is loaded, it is possible to check the installation 
 is correct by running a test file of the manual examples with the
@@ -78,6 +74,28 @@ true
 ]]>
 </Example>
 <P/>
-Please send bug reports, suggestions and other comments to the second author.
+The information parameter <C>InfoKan</C> takes default value <C>0</C>.
+When raised to a higher value, additional information is printed out.
+<P/> 
+Once the package is loaded, the manual <Code>doc/manual.pdf</Code> 
+can be found in the documentation folder. 
+The <Code>html</Code> versions, with or without MathJax, 
+may be rebuilt as follows. 
+<P/>
+<Example>
+<![CDATA[
+gap> InfoLevel( InfoKan );
+0
+gap> ReadPackage( "kan, "makedocrel.g" ); 
+]]>
+</Example>
+<P/>
+Please send bug reports, suggestions and other comments to the second author,
+or use the GitHub issue tracker at 
+<URL>https://github.com/gap-packages/kan/issues/new</URL>.  
+<P/>
+Additional information can be found on the
+<E>Computational Higher-dimensional Discrete Algebra</E> website at
+<URL>http://pages.bangor.ac.uk/~mas023/chda/</URL>. 
 
 </Chapter>

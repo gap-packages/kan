@@ -2,9 +2,9 @@
 ##
 #W  dckbmag.gi                   Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-##  version 1.11, 10/11/2014
+##  version 1.23, 09/02/2016
 ##
-#Y  Copyright (C) 1996-2014, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2016, Chris Wensley and Anne Heyworth 
 ##
 ##  This file contains generic methods for double coset rewriting systems
 ##
@@ -13,7 +13,7 @@
 ##
 #M  WordAcceptorByKBMagOfDoubleCosetRws
 ##
-##  this method requires KBMAG to produce a finite automaton for the group
+##  this method requires KBMag to produce a finite automaton for the group
 
 InstallMethod( WordAcceptorByKBMagOfDoubleCosetRws,
     "generic method for a partial double coset rewriting system", true, 
@@ -273,7 +273,7 @@ function( fsa, alph )
            flags, format, i, j, k, sink, dfa, alpht, perm, L;
 
     if not IsFSA( fsa ) then
-        Error( "fsa is not a KBMAG FSA" );
+        Error( "fsa is not a KBMag FSA" );
     fi;
     table := fsa!.table;
     format := table!.format;

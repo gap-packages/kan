@@ -2,10 +2,12 @@
 ##
 #W  testall.g                    Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-##  version 1.11, 10/11/2014
+##  version 1.24, 09/02/2016
 ##
-#Y  Copyright (C) 1996-2014, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2016, Chris Wensley and Anne Heyworth 
 ##
+
+LoadPackage( "kan" );
 
 TestMyPackage := function( pkgname )
     local  pkgdir, testfiles, testresult, ff, fn;
