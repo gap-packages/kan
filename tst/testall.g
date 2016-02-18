@@ -2,8 +2,6 @@
 ##
 #W  testall.g                    Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-##  version 1.24, 09/02/2016
-##
 #Y  Copyright (C) 1996-2016, Chris Wensley and Anne Heyworth 
 ##
 

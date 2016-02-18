@@ -2,8 +2,6 @@
 ##
 #W  kbrws.gi                     Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-##  version 1.11, 10/11/2014
-##
 #Y  Copyright (C) 1996-2014, Chris Wensley and Anne Heyworth 
 ##
 ##  This file contains functions taken from the library files

@@ -2,8 +2,6 @@
 ##
 #W  example2.g                   Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-##  version 1.22, 28/06/2015
-##
 #Y  Copyright (C) 1996-2015, Chris Wensley and Anne Heyworth 
 ##
 

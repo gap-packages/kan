@@ -1,8 +1,6 @@
                         README file for the KAN package
                         ===============================
 
-Version 1.23, 9th February 2016
-
 Introduction
 ------------
 This package was conceived as a package for computing induced actions
@@ -14,7 +12,6 @@ History
 This package started out as part of Anne Heyworth's thesis in 1999. 
 The first version on general release was 0.91 in July 2005. 
 ``Kan'' became an accepted package in May 2015. 
-The latest version, 1.23, was released on 9th February 2016 for GAP 4.8. 
 A more detailed history is included as Chapter 3 of the manual, 
 and in the CHANGES file. 
 
@@ -38,8 +35,8 @@ For details, see \URL{http://www.gnu.org/licenses/gpl.html}
 
 Installation
 ------------
-1) unpack `kan-1.23.tar.gz' in the `pkg' subdirectory of the GAP root
-   directory.
+1) unpack `kan-<version_number>.tar.gz' in the `pkg' subdirectory 
+   of the GAP root directory.
 2) From within GAP load the package with:
 gap> LoadPackage("kan");
 true

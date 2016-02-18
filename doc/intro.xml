@@ -2,8 +2,6 @@
 <!--                                                                     -->
 <!--  intro.xml             KAN documentation             Chris Wensley  -->
 <!--                                                    & Anne Heyworth  -->
-<!--  version 1.23, 09/02/2016                                           -->
-<!--                                                                     -->
 <!-- ------------------------------------------------------------------- -->
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -28,9 +26,6 @@ gap> LoadPackage( "kan" );
 ]]>
 </Example>
 
-The current version is &KANVERSION; for &GAP; 4.8, 
-released on &KANLONGRELEASEDATE;. 
-<P/> 
 The package may be obtained as a compressed tar file 
 <File>&KANTARFILENAME;</File>
 by ftp from one of the following sites: 
@@ -41,7 +36,7 @@ any &GAP; archive, e.g.
 </Item>
 <Item>
 the Bangor site: 
-<URL>http://www.maths.bangor.ac.uk/chda/gap4/kan/&KANHTMLFILENAME;</URL>;
+<URL>http://www.maths.bangor.ac.uk/chda/gap4/kan/kan.html</URL>;
 </Item>
 </List>
 Alternatively, fork the GitHub repository: 

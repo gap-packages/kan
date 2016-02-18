@@ -2,30 +2,28 @@
 ##
 #W  PackageInfo.g                 GAP 4 Package `kan'           Chris Wensley
 #W                                                              Anne Heyworth
-##  version 1.24, 09/02/2016
-##
 
 SetPackageInfo( rec(
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 
-Version := "1.24",
-Date := "10/02/2016",
+Version := "1.25",
+Date := "18/02/2016",
 
 ##  duplicate these values for inclusion in the manual: 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY KANVERSION "1.24">
-##  <!ENTITY KANTARFILENAME "kan-1.24.tar.gz">
+##  <!ENTITY KANVERSION "1.25">
+##  <!ENTITY KANTARFILENAME "kan-1.25.tar.gz">
 ##  <!ENTITY KANHTMLFILENAME "kan.html">
-##  <!ENTITY KANRELEASEDATE "10/02/2016">
-##  <!ENTITY KANLONGRELEASEDATE "10th February 2016">
+##  <!ENTITY KANRELEASEDATE "18/02/2016">
+##  <!ENTITY KANLONGRELEASEDATE "18th February 2016">
 ##  <!ENTITY KANCOPYRIGHTYEARS "1996-2016">
 ##  <#/GAPDoc>
 
 PackageWWWHome := 
   "http://pages.bangor.ac.uk/~mas023/chda/kan/",
 
-ArchiveURL := "http://pages.bangor.ac.uk/~mas023/chda/kan/kan-1.24", 
+ArchiveURL := "http://pages.bangor.ac.uk/~mas023/chda/kan/kan-1.25", 
 ArchiveFormats := ".tar.gz",
 
 Persons := [
@@ -92,8 +90,6 @@ AvailabilityTest := ReturnTrue,
 BannerString := Concatenation( 
     "Loading Kan ", String( ~.Version ), " for GAP 4.8", 
     " - Anne Heyworth and Chris Wensley ...\n" ),
-
-Autoload := false,
 
 TestFile := "tst/testall.g",
 
