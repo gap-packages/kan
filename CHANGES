@@ -2,6 +2,7 @@
 
 ToDo: 
  - long-standing: see section 3.2 in the manual 
+ - (17/02/16) find out why accT prints incorrectly in tests 
 
 ##############################################################################
 1.22 -> 1.25  (18/02/2016) 
