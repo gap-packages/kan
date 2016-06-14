@@ -63,7 +63,11 @@ README_URL :=
   Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := 
   Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-
+SourceRepository := rec( 
+  Type := "git", 
+  URL := "https://github.com/gap-packages/kan"
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 AbstractHTML :=
  "The Kan package provides a collection of functions for computing with \
   all types of Kan extension, including double coset rewriting systems.",
