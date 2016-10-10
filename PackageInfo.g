@@ -8,7 +8,7 @@ PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 
 Version := "1.26",
-Date := "10/010/2016",
+Date := "10/10/2016",
 
 ##  duplicate these values for inclusion in the manual: 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
@@ -63,11 +63,13 @@ README_URL :=
   Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := 
   Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+
 SourceRepository := rec( 
   Type := "git", 
   URL := "https://github.com/gap-packages/kan"
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+
 AbstractHTML :=
  "The Kan package provides functions for the computation of normal forms \
   of representatives of double cosets of finitely presented groups.",
