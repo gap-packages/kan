@@ -7,23 +7,23 @@ SetPackageInfo( rec(
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 
-Version := "1.25",
-Date := "18/02/2016",
+Version := "1.26",
+Date := "10/010/2016",
 
 ##  duplicate these values for inclusion in the manual: 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY KANVERSION "1.25">
-##  <!ENTITY KANTARFILENAME "kan-1.25.tar.gz">
+##  <!ENTITY KANVERSION "1.26">
+##  <!ENTITY KANTARFILENAME "kan-1.26.tar.gz">
 ##  <!ENTITY KANHTMLFILENAME "kan.html">
-##  <!ENTITY KANRELEASEDATE "18/02/2016">
-##  <!ENTITY KANLONGRELEASEDATE "18th February 2016">
+##  <!ENTITY KANRELEASEDATE "10/10/2016">
+##  <!ENTITY KANLONGRELEASEDATE "10th October 2016">
 ##  <!ENTITY KANCOPYRIGHTYEARS "1996-2016">
 ##  <#/GAPDoc>
 
 PackageWWWHome := 
-  "http://pages.bangor.ac.uk/~mas023/chda/kan/",
+  "http://gap-packages.github.io/kan/",
 
-ArchiveURL := "http://pages.bangor.ac.uk/~mas023/chda/kan/kan-1.25", 
+ArchiveURL := "http://gap-packages.github.io/kan/kan-1.26", 
 ArchiveFormats := ".tar.gz",
 
 Persons := [
@@ -40,16 +40,16 @@ Persons := [
     FirstNames    := "Christopher D.",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "c.d.wensley@bangor.ac.uk",
+    Email         := "cdwensley.maths@btinternet.com",
     WWWHome       := "http://pages.bangor.ac.uk/~mas023/",
-    PostalAddress := Concatenation( [
-                       "Dr. C.D. Wensley\n",
-                       "School of Computer Science\n",
-                       "Bangor University\n",
-                       "Dean Street\n",
-                       "Bangor\n",
-                       "Gwynedd LL57 1UT\n",
-                       "UK"] ),
+    ## PostalAddress := Concatenation( [
+    ##                    "Dr. C.D. Wensley\n",
+    ##                    "School of Computer Science\n",
+    ##                    "Bangor University\n",
+    ##                    "Dean Street\n",
+    ##                    "Bangor\n",
+    ##                    "Gwynedd LL57 1UT\n",
+    ##                    "UK"] ),
     Place         := "Bangor",
     Institution   := "Bangor University"
   )
@@ -65,8 +65,8 @@ PackageInfoURL :=
   Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
 AbstractHTML :=
- "The Kan package provides a collection of functions for computing with \
-  all types of Kan extension, including double coset rewriting systems.",
+ "The Kan package provides functions for the computation of normal forms \
+  of representatives of double cosets of finitely presented groups.",
 
 PackageDoc := rec(
   BookName  := "Kan",
