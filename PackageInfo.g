@@ -8,23 +8,17 @@ PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 
 Version := "1.26",
-Date := "10/10/2016",
+Date := "11/10/2016",
 
 ##  duplicate these values for inclusion in the manual: 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY KANVERSION "1.26">
 ##  <!ENTITY KANTARFILENAME "kan-1.26.tar.gz">
 ##  <!ENTITY KANHTMLFILENAME "kan.html">
-##  <!ENTITY KANRELEASEDATE "10/10/2016">
-##  <!ENTITY KANLONGRELEASEDATE "10th October 2016">
+##  <!ENTITY KANRELEASEDATE "11/10/2016">
+##  <!ENTITY KANLONGRELEASEDATE "11th October 2016">
 ##  <!ENTITY KANCOPYRIGHTYEARS "1996-2016">
 ##  <#/GAPDoc>
-
-PackageWWWHome := 
-  "http://gap-packages.github.io/kan/",
-
-ArchiveURL := "http://gap-packages.github.io/kan/kan-1.26", 
-ArchiveFormats := ".tar.gz",
 
 Persons := [
   rec(
@@ -59,16 +53,18 @@ Status := "accepted",
 CommunicatedBy := "Leonard Soicher (QMUL)",
 AcceptDate := "05/2015",
 
-README_URL := 
-  Concatenation( ~.PackageWWWHome, "README" ),
-PackageInfoURL := 
-  Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-
 SourceRepository := rec( 
   Type := "git", 
   URL := "https://github.com/gap-packages/kan"
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+PackageWWWHome  := "http://gap-packages.github.io/kan/",
+README_URL      := Concatenation( ~.PackageWWWHome, "README" ),
+PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+ArchiveURL      := Concatenation( ~.SourceRepository.URL, 
+                                  "/releases/download/v", ~.Version, 
+                                  "/", ~.PackageName, "-", ~.Version ), 
+ArchiveFormats  := ".tar.gz",
 
 AbstractHTML :=
  "The Kan package provides functions for the computation of normal forms \

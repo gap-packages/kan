@@ -1,8 +1,13 @@
                        CHANGES to the Kan package 
 
 ToDo: 
- - long-standing: see section 3.2 in the manual 
+ - long-standing: see the ToDo list in section 3.2 in the manual 
  - (17/02/16) find out why accT prints incorrectly in tests 
+
+##############################################################################
+1.25 -> 1.26  (11/10/2016) 
+
+ - (11/10/16) changed my email address and package releases to github.io 
 
 ##############################################################################
 1.22 -> 1.25  (18/02/2016) 
