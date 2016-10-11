@@ -19,9 +19,8 @@ Distribution
 ------------
 The ``Kan'' package is distributed with the accepted GAP packages: see
      http://www.gap-system.org/Packages/kan.html
-It may also be obtained from the Bangor ftp pages for
-Computational Higher-dimensional Discrete Algebra at:
-  http://pages.bangor.ac.uk/~mas023/chda/kan/ 
+It may also be obtained from the GitHub repository at:
+  http://gap-packages.github.io/kan/ 
 
 Copyright
 ---------
@@ -46,5 +45,5 @@ true
 Contact
 -------
 If you have a question relating to ``Kan'', encounter any problems, or have a suggestion for extending the package in any way, please 
- - email c.d.wensley@bangor.ac.uk 
- - or report an issue at https://github.com/gap-packages/kan/issues/new 
+ - email: cdwensley.maths@bangor.ac.uk 
+ - or report an issue at: https://github.com/gap-packages/kan/issues/new 
