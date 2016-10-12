@@ -90,8 +90,10 @@ Dependencies := rec(
 AvailabilityTest := ReturnTrue,
 
 BannerString := Concatenation( 
-    "Loading Kan ", String( ~.Version ), " for GAP 4.8", 
-    " - Anne Heyworth and Chris Wensley ...\n" ),
+    "Loading Kan ", String( ~.Version ), " (computing with Kan extensions)\n", 
+    "by Anne Heyworth and ", 
+    "Chris Wensley (http://pages.bangor.ac.uk/~mas023/)\n", 
+  "-----------------------------------------------------------------------\n" ),
 
 TestFile := "tst/testall.g",
 

@@ -36,7 +36,7 @@ any &GAP; archive, e.g.
 </Item>
 <Item>
 the package GitHub repository: 
-<URL>https://github.com/gap-packages/kan</URL>. 
+<URL>https://gap-packages.github.io/kan</URL>. 
 </Item>
 </List>
 
@@ -78,7 +78,7 @@ may be rebuilt as follows.
 <![CDATA[
 gap> InfoLevel( InfoKan );
 0
-gap> ReadPackage( "kan, "makedocrel.g" ); 
+gap> ReadPackage( "kan, "makedoc.g" ); 
 ]]>
 </Example>
 <P/>
