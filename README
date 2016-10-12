@@ -44,6 +44,7 @@ true
 
 Contact
 -------
-If you have a question relating to ``Kan'', encounter any problems, or have a suggestion for extending the package in any way, please 
+If you have a question relating to ``Kan'', encounter any problems, 
+or have a suggestion for extending the package in any way, please 
  - email: cdwensley.maths@bangor.ac.uk 
  - or report an issue at: https://github.com/gap-packages/kan/issues/new 
