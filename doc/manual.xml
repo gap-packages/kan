@@ -46,8 +46,10 @@ normal forms of representatives of double cosets of finitely presented groups.
 &kan; became an accepted &GAP; package in May 2015. 
 <P/> 
 Bug reports, suggestions and comments are, of course, welcome. 
-Please contact the second author at 
-<Email>cdwensley.maths@btinternet.com</Email>.
+Please submit an issue at 
+<URL>https://github.com/gap-packages/kan/issues/</URL>
+or send an email to the second author at 
+<Email>cdwensley.maths@btinternet.com</Email>. 
 </Abstract>
 
 <Copyright> 
@@ -56,7 +58,8 @@ Please contact the second author at
 
 <Package>kan</Package> is free software; you can redistribute it 
 and/or modify it under the terms of the 
-<URL Text="GNU General Public License">http://www.fsf.org/licenses/gpl.html</URL> 
+<URL Text="GNU General Public License">
+http://www.fsf.org/licenses/gpl.html</URL> 
 as published by the Free Software Foundation; 
 either version 2 of the License, or (at your option) any later version.
 </Copyright> 
