@@ -72,19 +72,18 @@ gap> DisplayRwsRules( rwsT );;
  ]
 gap> accT := WordAcceptorOfReducedRws( rwsT );
 < deterministic automaton on 4 letters with 7 states >
-gap> Print( accT );
-Automaton("det",7,"yYxX",[ [ 6, 2, 2, 4, 6, 4, 6 ], [ 3, 2, 3, 2, 3, 2, 3 ], [\
- 7, 2, 2, 2, 2, 7, 5 ], [ 2, 2, 2, 2, 2, 2, 2 ] ],[ 1 ],[ 1, 3, 4, 5, 6, 7 ]);\
-;
-gap> Display( accT );
-   |  1  2  3  4  5  6  7  
---------------------------
- y |  6  2  2  4  6  4  6  
- Y |  3  2  3  2  3  2  3  
- x |  7  2  2  2  2  7  5  
- X |  2  2  2  2  2  2  2  
-Initial state:    [ 1 ]
-Accepting states: [ 1, 3, 4, 5, 6, 7 ]
+
+## (13/10/16) commented out: gap4r8 & gapdev give different answers 
+## gap> Print( accT );
+## gap> Display( accT );
+##    |  1  2  3  4  5  6  7  
+## --------------------------
+##  y |  6  2  2  4  6  4  6  
+##  Y |  3  2  3  2  3  2  3  
+##  x |  7  2  2  2  2  7  5  
+##  X |  2  2  2  2  2  2  2  
+## Initial state:    [ 1 ]
+## Accepting states: [ 1, 3, 4, 5, 6, 7 ]
 gap> langT := FAtoRatExp( accT );
 (yxUx)((xyUy)x)*((xyUy)(yy*U@)Ux(YY*U@)UYY*U@)Uy(yy*U@)UYY*U@
 gap> IsRecognizedByAutomaton( accT, "X" );
