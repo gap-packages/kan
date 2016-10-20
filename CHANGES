@@ -8,7 +8,7 @@ ToDo:
 1.25 -> 1.27  (20/10/2016) 
 
  - (18/10/16) now using bibliography file bib.xml of type "bibxmlext.dtd"
- - (11/10/16) changed package releases to gap-packages.github.io/kan 
+ - (11/10/16) changed package releases to https://gap-packages.github.io/kan 
 
 ##############################################################################
 1.22 -> 1.25  (18/02/2016) 
