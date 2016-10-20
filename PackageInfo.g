@@ -7,16 +7,16 @@ SetPackageInfo( rec(
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 
-Version := "1.26",
-Date := "18/10/2016",
+Version := "1.27",
+Date := "20/10/2016",
 
 ##  duplicate these values for inclusion in the manual: 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY KANVERSION "1.26">
-##  <!ENTITY KANTARFILENAME "kan-1.26.tar.gz">
+##  <!ENTITY KANVERSION "1.27">
+##  <!ENTITY KANTARFILENAME "kan-1.27.tar.gz">
 ##  <!ENTITY KANHTMLFILENAME "kan.html">
-##  <!ENTITY KANRELEASEDATE "18/10/2016">
-##  <!ENTITY KANLONGRELEASEDATE "18th October 2016">
+##  <!ENTITY KANRELEASEDATE "20/10/2016">
+##  <!ENTITY KANLONGRELEASEDATE "20th October 2016">
 ##  <!ENTITY KANCOPYRIGHTYEARS "1996-2016">
 ##  <#/GAPDoc>
 
@@ -34,16 +34,16 @@ Persons := [
     FirstNames    := "Christopher D.",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "cdwensley.maths@btinternet.com",
+    Email         := "c.d.wensley@bangor.ac.uk",
     WWWHome       := "http://pages.bangor.ac.uk/~mas023/",
-    ## PostalAddress := Concatenation( [
-    ##                    "Dr. C.D. Wensley\n",
-    ##                    "School of Computer Science\n",
-    ##                    "Bangor University\n",
-    ##                    "Dean Street\n",
-    ##                    "Bangor\n",
-    ##                    "Gwynedd LL57 1UT\n",
-    ##                    "UK"] ),
+    PostalAddress := Concatenation( [
+                       "Dr. C.D. Wensley\n",
+                       "School of Computer Science\n",
+                       "Bangor University\n",
+                       "Dean Street\n",
+                       "Bangor\n",
+                       "Gwynedd LL57 1UT\n",
+                       "UK"] ),
     Place         := "Bangor",
     Institution   := "Bangor University"
   )

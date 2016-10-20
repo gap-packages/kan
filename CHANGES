@@ -5,10 +5,10 @@ ToDo:
  - (17/02/16) find out why accT prints incorrectly in tests 
 
 ##############################################################################
-1.25 -> 1.26  (18/10/2016) 
+1.25 -> 1.27  (20/10/2016) 
 
  - (18/10/16) now using bibliography file bib.xml of type "bibxmlext.dtd"
- - (11/10/16) changed my email address and package releases to github.io 
+ - (11/10/16) changed package releases to gap-packages.github.io/kan 
 
 ##############################################################################
 1.22 -> 1.25  (18/02/2016) 
