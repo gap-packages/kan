@@ -58,7 +58,7 @@ SourceRepository := rec(
   URL := "https://github.com/gap-packages/kan"
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "http://gap-packages.github.io/kan/",
+PackageWWWHome  := "https://gap-packages.github.io/kan/",
 README_URL      := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL, 
