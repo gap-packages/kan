@@ -7,17 +7,17 @@ SetPackageInfo( rec(
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 
-Version := "1.27",
-Date := "20/10/2016",
+Version := "1.28",
+Date := "17/01/2017",
 
 ##  duplicate these values for inclusion in the manual: 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY KANVERSION "1.27">
-##  <!ENTITY KANTARFILENAME "kan-1.27.tar.gz">
+##  <!ENTITY KANVERSION "1.28">
+##  <!ENTITY KANTARFILENAME "kan-1.28.tar.gz">
 ##  <!ENTITY KANHTMLFILENAME "kan.html">
-##  <!ENTITY KANRELEASEDATE "20/10/2016">
-##  <!ENTITY KANLONGRELEASEDATE "20th October 2016">
-##  <!ENTITY KANCOPYRIGHTYEARS "1996-2016">
+##  <!ENTITY KANRELEASEDATE "17/01/2017">
+##  <!ENTITY KANLONGRELEASEDATE "17th January 2017">
+##  <!ENTITY KANCOPYRIGHTYEARS "1996-2017">
 ##  <#/GAPDoc>
 
 Persons := [
@@ -58,7 +58,7 @@ SourceRepository := rec(
   URL := "https://github.com/gap-packages/kan"
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "http://gap-packages.github.io/kan/",
+PackageWWWHome  := "https://gap-packages.github.io/kan/",
 README_URL      := Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL, 
