@@ -46,6 +46,10 @@ Version 1.11, of December 2014 was required when the &kan; website moved yet aga
 <P/> 
 &kan; became an accepted &GAP; package in May 2015. 
 <P/>
+Version 1.28, of May 2017, saw a great many changes to the examples, 
+with the various rewriting systems used to perform reduction of words 
+to reduced form. 
+<P/>
 </Section>
 
 
@@ -89,18 +93,18 @@ and <C>Iterators</C> for these are not yet available.
 <![CDATA[
 gap> F := FreeGroup(2);;
 gap> rels := [ F.2^2, (F.1*F.2)^2 ];;
-gap> G4 := F/rels;;
-gap> genG4 := GeneratorsOfGroup( G4 );;
-gap> a := genG4[1];  b := genG4[2];;
-gap> U := Subgroup( G4, [a^2] );;
-gap> V := Subgroup( G4, [b] );;
-gap> dc4 := DoubleCosetsAutomaton( G4, U, V );;
-gap> Print( dc4 );
+gap> G5 := F/rels;;
+gap> genG5 := GeneratorsOfGroup( G5 );;
+gap> a := genG5[1];  b := genG5[2];;
+gap> U := Subgroup( G5, [a^2] );;
+gap> V := Subgroup( G5, [b] );;
+gap> dc5 := DoubleCosetsAutomaton( G5, U, V );;
+gap> Print( dc5 );
 Automaton("det",5,"HKaAbB",[ [ 2, 2, 2, 5, 2 ], [ 2, 2, 1, 2, 1 ], [ 2, 2, 2, \
 2, 3 ], [ 2, 2, 2, 2, 2 ], [ 2, 2, 2, 2, 2 ], [ 2, 2, 2, 2, 2 ] ],[ 4 ],[ 1 ])\
 ;;
-gap> rc4 := RightCosetsAutomaton( G4, V );;
-gap> Print( rc4 );
+gap> rc5 := RightCosetsAutomaton( G5, V );;
+gap> Print( rc5 );
 Automaton("det",6,"HKaAbB",[ [ 2, 2, 2, 6, 2, 2 ], [ 2, 2, 1, 2, 1, 1 ], [ 2, \
 2, 3, 2, 2, 3 ], [ 2, 2, 2, 2, 5, 5 ], [ 2, 2, 2, 2, 2, 2 ], [ 2, 2, 2, 2, 2, \
 2 ] ],[ 4 ],[ 1 ]);;

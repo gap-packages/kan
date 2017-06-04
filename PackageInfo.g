@@ -4,19 +4,20 @@
 #W                                                              Anne Heyworth
 
 SetPackageInfo( rec(
+Packagename := "kan",
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 
 Version := "1.28",
-Date := "17/01/2017",
+Date := "04/06/2017",
 
 ##  duplicate these values for inclusion in the manual: 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY KANVERSION "1.28">
 ##  <!ENTITY KANTARFILENAME "kan-1.28.tar.gz">
 ##  <!ENTITY KANHTMLFILENAME "kan.html">
-##  <!ENTITY KANRELEASEDATE "17/01/2017">
-##  <!ENTITY KANLONGRELEASEDATE "17th January 2017">
+##  <!ENTITY KANRELEASEDATE "04/06/2017">
+##  <!ENTITY KANLONGRELEASEDATE "4th June 2017">
 ##  <!ENTITY KANCOPYRIGHTYEARS "1996-2017">
 ##  <#/GAPDoc>
 
@@ -80,10 +81,10 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">=4.8",
+  GAP := ">=4.8.7",
   NeededOtherPackages := [ [ "automata", ">= 1.13" ], 
                            [ "GAPDoc", ">= 1.5.1" ]  ],
-  SuggestedOtherPackages := [ [ "kbmag", ">= 1.5" ] ],
+  SuggestedOtherPackages := [ [ "kbmag", ">= 1.5.4" ] ],
   ExternalConditions := [ ]
 ),
 

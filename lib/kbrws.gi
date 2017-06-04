@@ -2,7 +2,7 @@
 ##
 #W  kbrws.gi                     Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2014, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
 ##
 ##  This file contains functions taken from the library files
 ##  rws.gi and kbsemi.gi, and modified to allow partial rewrite systems
@@ -25,10 +25,10 @@ function( kbrws, limit )
     local   pn,lp,rl,p,i,ok;              #loop variables
 
     if ( limit < 0 ) then
-        Error( "limit must ne non-negative" );
+        Error( "limit must be non-negative" );
     fi;
-    # kbrws!.reduced is true than it means that the system know it is
-    # reduced. If it is false it might be reduced or not.
+    # if kbrws!.reduced is true then it means that the system knows 
+    # it is reduced: if it is false it _might_ be reduced or not.
     if not kbrws!.reduced then
         ReduceRules(kbrws);
     fi;
@@ -72,10 +72,10 @@ function( kbrws, limit )
     fi;
 end );
 
-InstallOtherMethod(MakeConfluent, "for Knuth Bendix Rewriting System",
+InstallOtherMethod( MakeConfluent, "for Knuth Bendix Rewriting System",
     true, [ IsKnuthBendixRewritingSystem and IsKnuthBendixRewritingSystemRep 
             and IsMutable and IsBuiltFromMonoid, IsInt ], 0,
-function(kbrws,limit)
+function( kbrws, limit )
     local rws;
 
     LimitedMakeKnuthBendixRewritingSystemConfluent( kbrws, limit );
@@ -99,8 +99,6 @@ function( G, order, gensord, alph )
     if HasInitialRewritingSystem( G ) then
         return InitialRewritingSystem( G );
     fi;
-    ## Print("~~~~ in KBRws with [order,gensord,alph] = ",
-    ##                           [order,gensord,alph],"\n");
     fG := FreeGroupOfFpGroup( G );
     rels := RelatorsOfFpGroup( G );
     genG := GeneratorsOfGroup( G );
@@ -132,10 +130,10 @@ function( G, order, gensord, alph )
     return rws;
 end );
 
-InstallOtherMethod(ReducedConfluentRewritingSystem,
+InstallOtherMethod( ReducedConfluentRewritingSystem,
     "for an fp monoid and an ordering and a limited number of rules", true,
-    [IsFpMonoid, IsOrdering, IsInt], 0,
-function(M,ordering,limit)
+    [ IsFpMonoid, IsOrdering, IsInt ], 0,
+function( M, ordering, limit )
     local kbrws, rws;
 
     if HasReducedConfluentRewritingSystem(M) and
@@ -185,7 +183,7 @@ function( G, gensorder, order, limit, alph )
            mhom, M, genM, numgenM, range, fM, ord, rws;
 
     if ( limit < 0 ) then
-        Error( "limit must ne non-negative" );
+        Error( "limit must be non-negative" );
     fi;
     fG := FreeGroupOfFpGroup( G );
     rels := RelatorsOfFpGroup( G );
@@ -228,6 +226,24 @@ function( G, gensorder, order, limit, alph )
     SetReducedConfluentRewritingSystem( G, rws );
     return rws;
 end );
+
+InstallOtherMethod( ReducedForm, "generic method for an fp-group with rws", 
+    true, [ IsFpGroup, IsElementOfFpGroup ], 0, 
+function( G, g )  
+    local  rws, hom, fam, mg, r, rmg, rg; 
+
+    if not HasReducedConfluentRewritingSystem( G ) then 
+       TryNextMethod(); 
+    fi;
+    rws := ReducedConfluentRewritingSystem( G ); 
+    hom := IsomorphismFpMonoid( G ); 
+    fam := FamilyObj( One( Image(hom) ) ); 
+    mg := Image( hom, g ); 
+    r := ReducedForm( rws, UnderlyingElement(mg) );
+    rmg := ElementOfFpMonoid( fam, r ); 
+    rg := PreImagesRepresentative( hom, rmg ); 
+    return rg; 
+end ); 
 
 ############################################################################
 ## 

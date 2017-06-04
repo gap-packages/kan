@@ -2,7 +2,7 @@
 ##
 #W  dcrws.gi                     Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2015, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
 ##
 ##  This file contains generic methods for double coset rewriting systems
 ##
@@ -39,11 +39,29 @@ end );
 
 #############################################################################
 ##
+#M  OrderedAlphabet 
 #M  WordToString
 #M  DisplayAsString
 #M  DisplayRwsRules 
 ##
-InstallMethod( WordToString, "generic method for a dcrws", true, 
+InstallMethod( OrderedAlphabet, "generic method for a rewriting system", true, 
+    [ IsRewritingSystem  ], 0, 
+function( rws )
+
+    local  alph, free, gens, ord, pos, oalph; 
+    alph := rws!.alphabet; 
+    if not HasOrderingOfRewritingSystem( rws ) then 
+        return alph; 
+    fi; 
+    free := FreeMonoidOfRewritingSystem( rws ); 
+    gens := GeneratorsOfMonoid( free ); 
+    ord := OrderingOnGenerators( OrderingOfRewritingSystem(rws) );
+    pos := List( ord, g -> Position( gens, g ) ); 
+    oalph := List( [1..Length(alph)], i -> alph[pos[i]] );
+    return List( [1..Length(alph)], i -> alph[pos[i]] );
+end ); 
+
+InstallMethod( WordToString, "generic method for a rewriting system", true, 
     [ IsWord, IsString ], 0, 
 function( r, alph )
 
@@ -62,7 +80,7 @@ function( r, alph )
     return s;
 end );
 
-InstallMethod( DisplayAsString, "generic method for a dcrws", true, 
+InstallMethod( DisplayAsString, "generic method for a rewriting system", true, 
     [ IsWord, IsString ], 0, 
 function( r, alph )
 
@@ -412,6 +430,8 @@ function( G, genH, genK, rwsG, limit )
     fi;
     alph := rwsG!.alphabet;
     gensord := OrderingOnGenerators( ord );
+    #?  is the following chunk redundant after adding OrderedAlphabet? 
+    ############################## 
     alpht := ShallowCopy( alph );
     if ( HasReducedConfluentRewritingSystem( G ) 
          or HasInitialRewritingSystem( G ) ) then
@@ -423,7 +443,9 @@ function( G, genH, genK, rwsG, limit )
     fi;
     for i in [1..Length(alph)] do
         alpht[i] := alph[i^perm];
-    od;
+    od; 
+    ############################### 
+    alpht := OrderedAlphabet( rwsG ); 
     fG := FreeGroupOfFpGroup( G );
     rels := RelatorsOfFpGroup( G );
     genG := GeneratorsOfGroup( G );
@@ -608,15 +630,22 @@ function( dcrws )
     return w;
 end );
 
-InstallMethod( NextWord, "generic method for a rws and a group", 
+InstallOtherMethod( NextWord, "generic method for a rws and a word", 
     true, [ IsRewritingSystem, IsWord ], 0,
 function( rws, w )
+    return NextWord( rws, w, 100000 ); 
+end ); 
 
-    local  ord, fam, famw, gens, ogens, num, id, v, lenv, eu, j, 
-           lastg, lastp, u, rfu, ok;
+InstallOtherMethod( NextWord, "generic method for a rws and a word", 
+    true, [ IsRewritingSystem, IsWord, IsPosInt ], 0,
+function( rws, w, limit )
 
+    local  max_number_of_attempts, ord, fam, famw, gens, ogens, num, id, 
+           count, v, lenv, eu, j, lastg, lastp, u, rfu, ok;
+
+    max_number_of_attempts := limit;
     ord := OrderingOfRewritingSystem( rws );
-    gens := OrderingOnGenerators( ord );
+    gens := ShallowCopy( OrderingOnGenerators( ord ) );
     ogens := List( gens, g -> ExtRepOfObj( g )[1] );
     SortParallel( ogens, gens );
     num := Length( gens );
@@ -627,6 +656,7 @@ function( rws, w )
     id := One( gens[1] );
     ok := false;
     u := w;
+    count := 0; 
     while not ok do
         ok := true;
         v := u;
@@ -664,26 +694,33 @@ function( rws, w )
             u := ObjByExtRep( fam, eu );
         fi;
         rfu :=  ReducedForm( rws, u );
-        ok := ( u = rfu );
+        count := count + 1; 
+        ok := ( ( u = rfu ) or ( count > max_number_of_attempts ) );
     od;
-    return u;
+    if ( count > max_number_of_attempts ) then 
+        return fail;
+    else 
+        Info( InfoKan, 1, "count = ", count ); 
+        return u; 
+    fi;
 end );
 
-InstallMethod( NextWord, "generic method for a double coset rws and a group", 
-    true, [ IsDoubleCosetRewritingSystem, IsWord ], 0,
-function( rws, w )
+InstallMethod( NextWord, "generic method for double coset rws, word and limit", 
+    true, [ IsDoubleCosetRewritingSystem, IsWord, IsPosInt ], 0,
+function( rws, w, limit )
 
     local  ord, fam, famw, gens, ogens, num, id, v, lenv, eu, j, 
            lastg, lastp, u, rfu, ok, max_number_of_attempts, count;
 
-    max_number_of_attempts := 10000;
+    max_number_of_attempts := limit;
     ord := OrderingOfRewritingSystem( rws );
     gens := ShallowCopy( OrderingOnGenerators( ord ) );
     ogens := List( gens, g -> ExtRepOfObj( g )[1] );
     SortParallel( ogens, gens );
     num := Length( gens );
-    fam := FamilyObj( gens[1] );
-    if not ( fam = FamilyObj( w ) ) then
+    ## fam := FamilyObj( gens[1] );
+    fam := FamilyObj( w ); 
+    if not ( fam = FamilyObj( gens[1] ) ) then
         Error( "word not in correct family" );
     fi;
     id := One( gens[1] );
@@ -729,15 +766,48 @@ function( rws, w )
             fi;
             u := ObjByExtRep( fam, eu );
         fi;
-        rfu :=  ReducedForm( rws, u );
+        rfu := ReducedForm( rws, u );
         count := count + 1;
-        ##  ok := ( ( u = rfu ) or ( count > max_number_of_attempts ) );
+        ok := ( ( u = rfu ) or ( count > max_number_of_attempts ) );
         ok := ( u = rfu );
+if InfoLevel(InfoKan)>0 then
+  Print( WordToString(u,rws!.alphabet)," -> ", 
+         WordToString(rfu,rws!.alphabet), "\n" );
+fi;
     od;
-    ##  if ( count > max_number_of_attempts ) then return fail;
-    ##                                        else return u; fi;
-    return u;
+    if ( count > max_number_of_attempts ) then 
+        return fail;
+    else 
+        Info( InfoKan, 1, "count = ", count ); 
+        return u; 
+    fi;
 end );
+
+InstallMethod( NextWords, "for a rws, a word, how many and limit on #tries", 
+    true, [ IsRewritingSystem, IsWord, IsPosInt, IsPosInt ], 0,
+function( rws, w0, num, limit )
+
+    local  L, i, w, ok; 
+
+    L := ListWithIdenticalEntries( num, 0 ); 
+    i := 0; 
+    w := w0; 
+    ok := true; 
+    while ( ( i < num ) and ok ) do 
+        i := i+1; 
+        w := NextWord( rws, w, limit ); 
+        ok := not ( w = fail ); 
+        if ok then 
+            L[i] := w; 
+        else 
+            Info( InfoKan, 1, "limit reached in NextWord" ); 
+        fi;
+    od; 
+    if not ok then 
+        L := L{[1..i-1]};  
+    fi; 
+    return L; 
+end ); 
 
 #############################################################################
 ##

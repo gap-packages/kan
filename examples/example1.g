@@ -2,43 +2,27 @@
 ##
 #W  example1.g                   Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2014, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
 ##
 
 SetInfoLevel( InfoKan, 1 );
 SetInfoLevel( InfoKnuthBendix, 1 );
 
-Print( "\n==============================================================\n" );
-Print( "2-generator example example1.g, <a^6>F2<a^4>, version 10/11/14\n" );
-Print( "==============================================================\n\n" );
+Print( "\n===============================================================\n" );
+Print( "oriented surface, genus 2 example: example1.g, version 23/05/17\n" );
+Print( "===============================================================\n\n" );
 
-G1 := FreeGroup( 2 );
-L1 := [2,1,4,3];
-order := "shortlex";
-alph1 := "AaBb";
-rws1 := ReducedConfluentRewritingSystem( G1, L1, order, 0, alph1 );
-Print( "rules for rewriting system rws1:\n" );
-DisplayRwsRules( rws1 );
+F4 := FreeGroup( 4 );
+rels := [ Comm(F4.1,F4.2) * Comm(F4.3,F4.4) ];;
+H4 := F4/rels; 
+L := [2,1,4,3,6,5,8,7];
+order := "wreath";
+alph4 := "aAbBcCdD";
+rws4 := ReducedConfluentRewritingSystem( H4, L, order, 0, alph4 );;
+Print( "rws4 has rules:\n" );
+DisplayRwsRules( rws4 );
 
-genG1 := GeneratorsOfGroup( G1 );
-genH1 := [ genG1[1]^6 ];
-genK1 := [ genG1[1]^4 ];
-dcrws1 := DoubleCosetRewritingSystem( G1, genH1, genK1, rws1 );;
-IsDoubleCosetRewritingSystem( dcrws1 );
-Print( "\nrules for double coset rewriting system dcrws1:\n" );
-DisplayRwsRules( dcrws1 );
-waG1 := WordAcceptorOfReducedRws( rws1 );
-Print( "\ngroup word acceptor waG1:\n", waG1, "\n" );
-Print( "alphabet of group acceptor: ", AlphabetOfAutomatonAsList(waG1), "\n" );
-Print( "language of group acceptor:\n", FAtoRatExp( waG1 ), "\n\n" );
-wadc1 := WordAcceptorOfDoubleCosetRws( dcrws1 );
-Print( "word acceptor wadc1 of dcrws1:\n", wadc1 );
-Print( "has alphabet ", AlphabetOfAutomatonAsList( wadc1 ), "\n\n" ); 
-
-words1 := [ "HK","HaK","HbK","HAK","HaaK","HbbK","HabK","HbaK","HbaabK"];;
-Print( "list of 9 words:\n", words1, "\n" );
-valid1 := List( words1, w -> IsRecognizedByAutomaton( wadc1, w ) );
-Print( "these words are or are not recognized?\n", valid1, "\n" );
-Print( "alphabet of group acceptor: ", AlphabetOfAutomatonAsList(wadc1), "\n");
-lang1 := FAtoRatExp( wadc1 );
-Print( "language of double coset word acceptor:\n", lang1, "\n\n" );
+a := H4.1; b := H4.2; c := H4.3; d := H4.4;
+x := b * Comm( c, d ); 
+rx := ReducedForm( H4, x ); 
+Print( x, " -> ", rx, "\n" );

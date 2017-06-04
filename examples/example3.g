@@ -2,72 +2,100 @@
 ##
 #W  example3.g                   Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2014, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
 ##
 
-Print("\n==================================================================\n"); 
-Print("2-generator example example3.g, <a^3,b^3,(ab)^3>, version 10/11/14\n"); 
-Print("==================================================================\n\n"); 
+SetInfoLevel( InfoKan, 1 );
+SetInfoLevel( InfoKnuthBendix, 1 );
 
-if ( Filename( KBMAG_FOR_KAN_PATH, "kbprog" ) = fail ) then
-    Info( InfoKan, 1, "aborting: needs functions from the KBMAG package" );
-else
-    SetInfoLevel( InfoKan, 1 );
-    SetInfoLevel( InfoKnuthBendix, 1 );
+Print( "\n===============================================================\n" );
+Print( "2-generator example example3.g, trefoil group, version 25/05/17\n" );
+Print( "===============================================================\n\n" );
 
-    F3 := FreeGroup("a","b");
-    rels3 := [ F3.1^3, F3.2^3, (F3.1*F3.2)^3 ];
-    G3 := F3/rels3;
-    alph3 := "AaBb";
-    waG3 := WordAcceptorByKBMag( G3, alph3 );;
-    Print( waG3, "\n");
-    langG3 := FAtoRatExp( waG3 );
-    Print( langG3, "\n" );
+FT := FreeGroup( 2 );
+relsT := [ FT.1^3*FT.2^-2 ];
+T := FT/relsT;
+genT := GeneratorsOfGroup( T );
+cT := genT[1];  dT := genT[2];
+alphT := "cCdD";
+ordT := [3,4,1,2];
+orderT := "wreath";
+rwsT := ReducedConfluentRewritingSystem( T, ordT, orderT, 0, alphT );
+ord1 := OrderingOfRewritingSystem( rwsT );
+ord2 := OrderingOnGenerators( ord1 );
+Print( "rules for reduced rws for trefoil group with wreath order:\n" );
+Print( "and ordering on the generators:- ", ord2, "\n" ); 
+DisplayRwsRules( rwsT );
+accT := WordAcceptorOfReducedRws( rwsT );
+Print( "word acceptor for this rws:\n", accT, "\n" );
+langT := FAtoRatExp( accT ); 
+Print( "langT = ", langT, "\n\n" ); 
+free := FreeMonoidOfRewritingSystem( rwsT );
+mon := MonoidOfRewritingSystem( rwsT );
+gens := GeneratorsOfMonoid( free ); 
+oalphT := OrderedAlphabet( rwsT );
+c := gens[1];  C := gens[2];  d := gens[3];  D := gens[4];
+w := d^5*c^5; 
+sw := WordToString( w, alphT ); 
+Print( "        word  w = ", w, "     converts to string  sw = ", sw, "\n" ); 
+rw := ReducedForm( rwsT, w );
+srw := WordToString( rw, alphT ); 
+Print( "reduced word rw = ", rw, "  converts to string srw = ", srw, "\n\n" ); 
+Print( "accT recognises string sw ? ", 
+       IsRecognizedByAutomaton( accT, sw ), "\n" );
+Print( "accT recognises string srw ? ", 
+        IsRecognizedByAutomaton( accT, srw ), "\n" );
 
-    limit := 100;
-    Print( "\nusing a limit of ", limit, " for the partial rws\n\n" );
-    genG3 := GeneratorsOfGroup( G3 );
-    a := genG3[1];;  b := genG3[2];; 
-    genH3 := [ a*b ];; genK3 := [ b*a ];;
-    rwsG3 := KnuthBendixRewritingSystem( G3, "shortlex", [2,1,4,3], alph3 );
-    Print( "Attributes of G3 :-\n", KnownAttributesOfObject( G3 ), "\n\n" );
-    dcrws3 := PartialDoubleCosetRewritingSystem
-        ( G3, genH3, genK3, rwsG3, limit );
-    Print( "#I ", Length( Rules( dcrws3 ) ), " rules found.\n" );
-    dcaut3 := WordAcceptorByKBMagOfDoubleCosetRws( G3, dcrws3 );
-    Print( "\nDouble Coset Minimalized automaton:\n", dcaut3, "\n");
-    dclang3 := FAtoRatExp( dcaut3 );
-    Print( "Double Coset language of acceptor:\n", dclang3, "\n\n" );
-    ok := DCrules(dcrws3);;
-    alph3e := dcrws3!.alphabet;
-    Print( "H-rules = \n" );  DisplayAsString( Hrules(dcrws3), alph3e, true );
-    Print( "K-rules = \n" );  DisplayAsString( Krules(dcrws3), alph3e, true );
-    Print( "HK-rules= \n" );  DisplayAsString( HKrules(dcrws3), alph3e, true );
+## find a shorter expression for langT 
+alph := AlphabetOfRatExpAsList( langT ); 
+a1 := RatExpOnnLetters( alph, [ ], [1] );   ## d
+a2 := RatExpOnnLetters( alph, [ ], [2] );   ## D
+a3 := RatExpOnnLetters( alph, [ ], [3] );   ## c
+a4 := RatExpOnnLetters( alph, [ ], [4] );   ## C
+s1 := RatExpOnnLetters( alph, "star", a1 ); ## d*
+s2 := RatExpOnnLetters( alph, "star", a2 ); ## D*
+a1a3 := RatExpOnnLetters( alph, "product", [ a1, a3 ] );  ## dc 
+u1 := RatExpOnnLetters( alph, "union", [ a1a3, a3 ] );    ## dcUc
+a3a1 := RatExpOnnLetters( alph, "product", [ a3, a1 ] );  ## cd
+u2 := RatExpOnnLetters( alph, "union", [ a3a1, a1 ] );    ## cdUd
+u2a3 := RatExpOnnLetters( alph, "product", [ u2, a3 ] );  ## (cdUd)c
+su2a3 := RatExpOnnLetters( alph, "star", u2a3 );          ## ((cdUd)c)*
+u2s1 := RatExpOnnLetters( alph, "product", [ u2, s1 ] );  ## (cdUd)d*
+a3s2 := RatExpOnnLetters( alph, "product", [ a3, s2 ] );  ## cD*
+u3 := RatExpOnnLetters( alph, "union", [u2s1,a3s2,s2] ); 
+prod := RatExpOnnLetters( alph, "product", [u1,su2a3,u3] );  
+a1s1 := RatExpOnnLetters( alph, "product", [ a1, s1 ] );  ## dd*
+r := RatExpOnnLetters( alph, "union", [ prod, a1s1, s2] );
+Print( "expression r = ", r, "\n" ); 
+Print( "LangT and r are equal languages? ", AreEqualLang(langT,r), "\n\n" ); 
 
-    len := 30;;
-    L3 := 0*[1..len];;
-    L3[1] := IdentityDoubleCoset( dcrws3 );;
-    for i in [2..len] do
-        L3[i] := NextWord( dcrws3, L3[i-1] );
-    od;
-    Print( "\nlist of ", len," irreducible words:-\n" );
-    DisplayAsString( L3, alph3e, true );
+## find a partial dcrws with a maximum of 20 rules
+prwsT :=  PartialDoubleCosetRewritingSystem( T, [cT], [dT], rwsT, 20 );
+Print("\nrules for partial double coset rws:\n" );
+DisplayRwsRules( prwsT );
 
-    R3 := 0*[1..len];
-    R3[1] := true;
-    for i in [2..len] do
-        w := Subword( L3[i], 2, Length(L3[i])-1 );
-        s := WordToString( w, alph3e );
-        R3[i] := IsRecognizedByAutomaton( waG3, s );
-    od;
-    if ( First(R3, b -> b=false) = fail ) then
-        Print( "\nAll ", len, " irreducible reps accepted by rwsG3\n" );
-    else
-        Print( "not all of these representatives are accepted by rwsG3\n" );
-    fi;
+paccT := WordAcceptorOfPartialDoubleCosetRws( T, prwsT );
+Print( "word acceptor for this partial double coset rws:\n", paccT, "\n" );
 
-    w := NextWord( dcrws3, L3[30] );
-    Print( "\nnext word w is: ", w, "\n" );
-    s := WordToString( w, alph3e );
-    Print( "converting w to a string gives: ", s, "\n\n" );
-fi;
+plangT := FAtoRatExp( paccT );
+wordsT := [ "HK", "HcK", "HdK", "HDK", "HdcK", "HdccK", "HddH", "HdcDK"];
+Print( "list of 8 words:\n", wordsT, "\n" );
+validT := List( wordsT, w -> IsRecognizedByAutomaton( paccT, w ) );
+Print( "these words are or are not recognized?\n", validT, "\n\n" );
+
+pfree := FreeMonoidOfRewritingSystem( prwsT );
+pmon := MonoidOfRewritingSystem( prwsT ); 
+pgens := GeneratorsOfMonoid( pfree ); 
+H := pgens[1];  K := pgens[2]; 
+c := pgens[3];  C := pgens[4]; 
+d := pgens[5];  D := pgens[6];
+palphT := Concatenation( "HK", alphT ); 
+pw := H*d^5*c^5*K;
+rpw := ReducedForm( prwsT, pw ); 
+Print( "double coset  " );
+DisplayAsString( pw, palphT ); 
+Print( "  reduces to  " ); 
+DisplayAsString( rpw, palphT ); 
+Print( "\n" );
+spw := WordToString( rpw, palphT ); 
+ok := IsRecognizedByAutomaton( paccT, spw ); 
