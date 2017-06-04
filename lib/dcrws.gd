@@ -2,7 +2,7 @@
 ##
 #W  dcrws.gd                     Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2016, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
 ##
 ##  This file contains generic methods for double coset rewriting systems
 ##
@@ -31,10 +31,12 @@ DeclareProperty( "IsWordAcceptorOfDoubleCosetRws", IsAutomatonObj );
 ## 
 #O  WordToString( <word>, <alph> )
 #O  DisplayAsString( <word>, <alph> )
+#A  OrderedAlphabet( <rws> )
 #O  DisplayRwsRules( <rws> )
 ## 
 DeclareOperation( "WordToString", [ IsWord, IsString ] );
 DeclareOperation( "DisplayAsString", [ IsWord, IsString ] ); 
+DeclareAttribute( "OrderedAlphabet", IsRewritingSystem );    
 DeclareOperation( "DisplayRwsRules", [ IsRewritingSystem ] );    
 
 ############################################################################# 
@@ -56,6 +58,7 @@ DeclareAttribute( "WordAcceptorOfReducedRws", IsRewritingSystem );
 #A  HKrules
 #O  DoubleCosetRewritingSystem
 #O  NextWord
+#O  NextWords 
 #O  IdentityDoubleCoset
 ## 
 DeclareOperation( "PartialDoubleCosetRewritingSystem", 
@@ -66,7 +69,9 @@ DeclareAttribute( "Krules", IsDoubleCosetRewritingSystem );
 DeclareAttribute( "HKrules", IsDoubleCosetRewritingSystem );
 DeclareOperation( "DoubleCosetRewritingSystem", [ IsGroup, IsHomogeneousList, 
     IsHomogeneousList, IsRewritingSystem ] );    
-DeclareOperation( "NextWord", [ IsRewritingSystem, IsWord ] );
+DeclareOperation( "NextWord", [ IsRewritingSystem, IsWord, IsPosInt ] );
+DeclareOperation( "NextWords", 
+    [ IsRewritingSystem, IsWord, IsPosInt, IsPosInt ] );
 DeclareOperation( "IdentityDoubleCoset", [ IsDoubleCosetRewritingSystem ] );
 
 ############################################################################# 

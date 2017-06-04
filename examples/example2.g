@@ -2,68 +2,43 @@
 ##
 #W  example2.g                   Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2015, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
 ##
 
 SetInfoLevel( InfoKan, 1 );
 SetInfoLevel( InfoKnuthBendix, 1 );
 
-Print( "\n===============================================================\n" );
-Print( "2-generator example example2.g, trefoil group, version 28/06/15\n" );
-Print( "===============================================================\n\n" );
+Print( "\n==============================================================\n" );
+Print( "2-generator example example2.g, <a^6>F2<a^4>, version 23/05/17\n" );
+Print( "==============================================================\n\n" );
 
-FT := FreeGroup( 2 );;
-relsT := [ FT.1^3*FT.2^-2 ];;
-T := FT/relsT;;
-genT := GeneratorsOfGroup( T );;
-x := genT[1];;  y := genT[2];;
-alphT := "XxYy";;
-ordT := [4,3,2,1];;
-orderT := "wreath";;
-rwsT := ReducedConfluentRewritingSystem( T, ordT, orderT, 0, alphT );;
-Print( "rules for reduced rws for trefoil group with wreath order:\n" );
-DisplayRwsRules( rwsT );;
-accT := WordAcceptorOfReducedRws( rwsT );
-Print( "word acceptor for this rws:\n", accT, "\n" );
-langT := FAtoRatExp( accT ); 
-Print( "langT = ", langT, "\n" ); 
-Print( "accT recognises string X ? ", IsRecognizedByAutomaton(accT,"X"), "\n" );
-Print( "accT recognises string yyxyxyxYY ? ", 
-        IsRecognizedByAutomaton(accT,"yxyxyxYY"), "\n" );
+G1 := FreeGroup( 2 );
+L1 := [2,1,4,3];
+order := "shortlex";
+alph1 := "AaBb";
+rws1 := ReducedConfluentRewritingSystem( G1, L1, order, 0, alph1 );
+Print( "rules for rewriting system rws1:\n" );
+DisplayRwsRules( rws1 );
 
-## find a shorter expression for langT 
-alph := AlphabetOfRatExpAsList( langT );; 
-a1 := RatExpOnnLetters( alph, [ ], [1] );;   ## y
-a2 := RatExpOnnLetters( alph, [ ], [2] );;   ## Y
-a3 := RatExpOnnLetters( alph, [ ], [3] );;   ## x
-a4 := RatExpOnnLetters( alph, [ ], [4] );;   ## X
-s1 := RatExpOnnLetters( alph, "star", a1 );; ## y*
-s2 := RatExpOnnLetters( alph, "star", a2 );; ## Y*
-a1a3 := RatExpOnnLetters( alph, "product", [ a1, a3 ] );;  ## yx 
-u1 := RatExpOnnLetters( alph, "union", [ a1a3, a3 ] );;    ## yxUx
-a3a1 := RatExpOnnLetters( alph, "product", [ a3, a1 ] );;  ## xy
-u2 := RatExpOnnLetters( alph, "union", [ a3a1, a1 ] );;    ## xyUy
-u2a3 := RatExpOnnLetters( alph, "product", [ u2, a3 ] );;  ## (xyUy)x
-su2a3 := RatExpOnnLetters( alph, "star", u2a3 );;          ## ((xyUy)x)*
-u2s1 := RatExpOnnLetters( alph, "product", [ u2, s1 ] );;  ## (xyUy)y*
-a3s2 := RatExpOnnLetters( alph, "product", [ a3, s2 ] );;  ## xY*
-u3 := RatExpOnnLetters( alph, "union", [u2s1,a3s2,s2] );; 
-prod := RatExpOnnLetters( alph, "product", [u1,su2a3,u3] );;  
-a1s1 := RatExpOnnLetters( alph, "product", [ a1, s1 ] );;  ## yy*
-r := RatExpOnnLetters( alph, "union", [ prod, a1s1, s2] );
-Print( "expression r = ", r, "\n" ); 
-Print( "LangT and r are equal languages? ", AreEqualLang(langT,r), "\n\n" ); 
+genG1 := GeneratorsOfGroup( G1 );
+genH1 := [ genG1[1]^6 ];
+genK1 := [ genG1[1]^4 ];
+dcrws1 := DoubleCosetRewritingSystem( G1, genH1, genK1, rws1 );;
+IsDoubleCosetRewritingSystem( dcrws1 );
+Print( "\nrules for double coset rewriting system dcrws1:\n" );
+DisplayRwsRules( dcrws1 );
+waG1 := WordAcceptorOfReducedRws( rws1 );
+Print( "\ngroup word acceptor waG1:\n", waG1, "\n" );
+Print( "alphabet of group acceptor: ", AlphabetOfAutomatonAsList(waG1), "\n" );
+Print( "language of group acceptor:\n", FAtoRatExp( waG1 ), "\n\n" );
+wadc1 := WordAcceptorOfDoubleCosetRws( dcrws1 );
+Print( "word acceptor wadc1 of dcrws1:\n", wadc1 );
+Print( "has alphabet ", AlphabetOfAutomatonAsList( wadc1 ), "\n\n" ); 
 
-## find a partial dcrws with a maximum of 20 rules
-prwsT :=  PartialDoubleCosetRewritingSystem( T, [x], [y], rwsT, 20 );;
-Print("\nrules for partial double coset rws:\n" );
-DisplayRwsRules( prwsT );
-
-paccT := WordAcceptorOfPartialDoubleCosetRws( T, prwsT );
-Print( "word acceptor for this partial double coset rws:\n", paccT, "\n" );
-
-plangT := FAtoRatExp( paccT );
-wordsT := [ "HK", "HxK", "HyK", "HYK", "HyxK", "HyxxK", "HyyH", "HyxYK"];;
-Print( "list of 8 words:\n", wordsT, "\n" );
-validT := List( wordsT, w -> IsRecognizedByAutomaton( paccT, w ) );
-Print( "these words are or are not recognized?\n", validT, "\n\n" );
+words1 := [ "HK","HaK","HbK","HAK","HaaK","HbbK","HabK","HbaK","HbaabK"];;
+Print( "list of 9 words:\n", words1, "\n" );
+valid1 := List( words1, w -> IsRecognizedByAutomaton( wadc1, w ) );
+Print( "these words are or are not recognized?\n", valid1, "\n" );
+Print( "alphabet of group acceptor: ", AlphabetOfAutomatonAsList(wadc1), "\n");
+lang1 := FAtoRatExp( wadc1 );
+Print( "language of double coset word acceptor:\n", lang1, "\n\n" );

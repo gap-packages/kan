@@ -13,9 +13,11 @@ TestMyPackage := function( pkgname )
     pkgdir := DirectoriesPackageLibrary( pkgname, "tst" );
     # Arrange chapters as required
     if ( Filename( KBMAG_FOR_KAN_PATH, "kbprog" ) = fail ) then 
-        testfiles := [ "parttest.tst" ];
+        testfiles := [ "example1.tst", "example2.tst", 
+                       "example3.tst", "example5.tst" ];
     else 
-        testfiles := [ "fulltest.tst" ];
+        testfiles := [ "example1.tst", "example2.tst", 
+                       "example3.tst", "example4.tst", "example5.tst" ];
     fi;
     testresult := true;
     for ff in testfiles do

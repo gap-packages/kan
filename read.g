@@ -10,7 +10,7 @@ ReadPackage( "kan", "lib/kbrws.gi" );
 KBMAG_FOR_KAN_PATH := DirectoriesPackagePrograms( "kbmag" ); 
 if ( Filename( KBMAG_FOR_KAN_PATH, "kbprog" ) = fail ) then
   Info( InfoWarning, 1, 
-    "Package ``kbmag'' is not loaded, so some Kan functions are unavailable" );
+    "Package ``kbmag'' is not compiled, so some Kan functions are unavailable" );
 else
   ReadPackage( "kan", "lib/dckbmag.gi" );
 fi;
