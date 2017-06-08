@@ -4,8 +4,10 @@ ToDo:
  - long-standing: see the ToDo list in section 3.2 in the manual 
 
 ##############################################################################
-1.27 -> 1.28  (04/06/2017) 
+1.27 -> 1.28  (08/06/2017) 
 
+ - (08/06/17) (Partial)DoubleCosetRewritingSystem now takes two subgroups as 
+              parameters 2,3, rather than their generating sets 
  - (01/06/17) NextWord now has max_number_of_attempts as third parameter and 
               now works for any rws; added operation NextWords 
  - (25/05/17) added attribute OrderedAlphabet for a rewriting system 

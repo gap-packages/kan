@@ -8,9 +8,9 @@
 SetInfoLevel( InfoKan, 1 );
 SetInfoLevel( InfoKnuthBendix, 1 );
 
-Print( "\n==============================================================\n" );
-Print( "2-generator example example2.g, <a^6>F2<a^4>, version 23/05/17\n" );
-Print( "==============================================================\n\n" );
+Print( "\n============================================\n" );
+Print( "2-generator example example2.g, <a^6>F2<a^4>\n" );
+Print( "==============================================\n\n" );
 
 G1 := FreeGroup( 2 );
 L1 := [2,1,4,3];
@@ -21,9 +21,9 @@ Print( "rules for rewriting system rws1:\n" );
 DisplayRwsRules( rws1 );
 
 genG1 := GeneratorsOfGroup( G1 );
-genH1 := [ genG1[1]^6 ];
-genK1 := [ genG1[1]^4 ];
-dcrws1 := DoubleCosetRewritingSystem( G1, genH1, genK1, rws1 );;
+H1 := Subgroup( G1, [ genG1[1]^6 ] );
+K1 := Subgroup( G1, [ genG1[1]^4 ] );
+dcrws1 := DoubleCosetRewritingSystem( G1, H1, K1, rws1 );;
 IsDoubleCosetRewritingSystem( dcrws1 );
 Print( "\nrules for double coset rewriting system dcrws1:\n" );
 DisplayRwsRules( dcrws1 );

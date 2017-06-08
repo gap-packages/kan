@@ -5,9 +5,9 @@
 #Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
 ##
 
-Print("\n==================================================================\n"); 
-Print("2-generator example example4.g, <a^3,b^3,(ab)^3>, version 25/05/17\n"); 
-Print("==================================================================\n\n"); 
+Print("\n================================================\n"); 
+Print("2-generator example example4.g, <a^3,b^3,(ab)^3>\n"); 
+Print("================================================\n\n"); 
 
 if ( Filename( KBMAG_FOR_KAN_PATH, "kbprog" ) = fail ) then
     Info( InfoKan, 1, "aborting: needs functions from the KBMAG package" );
@@ -28,11 +28,11 @@ else
     Print( "\nusing a limit of ", limit, " for the partial rws\n\n" );
     genG4 := GeneratorsOfGroup( G4 );
     a := genG4[1];;  b := genG4[2];; 
-    genH4 := [ a*b ];; genK4 := [ b*a ];;
+    H4 := Subgroup( G4, [ a*b ] );; 
+    K4 := Subgroup( G4, [ b*a ] );;
     rwsG4 := KnuthBendixRewritingSystem( G4, "shortlex", [2,1,4,3], alph4 );
     Print( "Attributes of G4 :-\n", KnownAttributesOfObject( G4 ), "\n\n" );
-    dcrws4 := PartialDoubleCosetRewritingSystem
-        ( G4, genH4, genK4, rwsG4, limit );
+    dcrws4 := PartialDoubleCosetRewritingSystem( G4, H4, K4, rwsG4, limit );
     Print( "#I ", Length( Rules( dcrws4 ) ), " rules found.\n" );
     dcaut4 := WordAcceptorByKBMagOfDoubleCosetRws( G4, dcrws4 );
     Print( "\nDouble Coset Minimalized automaton:\n", dcaut4, "\n");

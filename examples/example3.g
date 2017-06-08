@@ -8,15 +8,16 @@
 SetInfoLevel( InfoKan, 1 );
 SetInfoLevel( InfoKnuthBendix, 1 );
 
-Print( "\n===============================================================\n" );
-Print( "2-generator example example3.g, trefoil group, version 25/05/17\n" );
-Print( "===============================================================\n\n" );
+Print( "\n=============================================\n" );
+Print( "2-generator example example3.g, trefoil group\n" );
+Print( "=============================================\n\n" );
 
 FT := FreeGroup( 2 );
 relsT := [ FT.1^3*FT.2^-2 ];
 T := FT/relsT;
 genT := GeneratorsOfGroup( T );
-cT := genT[1];  dT := genT[2];
+U := Subgroup( T, [ genT[1] ] );  
+V := Subgroup( T, [ genT[2] ] );
 alphT := "cCdD";
 ordT := [3,4,1,2];
 orderT := "wreath";
@@ -70,7 +71,7 @@ Print( "expression r = ", r, "\n" );
 Print( "LangT and r are equal languages? ", AreEqualLang(langT,r), "\n\n" ); 
 
 ## find a partial dcrws with a maximum of 20 rules
-prwsT :=  PartialDoubleCosetRewritingSystem( T, [cT], [dT], rwsT, 20 );
+prwsT :=  PartialDoubleCosetRewritingSystem( T, U, V, rwsT, 20 );
 Print("\nrules for partial double coset rws:\n" );
 DisplayRwsRules( prwsT );
 

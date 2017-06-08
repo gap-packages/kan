@@ -6,7 +6,6 @@
 ##
 ##  This file contains generic methods for double coset rewriting systems
 ##
-
 ##  Convention:  order is a string, "shortlex" or "wreath",
 ##                 ord is an ordering,
 ##             gensord is a numerical list of generators, e.g. [2,1,4,3]
@@ -371,16 +370,16 @@ end );
 
 #############################################################################
 ##
+#M  DoubleCosetRewritingSystem
 #M  PartialDoubleCosetRewritingSystem
 #M  DCrules
-#M  DoubleCosetRewritingSystem
 ##
 InstallMethod( DoubleCosetRewritingSystem,
-    "generic method for a group, two subgroups, an rws, and a limit",  true, 
-    [ IsGroup, IsHomogeneousList,  IsHomogeneousList, IsRewritingSystem ], 0,
-function( G, genH, genK, rwsG )
+    "generic method for a group, two subgroupsand an rws",  true, 
+    [ IsGroup, IsGroup, IsGroup, IsRewritingSystem ], 0,
+function( G, H, K, rwsG )
     local dcrws;
-    dcrws := PartialDoubleCosetRewritingSystem( G, genH, genK, rwsG, 0 );
+    dcrws := PartialDoubleCosetRewritingSystem( G, H, K, rwsG, 0 );
     return dcrws;
 end );
 
@@ -408,18 +407,22 @@ function( dcrws )
 end );
 
 InstallMethod( PartialDoubleCosetRewritingSystem,
-    "generic method for a group, two subgroups, etc.",  true, 
-    [ IsGroup, IsHomogeneousList, IsHomogeneousList,  IsRewritingSystem,
-      IsInt ], 0,
-function( G, genH, genK, rwsG, limit )
+    "generic method for a group, two subgroups, an rws and a limit",  true, 
+    [ IsGroup, IsGroup, IsGroup, IsRewritingSystem, IsInt ], 0,
+function( G, H, K, rwsG, limit )
 
-    local  gensord, order, fG, rels, genG, genfG, numgenG, numgenfG, 
+    local  genH, genK, gensord, order, fG, rels, genG, genfG, numgenG, numgenfG, 
            genfM, genfH, genfK, alph, alpht, alph2, mhom, M, genM, 
            numgenM, range, fM, ord, perm, rules, numrules, numgensF2, 
            F2, genF2, numH, numK, extrules, printmax, i, j, l, el, r, 
            er, lene, n, e, h, h1, k, k1, fam2, M2, genM2, numgenM2, 
            range2, ord2, rws2, fM2, genfM2, L2, perm2, plus;
 
+    if not ( IsSubgroup( G, H ) and IsSubgroup( G, K ) ) then 
+        Error( "H and K must be subgroups of G" ); 
+    fi; 
+    genH := GeneratorsOfGroup( H ); 
+    genK := GeneratorsOfGroup( K ); 
     printmax := 40;
     ord := OrderingOfRewritingSystem( rwsG );
     if ( HasIsShortLexOrdering( ord ) and IsShortLexOrdering( ord ) ) then
@@ -1384,8 +1387,7 @@ end );
 ##  should use these to make DoubleCosetsNC and RightCosetsNC: these were 
 ##  the original names, but changed 04/04/06 to fix a conflict with Gpd
 ##
-InstallMethod( DoubleCosetsAutomaton, "for an fp-group with rewriting system", 
-    true, 
+InstallMethod( DoubleCosetsAutomaton, "for an fp-group with a rws", true, 
     [ IsFpGroup and HasReducedConfluentRewritingSystem, IsGroup, IsGroup ], 0,
 function( G, U, V )
     local genU, genV, rws, dcrws, dcwa;

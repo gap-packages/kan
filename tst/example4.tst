@@ -33,9 +33,10 @@ gap> Print( langG4, "\n" );
 gap> limit := 100;;
 gap> genG4 := GeneratorsOfGroup( G4 );;
 gap> a := genG4[1];;  b := genG4[2];; 
-gap> genH4 := [ a*b ];;  genK4 := [ b*a ];;
+gap> H4 := Subgroup( G4, [ a*b ] );;  
+gap> K4 := Subgroup( G4, [ b*a ] );;
 gap> rwsG4 := KnuthBendixRewritingSystem( G4, "shortlex", [2,1,4,3], alph4 );;
-gap> dcrws4 := PartialDoubleCosetRewritingSystem( G4, genH4, genK4, rwsG4, limit );;
+gap> dcrws4 := PartialDoubleCosetRewritingSystem( G4, H4, K4, rwsG4, limit );;
 gap> Print( Length( Rules( dcrws4 ) ), " rules found.\n" );
 101 rules found.
 gap> dcaut4 := WordAcceptorByKBMagOfDoubleCosetRws( G4, dcrws4 );;
