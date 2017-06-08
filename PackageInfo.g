@@ -9,15 +9,15 @@ PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 
 Version := "1.28",
-Date := "04/06/2017",
+Date := "08/06/2017",
 
 ##  duplicate these values for inclusion in the manual: 
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY KANVERSION "1.28">
 ##  <!ENTITY KANTARFILENAME "kan-1.28.tar.gz">
 ##  <!ENTITY KANHTMLFILENAME "kan.html">
-##  <!ENTITY KANRELEASEDATE "04/06/2017">
-##  <!ENTITY KANLONGRELEASEDATE "4th June 2017">
+##  <!ENTITY KANRELEASEDATE "08/06/2017">
+##  <!ENTITY KANLONGRELEASEDATE "8th June 2017">
 ##  <!ENTITY KANCOPYRIGHTYEARS "1996-2017">
 ##  <#/GAPDoc>
 

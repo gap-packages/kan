@@ -171,9 +171,9 @@ Rewriting System for Monoid( [ f1, f1^-1, f2, f2^-1 ], ... ) with rules
 gap> DisplayRwsRules( rws1 );;
 [ [ Aa, id ], [ aA, id ], [ Bb, id ], [ bB, id ] ]
 gap> genG1 := GeneratorsOfGroup( G1 );;
-gap> genH1 := [ genG1[1]^6 ];;
-gap> genK1 := [ genG1[1]^4 ];;
-gap> dcrws1 := DoubleCosetRewritingSystem( G1, genH1, genK1, rws1 );;
+gap> H1 := Subgroup( G1, [ genG1[1]^6 ] );;
+gap> K1 := Subgroup( G1, [ genG1[1]^4 ] );;
+gap> dcrws1 := DoubleCosetRewritingSystem( G1, H1, K1, rws1 );;
 gap> IsDoubleCosetRewritingSystem( dcrws1 );
 true
 gap> DisplayRwsRules( dcrws1 );;
@@ -300,7 +300,8 @@ gap> FT := FreeGroup( 2 );;
 gap> relsT := [ FT.1^3*FT.2^-2 ];;
 gap> T := FT/relsT;;
 gap> genT := GeneratorsOfGroup( T );;
-gap> cT := genT[1];;  dT := genT[2];;
+gap> U := Subgroup( T, [ genT[1] ] );;  
+gap> V := Subgroup( T, [ genT[2] ] );;
 gap> alphT := "cCdD";;
 gap> ordT := [3,4,1,2];;
 gap> orderT := "wreath";;
@@ -388,7 +389,7 @@ specified on the number of rules to be computed.
 In the listing below a limit of 20 is used, but in fact 10 is sufficient.
 <Example>
 <![CDATA[
-gap> prwsT := PartialDoubleCosetRewritingSystem( T, [cT], [dT], rwsT, 20 );;
+gap> prwsT := PartialDoubleCosetRewritingSystem( T, U, V, rwsT, 20 );;
 #I WARNING: reached supplied limit 20 on number of rules
 gap> DisplayRwsRules( prwsT );
 G-rules:
@@ -411,7 +412,6 @@ H-rules:
 K-rules:
 [ [ dK, K ],
   [ DK, K ] ]
-true
 ]]>
 </Example>
 
@@ -538,9 +538,10 @@ three infinite sets of rules and a limit for the automata.
 gap> lim := 100;;
 gap> genG4 := GeneratorsOfGroup( G4 );;
 gap> a := genG4[1];;  b := genG4[2];; 
-gap> gH4 := [ a*b ];;  gK4 := [ b*a ];;
+gap> H4 := Subgroup( G4, [ a*b ] );;  
+gap> K4 := Subgroup( G4, [ b*a ] );;
 gap> rwsG4 := KnuthBendixRewritingSystem( G4, "shortlex", [2,1,4,3], alph4 );;
-gap> dcrws4 := PartialDoubleCosetRewritingSystem( G4, gH4, gK4, rwsG4, lim );;
+gap> dcrws4 := PartialDoubleCosetRewritingSystem( G4, H4, K4, rwsG4, limit );;
 #I using PartialDoubleCosetRewritingSystem with limit 100
 #I  51 rules, and 1039 pairs
 #I WARNING: reached supplied limit 100 on number of rules

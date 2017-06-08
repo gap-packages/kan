@@ -24,9 +24,9 @@ Rewriting System for Monoid( [ f1, f1^-1, f2, f2^-1 ] ) with rules
 gap> DisplayRwsRules( rws1 );;
 [ [ Aa, id ], [ aA, id ], [ Bb, id ], [ bB, id ] ]
 gap> genG1 := GeneratorsOfGroup( G1 );;
-gap> genH1 := [ genG1[1]^6 ];;
-gap> genK1 := [ genG1[1]^4 ];;
-gap> dcrws1 := DoubleCosetRewritingSystem( G1, genH1, genK1, rws1 );;
+gap> H1 := Subgroup( G1, [ genG1[1]^6 ] );;
+gap> K1 := Subgroup( G1, [ genG1[1]^4 ] );;
+gap> dcrws1 := DoubleCosetRewritingSystem( G1, H1, K1, rws1 );;
 gap> IsDoubleCosetRewritingSystem( dcrws1 );
 true
 gap> DisplayRwsRules( dcrws1 );;

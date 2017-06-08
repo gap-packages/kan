@@ -17,7 +17,8 @@ gap> FT := FreeGroup( 2 );;
 gap> relsT := [ FT.1^3*FT.2^-2 ];;
 gap> T := FT/relsT;;
 gap> genT := GeneratorsOfGroup( T );;
-gap> cT := genT[1];;  dT := genT[2];;
+gap> U := Subgroup( T, [ genT[1] ] );;  
+gap> V := Subgroup( T, [ genT[2] ] );;
 gap> alphT := "cCdD";;
 gap> ordT := [3,4,1,2];;
 gap> orderT := "wreath";;
@@ -39,6 +40,7 @@ Initial state:    [ 1 ]
 Accepting states: [ 1, 3, 4, 5, 6, 7 ]
 gap> langT := FAtoRatExp( accT );
 (dcUc)((cdUd)c)*((cdUd)(dd*U@)Uc(DD*U@)UDD*U@)Ud(dd*U@)UDD*U@
+
 gap> free := FreeMonoidOfRewritingSystem( rwsT );;
 gap> mon := MonoidOfRewritingSystem( rwsT );;
 gap> gens := GeneratorsOfMonoid( free );; 
@@ -57,6 +59,7 @@ gap> IsRecognizedByAutomaton( accT, sw );
 false
 gap> IsRecognizedByAutomaton( accT, srw );
 true
+
 gap> alph := AlphabetOfRatExpAsList( langT );; 
 gap> a1 := RatExpOnnLetters( alph, [ ], [1] );;   ## d
 gap> a2 := RatExpOnnLetters( alph, [ ], [2] );;   ## D
@@ -79,8 +82,9 @@ gap> r := RatExpOnnLetters( alph, "union", [ prod, a1s1, s2] );
 (dcUc)((cdUd)c)*((cdUd)d*UcD*UD*)Udd*UD*
 gap> AreEqualLang( langT, r );
 true
+
 gap> ## find a partial dcrws with a maximum of 20 rules
-gap> prwsT :=  PartialDoubleCosetRewritingSystem( T, [cT], [dT], rwsT, 20 );;
+gap> prwsT :=  PartialDoubleCosetRewritingSystem( T, U, V, rwsT, 20 );;
 gap> DisplayRwsRules( prwsT );;
 G-rules:
 [ [ C, ccDD ], [ dD, id ], [ Dc, dcDD ], [ Dd, id ], [ ccc, dd ], [ ddc, cdd ]\

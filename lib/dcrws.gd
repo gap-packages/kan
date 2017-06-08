@@ -51,24 +51,26 @@ DeclareAttribute( "WordAcceptorOfReducedRws", IsRewritingSystem );
 
 ############################################################################# 
 ## 
+#O  DoubleCosetRewritingSystem
 #O  PartialDoubleCosetRewritingSystem
 #O  DCrules
 #A  Hrules
 #A  Krules
 #A  HKrules
-#O  DoubleCosetRewritingSystem
+#A  InclusionInDoubleCosetMonoid 
 #O  NextWord
 #O  NextWords 
 #O  IdentityDoubleCoset
 ## 
+DeclareOperation( "DoubleCosetRewritingSystem", 
+    [ IsGroup, IsGroup, IsGroup, IsRewritingSystem ] );    
 DeclareOperation( "PartialDoubleCosetRewritingSystem", 
- [ IsGroup, IsHomogeneousList, IsHomogeneousList, IsRewritingSystem, IsInt ] );
+    [ IsGroup, IsGroup, IsGroup, IsRewritingSystem, IsInt ] );
 DeclareOperation( "DCrules", [ IsDoubleCosetRewritingSystem ] );
 DeclareAttribute( "Hrules", IsDoubleCosetRewritingSystem );
 DeclareAttribute( "Krules", IsDoubleCosetRewritingSystem );
 DeclareAttribute( "HKrules", IsDoubleCosetRewritingSystem );
-DeclareOperation( "DoubleCosetRewritingSystem", [ IsGroup, IsHomogeneousList, 
-    IsHomogeneousList, IsRewritingSystem ] );    
+DeclareAttribute( "InclusionInDoubleCosetMonoid",IsDoubleCosetRewritingSystem );
 DeclareOperation( "NextWord", [ IsRewritingSystem, IsWord, IsPosInt ] );
 DeclareOperation( "NextWords", 
     [ IsRewritingSystem, IsWord, IsPosInt, IsPosInt ] );
