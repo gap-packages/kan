@@ -25,10 +25,12 @@ and in the `CHANGES.md` file.
 
 The 'Kan' package is Copyright {\copyright} Chris Wensley and Anne Heyworth, 
 1996--2017. 
+
 'Kan' is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version. 
+
 For details, see <http://www.gnu.org/licenses/gpl.html>
 
 ## Installation
@@ -46,7 +48,7 @@ For details, see <http://www.gnu.org/licenses/gpl.html>
 
 Contact
 -------
-If you have a question relating to ``Kan'', encounter any problems, 
+If you have a question relating to 'Kan', encounter any problems, 
 or have a suggestion for extending the package in any way, please 
  - email: c.d.wensley@bangor.ac.uk  
  - or report an issue at: https://github.com/gap-packages/kan/issues/new 
