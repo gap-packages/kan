@@ -111,9 +111,9 @@
  * started this `CHANGES` file 
  * new address for Anne
  * fixed file permissions
- * added  `testall.g`  in directory tst
- * changed some  L:=[1..n]; for i in L do ... od;
-            to  for i in [1..n] do ... od;
+ * added  `testall.g`  in directory `idrel/tst`
+ * changed some  "L:=[1..n]; for i in L do ... od;"
+            to  "for i in [1..n] do ... od;"
 
 ## 0.91 -> 0.94  (02/06/2006)
 
