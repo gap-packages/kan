@@ -130,6 +130,10 @@ function( G, order, gensord, alph )
     return rws;
 end );
 
+#############################################################################
+##
+#M  ReducedConfluentRewritingSystem
+##
 InstallOtherMethod( ReducedConfluentRewritingSystem,
     "for an fp monoid and an ordering and a limited number of rules", true,
     [ IsFpMonoid, IsOrdering, IsInt ], 0,
@@ -156,10 +160,26 @@ function( M, ordering, limit )
     return rws;
 end );
 
-#############################################################################
-##
-#M  ReducedConfluentRewritingSystem
-##
+InstallOtherMethod( ReducedConfluentRewritingSystem,
+    "generic method for a group using default ordering",  true, 
+    [ IsGroup, IsInt ], 0,
+function( G, z )
+
+    local genG, lenG, L, w, alph;
+    if HasReducedConfluentRewritingSystem( G ) then 
+        return ReducedConfluentRewritingSystem( G ); 
+    fi;
+    genG := GeneratorsOfGroup( G );
+    lenG := Length( genG );
+    if ( lenG > 14 ) then 
+        Error( "alphabet is larger than is allowed for" );
+    fi;
+    L := Flat( List( [1..lenG], i -> [i+i,i+i-1] ) );
+    w := "aAbBcCdDeEfFgGhHiIjJkKlLmMnN"; 
+    alph := w{[1..2*lenG]}; 
+    return ReducedConfluentRewritingSystem( G, L, "shortlex", 0, alph );
+end );
+
 InstallOtherMethod( ReducedConfluentRewritingSystem,
     "generic method for a group and an ordering",  true, 
     [ IsGroup, IsList, IsString ], 0,

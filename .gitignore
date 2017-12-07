@@ -20,5 +20,6 @@
 /doc/manual.pdf
 /doc/kanbib.xml.bib
 
+/tst/example*.g
 /tmp/
 /gh-pages/

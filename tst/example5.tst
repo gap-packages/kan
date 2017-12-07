@@ -3,7 +3,9 @@
 #W  example5.tst                  Kan Package                    Chris Wensley
 #W                                                             & Anne Heyworth
 #Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
-
+#Y  School of Computer Science, Bangor University, U.K. 
+##
+gap> START_TEST( "Kan package: example5.tst" );
 gap> kan_infolevel_saved := InfoLevel( InfoKan );;
 gap> SetInfoLevel( InfoKan, 0 );;
 gap> knuth_bendix_infolevel_saved := InfoLevel( InfoKnuthBendix );; 
@@ -21,20 +23,23 @@ gap> genG5 := GeneratorsOfGroup( G5 );;
 gap> a := genG5[1];;  b := genG5[2];;
 gap> U := Subgroup( G5, [a^2] );;
 gap> V := Subgroup( G5, [b] );;
+gap> L := [2,1,4,3];; 
+gap> rws5 := ReducedConfluentRewritingSystem( G5, L, "shortlex", 0, "aAbB" );; 
 gap> dc5 := DoubleCosetsAutomaton( G5, U, V );;
 gap> Print( dc5 );
-Automaton("det",5,"HKaAbB",[ [ 2, 2, 2, 5, 2 ], [ 2, 2, 1, 2, 1 ], [ 2, 2, 2, \
+Automaton("det",5,"HKAaBb",[ [ 2, 2, 2, 5, 2 ], [ 2, 2, 1, 2, 1 ], [ 2, 2, 2, \
 2, 3 ], [ 2, 2, 2, 2, 2 ], [ 2, 2, 2, 2, 2 ], [ 2, 2, 2, 2, 2 ] ],[ 4 ],[ 1 ])\
 ;;
 gap> rc5 := RightCosetsAutomaton( G5, V );;
 gap> Print( rc5 );
-Automaton("det",6,"HKaAbB",[ [ 2, 2, 2, 6, 2, 2 ], [ 2, 2, 1, 2, 1, 1 ], [ 2, \
+Automaton("det",6,"HKAaBb",[ [ 2, 2, 2, 6, 2, 2 ], [ 2, 2, 1, 2, 1, 1 ], [ 2, \
 2, 3, 2, 2, 3 ], [ 2, 2, 2, 2, 5, 5 ], [ 2, 2, 2, 2, 2, 2 ], [ 2, 2, 2, 2, 2, \
 2 ] ],[ 4 ],[ 1 ]);;
 
 gap> SetAssertionLevel( previous_assertion_level );; 
 gap> SetInfoLevel( InfoKnuthBendix, knuth_bendix_infolevel_saved );;  
 gap> SetInfoLevel( InfoKan, kan_infolevel_saved );;  
+gap> STOP_TEST( "example5.tst", 10000 );
 
 ##############################################################################
 ##

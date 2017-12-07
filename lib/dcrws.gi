@@ -375,12 +375,10 @@ end );
 #M  DCrules
 ##
 InstallMethod( DoubleCosetRewritingSystem,
-    "generic method for a group, two subgroupsand an rws",  true, 
+    "generic method for a group, two subgroups and an rws",  true, 
     [ IsGroup, IsGroup, IsGroup, IsRewritingSystem ], 0,
 function( G, H, K, rwsG )
-    local dcrws;
-    dcrws := PartialDoubleCosetRewritingSystem( G, H, K, rwsG, 0 );
-    return dcrws;
+    return PartialDoubleCosetRewritingSystem( G, H, K, rwsG, 0 );
 end );
 
 InstallMethod( DCrules, "generic method for a double coset rws", true, 
@@ -1390,14 +1388,11 @@ end );
 InstallMethod( DoubleCosetsAutomaton, "for an fp-group with a rws", true, 
     [ IsFpGroup and HasReducedConfluentRewritingSystem, IsGroup, IsGroup ], 0,
 function( G, U, V )
-    local genU, genV, rws, dcrws, dcwa;
+    local rws, dcrws;
     Info( InfoKan, 2, "in first Kan version of DoubleCosetsAutomaton" );
-    genU := GeneratorsOfGroup( U );
-    genV := GeneratorsOfGroup( V );
-    rws := ReducedConfluentRewritingSystem( G );
-    dcrws := DoubleCosetRewritingSystem( G, genU, genV, rws );
-    dcwa := WordAcceptorOfDoubleCosetRws( dcrws );
-    return dcwa;
+    rws := ReducedConfluentRewritingSystem( G, 0 );
+    dcrws := DoubleCosetRewritingSystem( G, U, V, rws );
+    return WordAcceptorOfDoubleCosetRws( dcrws );
 end );
 
 InstallMethod( DoubleCosetsAutomaton, "for an infinite fp-group", true, 
@@ -1431,7 +1426,7 @@ function( G, U, V )
     rws!.alphabet := alph; 
     genU := GeneratorsOfGroup( U );
     genV := GeneratorsOfGroup( V );
-    dcrws := DoubleCosetRewritingSystem( G, genU, genV, rws );
+    dcrws := DoubleCosetRewritingSystem( G, U, V, rws );
     dcwa := WordAcceptorOfDoubleCosetRws( dcrws );
     return dcwa;
 end );
@@ -1439,12 +1434,11 @@ end );
 InstallMethod( RightCosetsAutomaton, "for an fp-group with rewriting system", 
     true, [ IsFpGroup and HasReducedConfluentRewritingSystem, IsGroup ], 0,
 function( G, V )
-    local one, genV, rws, dcrws, dcwa;
+    local U, rws, dcrws, dcwa;
     Info( InfoKan, 2, "in first Kan version of RightCosetsAutomaton" );
-    one := One( G );
-    genV := GeneratorsOfGroup( V );
-    rws := ReducedConfluentRewritingSystem( G );
-    dcrws := DoubleCosetRewritingSystem( G, [one], genV, rws );
+    U := TrivialSubgroup( G );
+    rws := ReducedConfluentRewritingSystem( G, 0 );
+    dcrws := DoubleCosetRewritingSystem( G, U, V, rws );
     dcwa := WordAcceptorOfDoubleCosetRws( dcrws );
     return dcwa;
 end );

@@ -3,7 +3,9 @@
 #W  example2.tst                  Kan Package                    Chris Wensley
 #W                                                             & Anne Heyworth
 #Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
-
+#Y  School of Computer Science, Bangor University, U.K. 
+##
+gap> START_TEST( "Kan package: example2.tst" );
 gap> kan_infolevel_saved := InfoLevel( InfoKan );;
 gap> SetInfoLevel( InfoKan, 0 );;
 gap> knuth_bendix_infolevel_saved := InfoLevel( InfoKnuthBendix );; 
@@ -79,6 +81,7 @@ aaUAA)BUH(a(aBUB)UABUB))(a(a(aa*BUB)UB)UA(AA*BUB)UB)*(a(aKUK)UAKUK)UH(aKUK)
 gap> SetAssertionLevel( previous_assertion_level );; 
 gap> SetInfoLevel( InfoKnuthBendix, knuth_bendix_infolevel_saved );;  
 gap> SetInfoLevel( InfoKan, kan_infolevel_saved );;  
+gap> STOP_TEST( "example2.tst", 10000 );
 
 ##############################################################################
 ##

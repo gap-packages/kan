@@ -3,7 +3,9 @@
 #W  example3.tst                  Kan Package                    Chris Wensley
 #W                                                             & Anne Heyworth
 #Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
-
+#Y  School of Computer Science, Bangor University, U.K. 
+##
+gap> START_TEST( "Kan package: example3.tst" );
 gap> kan_infolevel_saved := InfoLevel( InfoKan );;
 gap> SetInfoLevel( InfoKan, 0 );;
 gap> knuth_bendix_infolevel_saved := InfoLevel( InfoKnuthBendix );; 
@@ -29,15 +31,8 @@ gap> DisplayRwsRules( rwsT );;
 gap> accT := WordAcceptorOfReducedRws( rwsT );
 < deterministic automaton on 4 letters with 7 states >
 
-gap> Display( accT );
-   |  1  2  3  4  5  6  7  
---------------------------
- d |  6  2  2  4  6  4  6  
- D |  3  2  3  2  3  2  3  
- c |  7  2  2  2  2  7  5  
- C |  2  2  2  2  2  2  2  
-Initial state:    [ 1 ]
-Accepting states: [ 1, 3, 4, 5, 6, 7 ]
+gap> ## Display( accT );   ## commented out as dev output differs from 4r8 
+
 gap> langT := FAtoRatExp( accT );
 (dcUc)((cdUd)c)*((cdUd)(dd*U@)Uc(DD*U@)UDD*U@)Ud(dd*U@)UDD*U@
 
@@ -137,6 +132,7 @@ true
 gap> SetAssertionLevel( previous_assertion_level );; 
 gap> SetInfoLevel( InfoKnuthBendix, knuth_bendix_infolevel_saved );;  
 gap> SetInfoLevel( InfoKan, kan_infolevel_saved );;  
+gap> STOP_TEST( "example3.tst", 10000 );
 
 ##############################################################################
 ##
