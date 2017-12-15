@@ -4,7 +4,7 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
-## 1.27 -> 1.28  (08/08/2017) 
+## 1.27 -> 1.27dev  (15/12/2017) 
 
  * (08/08/17) testall.g copied to testing.g; testall now calls TestDirectory
  * (03/07/17) README and CHANGES now in MarkDown format 
