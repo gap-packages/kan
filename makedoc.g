@@ -1,29 +1,22 @@
-##  makedoc.g,  version 16/03/16
-##  This builds the documentation of the Kan package
-##  Needs: GAPDoc package, latex, pdflatex, mkindex
-##  
-LoadPackage( "GAPDoc" );
+##  makedoc.g for the package Kan,
+##  This builds the documentation of the Kan package. 
+##  Needs: GAPDoc & AutoDoc packages, latex, pdflatex, mkindex
+##  call this with GAP from within the package root directory 
 
-MakeGAPDocDoc( "doc",     # path to the directory containing the main file
-               "manual",  # the name of the main file (without extension)
-                          # list of (probably source code) files relative 
-                          # to path which contain pieces of documentation 
-                          # which must be included in the document
-               [ "../PackageInfo.g" ], 
-               "Kan",     # the name of the book used by GAP's online help
-               "../../..",# optional: relative path to the main GAP root 
-                          # directory to produce HTML files with relative 
-                          # paths to external books.
-                          # optional: use "MathJax", "Tth" and/or "MathML"
-                          # to produce additional variants of HTML files
-               "MathJax"  # optional: use "MathJax", "Tth" and/or "MathML"
-                          # to produce additional variants of HTML files
-               );; 
+LoadPackage("Kan");
 
-# Copy the *.css and *.js files from the styles directory of the GAPDoc 
-# package into the directory containing the package manual.
-CopyHTMLStyleFiles( "doc" );
+AutoDoc(rec( 
+    scaffold := rec(
+        includes := [ "intro.xml", "dcrws.xml", "history.xml" ],
+        bib := "bib.xml", 
+        entities := rec( 
+            kan := "<Package>Kan</Package>", 
+            AutoDoc := "<Package>AutoDoc</Package>" 
+        )
+    )
+));
 
-# Create the manual.lab file which is needed if the main manuals or another 
-# package is referring to your package
-GAPDocManualLab( "Kan" );; 
+# Create VERSION file for "make towww"
+PrintTo( "VERSION", GAPInfo.PackageInfoCurrent.Version );
+
+QUIT;

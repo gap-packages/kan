@@ -4,8 +4,10 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
-## 1.27 -> 1.27dev  (15/12/2017) 
+## 1.27 -> 1.27dev  (11/01/2018) 
 
+ * (11/01/18) now using AutoDoc to build the manual 
+ * (15/12/17) removed examples/; added expt/ and xtst/ 
  * (08/08/17) testall.g copied to testing.g; testall now calls TestDirectory
  * (03/07/17) README and CHANGES now in MarkDown format 
  * (08/06/17) (Partial)DoubleCosetRewritingSystem now takes two subgroups as 

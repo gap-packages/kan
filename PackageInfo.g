@@ -4,22 +4,12 @@
 #W                                                              Anne Heyworth
 
 SetPackageInfo( rec(
+
 Packagename := "kan",
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
-
 Version := "1.27dev",
-Date := "15/12/2017",
-
-##  duplicate these values for inclusion in the manual: 
-##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY KANVERSION "1.27dev">
-##  <!ENTITY KANTARFILENAME "kan-1.27dev.tar.gz">
-##  <!ENTITY KANHTMLFILENAME "kan.html">
-##  <!ENTITY KANRELEASEDATE "15/12/2017">
-##  <!ENTITY KANLONGRELEASEDATE 15th December 2017">
-##  <!ENTITY KANCOPYRIGHTYEARS "1996-2017">
-##  <#/GAPDoc>
+Date := "12/01/2018",
 
 Persons := [
   rec(
@@ -84,11 +74,20 @@ Dependencies := rec(
   GAP := ">=4.8.7",
   NeededOtherPackages := [ [ "automata", ">= 1.13" ], 
                            [ "GAPDoc", ">= 1.5.1" ] ],
-  SuggestedOtherPackages := [ [ "kbmag", ">= 1.5.5" ] ],
+  SuggestedOtherPackages := [ [ "kbmag", ">= 1.5.5" ], 
+                              [ "AutoDoc", ">= 2017.09.15" ] ],
   ExternalConditions := [ ]
 ),
 
 AvailabilityTest := ReturnTrue,
+
+Autoload := false, 
+
+TestFile := "tst/testall.g",
+
+Keywords := [ "Kan extension", 
+              "double coset rewriting system", 
+              "induced action" ],
 
 BannerString := Concatenation( 
     "Loading Kan ", String( ~.Version ), " (computing with Kan extensions)\n", 
@@ -96,10 +95,44 @@ BannerString := Concatenation(
     "Chris Wensley (http://pages.bangor.ac.uk/~mas023/)\n", 
   "-----------------------------------------------------------------------\n" ),
 
-TestFile := "tst/testall.g",
-
-Keywords := [ "Kan extension", 
-              "double coset rewriting system", 
-              "induced action" ]
+AutoDoc := rec(
+    TitlePage := rec(
+        Copyright := Concatenation(
+            "&copyright; 1996-2016 Anne Heyworth and Chris Wensley<P/>\n",
+            "The &Kan; package is free software; you can redistribute it ", 
+            "and/or modify it under the terms of the GNU General ", 
+            "Public License as published by the Free Software Foundation; ", 
+            "either version 2 of the License, or (at your option) ", 
+            "any later version.\n"
+            ), 
+        Abstract := Concatenation( 
+            "&Kan; is a &GAP; package originally implemented in 1996 ", 
+            "using the &GAP; 3 language, to compute induced actions ", 
+            "of categories, when the first author was studying ", 
+            "for a Ph.D. in Bangor.\n", 
+            "<P/>\n", 
+            "This reduced version only provides functions for ", 
+            "the computation of normal forms of representatives ", 
+            "of double cosets of finitely presented groups.\n", 
+            "<P/>\n", 
+            "&Kan; became an accepted &GAP; package in May 2015.\n", 
+            "<P/>\n",  
+            "Bug reports, suggestions and comments are, of course, welcome.\n", 
+            "Please contact the last author at ", 
+            "<Email>c.d.wensley@bangor.ac.uk</Email> ", 
+            "or submit an issue at the GitHub repository ",
+            "<URL>https://github.com/gap-packages/kan/issues/</URL>.\n" 
+            ), 
+        Acknowledgements := Concatenation( 
+            "This documentation was prepared with the ", 
+            "&GAPDoc; <Cite Key='GAPDoc'/> ", 
+            "and &AutoDoc; <Cite Key='AutoDoc'/> packages.<P/>\n", 
+            "The procedure used to produce new releases uses the package ", 
+            "<Package>GitHubPagesForGAP</Package> ", 
+            "<Cite Key='GitHubPagesForGAP' /> ", 
+            "and the package <Package>ReleaseTools</Package>.<P/>" 
+            ),
+    )
+),
 
 ));

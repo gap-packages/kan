@@ -27,18 +27,21 @@ gap> LoadPackage( "kan" );
 </Example>
 
 The package may be obtained as a compressed tar file 
-<File>&KANTARFILENAME;</File>
+<File>kan-version.number.tar.gz</File>
 by ftp from one of the following sites: 
 <List>
 <Item>
-any &GAP; archive, e.g. 
-<URL>http://www.gap-system.org/Packages/packages.html</URL>; 
+the &kan; GitHub site: 
+<URL>https://github.com/gap-packages.github.io/kan/</URL>. 
 </Item>
 <Item>
-the package GitHub repository: 
-<URL>https://gap-packages.github.io/kan</URL>. 
+any &GAP; archive, e.g. 
+<URL>https://www.gap-system.org/Packages/packages.html</URL>; 
 </Item>
 </List>
+The package also has a GitHub repository at: 
+<URL>https://github.com/gap-packages/kan/</URL>.
+<P/>
 
 Some of the functions in the <Package>automata</Package> package 
 are used to compute word acceptors and regular expressions 
