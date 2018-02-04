@@ -3,7 +3,8 @@
 ##  Needs: GAPDoc & AutoDoc packages, latex, pdflatex, mkindex
 ##  call this with GAP from within the package root directory 
 
-LoadPackage("Kan");
+LoadPackage( "Kan" );
+LoadPackage( "AutoDoc" ); 
 
 AutoDoc(rec( 
     scaffold := rec(
@@ -15,8 +16,5 @@ AutoDoc(rec(
         )
     )
 ));
-
-# Create VERSION file for "make towww"
-PrintTo( "VERSION", GAPInfo.PackageInfoCurrent.Version );
 
 QUIT;

@@ -473,7 +473,7 @@ true
 When the group <M>G</M> has an infinite rewriting system, 
 the double coset rewriting system will also be infinite.
 In this case we may use the function <C>KBMagWordAcceptor</C> 
-which calls <Package>KBMAG</Package> 
+which calls <Package>KBMag</Package> 
 to compute a word acceptor for <M>G</M>,
 and <C>KBMagFSAtoAutomataDFA</C> to convert this to a deterministic automaton 
 as used by the <Package>automata</Package> package.
@@ -482,13 +482,13 @@ together with sufficient <M>H</M>-rules, <M>K</M>-rules
 and <M>H</M>-<M>K</M>-rules found by the function 
 <C>PartialDoubleCosetRewritingSystem</C>.
 (Note that these five attributes and operations will not be available 
-if the <Package>kbmag</Package> package has not been loaded.)
+if the <Package>KBMag</Package> package has not been loaded.)
 <P/>
 In the following example we take a two generator group <M>G4</M> 
 with relators <M>[a^3,b^3,(a*b)^3]</M>, 
 the normal forms of whose elements are some of the strings with 
 <M>a</M> or <M>a^{-1}</M> alternating with <M>b</M> or <M>b^{-1}</M>.
-The automatic structure computed by <Package>KBMAG</Package> 
+The automatic structure computed by <Package>KBMag</Package> 
 has a word acceptor with 17 states.
 </Description>
 </ManSection>

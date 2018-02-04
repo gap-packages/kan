@@ -4,7 +4,7 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
-## 1.27 -> 1.27dev  (11/01/2018) 
+## 1.27 -> 1.28  (04/02/2018) 
 
  * (11/01/18) now using AutoDoc to build the manual 
  * (15/12/17) removed examples/; added expt/ and xtst/ 

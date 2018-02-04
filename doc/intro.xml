@@ -47,10 +47,10 @@ Some of the functions in the <Package>automata</Package> package
 are used to compute word acceptors and regular expressions 
 for the languages they accept.
 <P/>
-The <Package>kbmag</Package> package is also used 
+The <Package>KBMag</Package> package is also used 
 to compute a word acceptor of a group <C>G</C> 
 when <C>G</C> has no finite rewriting system. 
-If <Package>kbmag</Package> is not available 
+If <Package>KBMag</Package> is not available 
 (the user is not on a UNIX system, or the C-programs have not been compiled), 
 the file <File>dckbmag.gi</File> will not be read, 
 so methods for the functions detailed in section 2.4.1 will not be available. 
@@ -59,7 +59,7 @@ Once the package is loaded, it is possible to check the installation
 is correct by running a test file of the manual examples with the
 following command. 
 (The test file itself is <F>tst/fulltest.tst</F> or <F>tst/parttest.tst</F>, 
-depending whether or not <Package>kbmag</Package> is available.) 
+depending whether or not <Package>KBMag</Package> is available.) 
 <Example>
 <![CDATA[
 gap> ReadPackage( "kan", "tst/testall.g" );
