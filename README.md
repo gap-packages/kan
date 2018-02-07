@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/gap-packages/kan.svg?branch=master)](https://travis-ci.org/gap-packages/kan)
+[![Code Coverage](https://codecov.io/github/gap-packages/kan/coverage.svg?branch=master&token=)](https://codecov.io/gh/gap-packages/kan)
+
 # The GAP 4 package 'KAN' 
 
 ## Introduction
