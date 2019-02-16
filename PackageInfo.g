@@ -9,6 +9,7 @@ PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 Version := "1.28dev",
 Date := "00/11/2018",
+License := "GPL-2.0-or-later",
 
 Persons := [
   rec(
