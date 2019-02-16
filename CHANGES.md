@@ -4,6 +4,10 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
+## Version 1.28dev for GAP 4.10.0 (16/02/19) 
+
+ * (16/02/19) added License field in PackageInfo.g 
+
 ## 1.27 -> 1.28  (04/02/2018) 
 
  * (11/01/18) now using AutoDoc to build the manual 
