@@ -24,7 +24,7 @@ The manual was produced using the <Package>GAPDoc</Package> package.
 </Item>
 <Item>
 The test file <F>kan/tst/kan_manual.tst</F> set the <C>AssertionLevel</C> 
-to <C>0</C> to avoid recursion in the <Package>Automata</Package> package.
+to <C>0</C> to avoid recursion in the &Automata; package.
 </Item>
 </List>
 <P/> 
@@ -35,7 +35,7 @@ Version 0.96 was required because the &kan; website moved
 with the rest of the Mathematics website at Bangor. 
 <P/> 
 Version 0.97, of November 18th 2008, deleted temporary fixes which were 
-no longer needed once version 1.12 of <Package>Automata</Package> 
+no longer needed once version 1.12 of &Automata; 
 became available. 
 <P/> 
 Version 1.01, of August 2011, included minor changes required for &GAP; 4.5.  

@@ -12,9 +12,8 @@ AutoDoc(rec(
         bib := "bib.xml", 
         entities := rec( 
             kan := "<Package>Kan</Package>", 
-            AutoDoc := "<Package>AutoDoc</Package>" 
+            AutoDoc := "<Package>AutoDoc</Package>", 
+            Automata := "<Package>Automata</Package>" 
         )
     )
 ));
-
-QUIT;

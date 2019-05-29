@@ -43,7 +43,7 @@ The package also has a GitHub repository at:
 <URL>https://github.com/gap-packages/kan/</URL>.
 <P/>
 
-Some of the functions in the <Package>automata</Package> package 
+Some of the functions in the &Automata; package 
 are used to compute word acceptors and regular expressions 
 for the languages they accept.
 <P/>

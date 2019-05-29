@@ -231,7 +231,7 @@ HAbbbaK
    <Prop Name="IsWordAcceptorOfDoubleCosetRws"
          Arg="aut" />
 <Description>
-Using functions from the <Package>automata</Package> package, we may 
+Using functions from the &Automata; package, we may 
 <List>
 <Item>
 compute a <E>word acceptor</E> for the rewriting system of <M>G</M>;
@@ -349,7 +349,7 @@ the complementary automaton and language were returned in the example above.
 This error has now been rectified. 
 <P/>
 In even earlier versions of &kan; (in 0.95 for example) a shorter rational 
-expression for the language was obtained from <Package>Automata</Package>. 
+expression for the language was obtained from &Automata;. 
 In what follows, we check that the two expressions define the same language. 
 
 <Example>
@@ -476,7 +476,7 @@ In this case we may use the function <C>KBMagWordAcceptor</C>
 which calls <Package>KBMag</Package> 
 to compute a word acceptor for <M>G</M>,
 and <C>KBMagFSAtoAutomataDFA</C> to convert this to a deterministic automaton 
-as used by the <Package>automata</Package> package.
+as used by the &Automata; package.
 The resulting <C>dfa</C> forms part of the double coset automaton, 
 together with sufficient <M>H</M>-rules, <M>K</M>-rules 
 and <M>H</M>-<M>K</M>-rules found by the function 
