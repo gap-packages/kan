@@ -4,6 +4,10 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
+## Version 1.31 for GAP 4.10.2 (14/10/19) 
+
+ * (14/10/19) restructured the tests 
+
 ## Version 1.29 for GAP 4.10.1 (29/05/19) 
 
  * (16/02/19) added License field in PackageInfo.g 
