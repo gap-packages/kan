@@ -6,6 +6,7 @@
 
 ## Version 1.31 for GAP 4.10.2 (14/10/19) 
 
+ * (14/10/19) made kbmag a RequiredPackage rather than a Suggested one 
  * (14/10/19) restructured the tests 
 
 ## Version 1.29 for GAP 4.10.1 (29/05/19) 
