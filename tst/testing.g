@@ -1,23 +1,20 @@
 ##############################################################################
 ##
-#W  testing.g                    Kan Package                     Chris Wensley
-#W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2018, Chris Wensley and Anne Heyworth 
-##
+#W  testing.g                   Kan Package                     Chris Wensley
+##   
+#Y  Copyright (C) 1999-2019, Chris Wensley and Anne Heyworth  
+#Y  School of Computer Science, Bangor University, U.K. 
 
 LoadPackage( "kan" );
 
 pkgname := "kan";
-pkgdir := DirectoriesPackageLibrary( pkgname, "tst" );
-if ( Filename( KBMAG_FOR_KAN_PATH, "kbprog" ) = fail ) then 
-    testfiles := [ "example1.tst", "example2.tst", 
-                   "example3.tst", "example5.tst" ];
-else 
-    testfiles := [ "example1.tst", "example2.tst", 
-                   "example3.tst", "example4.tst", "example5.tst" ];
-fi;
+pkgdir := DirectoriesPackageLibrary( pkgname, "tst/manual" ); 
+## testing manual examples 
+testmanual := 
+    [ "dcrws1.tst",  "dcrws2.tst",    "dcrws3.tst",    "dcrws4.tst", 
+      "history.tst" ];
 testresult := true;
-for ff in testfiles do
+for ff in testmanual do
     fn := Filename( pkgdir, ff );
     Print( "#I  Testing ", fn, "\n" );
     if not Test( fn, rec(compareFunction := "uptowhitespace", 
@@ -26,7 +23,29 @@ for ff in testfiles do
     fi;
 od;
 if testresult then
-    Print("#I  No errors detected while testing package ", pkgname, "\n");
+    Print( "#I  No errors detected while testing manual examples in package ", 
+           pkgname, "\n" );
 else
-    Print("#I  Errors detected while testing package ", pkgname, "\n");
-fi;
+    Print( "#I  Errors detected while testing manual examples in package ", 
+           pkgname, "\n" );
+fi; 
+## testing extra examples
+pkgdir := DirectoriesPackageLibrary( pkgname, "tst/extra" );
+testextra := 
+    [ "kbtest.tst" ];
+testresult := true;
+for ff in testextra do
+    fn := Filename( pkgdir, ff );
+    Print( "#I  Testing ", fn, "\n" );
+    if not Test( fn, rec(compareFunction := "uptowhitespace", 
+                            showProgress := true ) ) then
+        testresult := false;
+    fi;
+od;
+if testresult then
+    Print( "#I  No errors detected while testing extra examples in package ", 
+           pkgname, "\n" );
+else
+    Print( "#I  Errors detected while testing extra examples in package ", 
+           pkgname, "\n" );
+fi; 

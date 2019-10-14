@@ -1,11 +1,11 @@
 ##############################################################################
 ##
-#W  example2.tst                  Kan Package                    Chris Wensley
+#W  dcrws2.tst                    Kan Package                    Chris Wensley
 #W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2019, Chris Wensley and Anne Heyworth 
 #Y  School of Computer Science, Bangor University, U.K. 
 ##
-gap> START_TEST( "Kan package: example2.tst" );
+gap> START_TEST( "Kan package: dcrws2.tst" );
 gap> kan_infolevel_saved := InfoLevel( InfoKan );;
 gap> SetInfoLevel( InfoKan, 0 );;
 gap> knuth_bendix_infolevel_saved := InfoLevel( InfoKnuthBendix );; 
@@ -14,7 +14,7 @@ gap> previous_assertion_level := AssertionLevel();;
 gap> ## setting AssertionLevel to 0 to avoid recursion in Automata
 gap> SetAssertionLevel( 0 );; 
 
-## Example 2 
+## Section 2.2 
 gap> G1 := FreeGroup( 2 );;
 gap> L1 := [2,1,4,3];;
 gap> order := "shortlex";;
@@ -81,8 +81,8 @@ aaUAA)BUH(a(aBUB)UABUB))(a(a(aa*BUB)UB)UA(AA*BUB)UB)*(a(aKUK)UAKUK)UH(aKUK)
 gap> SetAssertionLevel( previous_assertion_level );; 
 gap> SetInfoLevel( InfoKnuthBendix, knuth_bendix_infolevel_saved );;  
 gap> SetInfoLevel( InfoKan, kan_infolevel_saved );;  
-gap> STOP_TEST( "example2.tst", 10000 );
+gap> STOP_TEST( "dcrws2.tst", 10000 );
 
 ##############################################################################
 ##
-#E  example2.tst . . . . . . . . . . . . . . . . . . . . . . . . . . ends here
+#E  dcrws2.tst . . . . . . . . . . . . . . . . . . . . . . . . . . . ends here

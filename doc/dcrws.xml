@@ -189,7 +189,10 @@ H-K-rules:
 [ [ HaaK, HK ],
   [ HAK, HaK ] ]
 ]]>
-</Example>
+</Example> 
+
+An example of obtaining the reduced form of a word using this rewriting system 
+is given in the following section. 
 
 <ManSection>
    <Oper Name="DisplayAsString"
@@ -289,7 +292,7 @@ aaUAA)BUH(a(aBUB)UABUB))(a(a(aa*BUB)UB)UA(AA*BUB)UB)*(a(aKUK)UAKUK)UH(aKUK)
 It may happen that, even when <M>G</M> has a finite rewriting system, 
 the double coset rewriting system is infinite.
 This is the case with the trefoil group <M>T</M> with generators 
-<M>[c,d]</M> and relator <M>[c^3 = v^2]</M> when the wreath product ordering 
+<M>[c,d]</M> and relator <M>[c^3 = d^2]</M> when the wreath product ordering 
 is used with <M>C > c > D > d</M>. 
 The group itself has a rewriting system with just 6 rules. 
 </Description>
@@ -379,7 +382,7 @@ true
 ]]>
 </Example>
 
-If wee now take subgroups <M>H=\langle c \rangle</M> 
+If we now take subgroups <M>H=\langle c \rangle</M> 
 and <M>K = \langle d \rangle</M> we find that 
 the double coset rewriting system has an infinite number of <M>H</M>-rules.
 It turns out that only a finite number of these are needed to produce
@@ -509,6 +512,10 @@ gap> langG4 := FAtoRatExp( waG4 );
 ((abUAb)AUbA)(bA)*(b(aU@)UB(aB)*(a(bU@)U@)U@)U(abUAb)(aU@)U((aBUB)(aB)*AUba(Ba\
 )*BA)(bA)*(b(aU@)U@)U(aBUB)(aB)*(a(bU@)U@)Uba(Ba)*(BU@)UbUaUA(B(aB)*(a(bU@)UAU\
 @)U@)U@
+gap> IsRecognizedByAutomaton( waG4, "Aba" );
+true
+gap> IsRecognizedByAutomaton( waG4, "AbaB" );
+false
 ]]>
 </Example>
 

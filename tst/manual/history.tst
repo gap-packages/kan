@@ -1,11 +1,11 @@
 ##############################################################################
 ##
-#W  example5.tst                  Kan Package                    Chris Wensley
+#W  history.tst                   Kan Package                    Chris Wensley
 #W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2019, Chris Wensley and Anne Heyworth 
 #Y  School of Computer Science, Bangor University, U.K. 
 ##
-gap> START_TEST( "Kan package: example5.tst" );
+gap> START_TEST( "Kan package: history.tst" );
 gap> kan_infolevel_saved := InfoLevel( InfoKan );;
 gap> SetInfoLevel( InfoKan, 0 );;
 gap> knuth_bendix_infolevel_saved := InfoLevel( InfoKnuthBendix );; 
@@ -14,7 +14,7 @@ gap> previous_assertion_level := AssertionLevel();;
 gap> ## setting AssertionLevel to 0 to avoid recursion in Automata
 gap> SetAssertionLevel( 0 );; 
 
-## Example 5 ==========================\n\n");
+## Section 3.2 
 ##
 gap> F := FreeGroup(2);;
 gap> rels := [ F.2^2, (F.1*F.2)^2 ];;
@@ -39,8 +39,8 @@ Automaton("det",6,"HKAaBb",[ [ 2, 2, 2, 6, 2, 2 ], [ 2, 2, 1, 2, 1, 1 ], [ 2, \
 gap> SetAssertionLevel( previous_assertion_level );; 
 gap> SetInfoLevel( InfoKnuthBendix, knuth_bendix_infolevel_saved );;  
 gap> SetInfoLevel( InfoKan, kan_infolevel_saved );;  
-gap> STOP_TEST( "example5.tst", 10000 );
+gap> STOP_TEST( "history.tst", 10000 );
 
 ##############################################################################
 ##
-#E  example5.tst . . . . . . . . . . . . . . . . . . . . . . . . . . ends here
+#E  history.tst  . . . . . . . . . . . . . . . . . . . . . . . . . . ends here

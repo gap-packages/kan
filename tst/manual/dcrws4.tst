@@ -1,11 +1,11 @@
 ##############################################################################
 ##
-#W  example4.tst                  Kan Package                    Chris Wensley
+#W  dcrws4.tst                    Kan Package                    Chris Wensley
 #W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2019, Chris Wensley and Anne Heyworth 
 #Y  School of Computer Science, Bangor University, U.K. 
 ##
-gap> START_TEST( "Kan package: example4.tst" );
+gap> START_TEST( "Kan package: dcrws4.tst" );
 gap> kan_infolevel_saved := InfoLevel( InfoKan );;
 gap> SetInfoLevel( InfoKan, 0 );;
 gap> knuth_bendix_infolevel_saved := InfoLevel( InfoKnuthBendix );; 
@@ -14,7 +14,7 @@ gap> previous_assertion_level := AssertionLevel();;
 gap> ## setting AssertionLevel to 0 to avoid recursion in Automata
 gap> SetAssertionLevel( 0 );; 
 
-## Example 4 
+## Section 2.4 
 ##
 gap> found := not ( Filename( KBMAG_FOR_KAN_PATH, "kbprog" ) = fail );; 
 gap> F4 := FreeGroup("a","b");;
@@ -94,15 +94,15 @@ gap> if found then
 >      ## Print( s, "\n" );
 >      ok4 := ( s = "HAbAbAbAbAK" );; 
 >      if not ( ok1 and ok2 and ok3 and ok4 ) then 
->          Error( "tests fail in example4.tst" ); 
+>          Error( "tests fail in dcrws4.tst" ); 
 >      fi;
 >    fi;
 
 gap> SetAssertionLevel( previous_assertion_level );; 
 gap> SetInfoLevel( InfoKnuthBendix, knuth_bendix_infolevel_saved );;  
 gap> SetInfoLevel( InfoKan, kan_infolevel_saved );;  
-gap> STOP_TEST( "example4.tst", 10000 );
+gap> STOP_TEST( "dcrws4.tst", 10000 );
 
 ##############################################################################
 ##
-#E  example4.tst . . . . . . . . . . . . . . . . . . . . . . . . . . ends here
+#E  dcrws4.tst . . . . . . . . . . . . . . . . . . . . . . . . . . . ends here
