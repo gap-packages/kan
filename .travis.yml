@@ -2,7 +2,7 @@ language: c
 
 env:
   global:
-    - GAP_PKGS_TO_BUILD="io profiling kbmag"
+    - GAP_PKGS_TO_BUILD="io kbmag profiling"
 
 addons:
   apt:
