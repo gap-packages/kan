@@ -1,5 +1,9 @@
 language: c
 
+env:
+  global:
+    - GAP_PKGS_TO_BUILD="io profiling kbmag"
+
 addons:
   apt:
     packages:
@@ -18,7 +22,6 @@ branches:
 
 before_script:
   - git clone https://github.com/gap-system/pkg-ci-scripts.git scripts
-  - GAP_PKGS_TO_BUILD="io profiling kbmag"
   - scripts/build_gap.sh
 script:
   - scripts/build_pkg.sh && scripts/run_tests.sh
