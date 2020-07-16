@@ -4,6 +4,10 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
+## Version 1.32 for GAP 4.11.0 (16/07/20) 
+
+ * (16/07/20) fixed a problem in manual(2.2.1) reported by Daniel Longenecker  
+
 ## Version 1.31 for GAP 4.10.2 (14/10/19) 
 
  * (14/10/19) made kbmag a RequiredPackage rather than a Suggested one 

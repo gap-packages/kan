@@ -114,14 +114,14 @@ gap> NextWords( rws4, last, 20, 100 );
 <Index>example -- free product</Index>
 <ManSection>
    <Func Name="DoubleCosetRewritingSystem"
-         Arg="grp, genH, genK, rws" />
+         Arg="G, H, K, rws" />
    <Prop Name="IsDoubleCosetRewritingSystem"
          Arg="dcrws" />
 <Description>
 A <E>double coset rewriting system</E> for the double cosets 
 <M>H \backslash G / K</M> 
-requires as data a finitely presented group <M>G =</M><C>grp</C>; 
-generators <C>genH</C>, <C>genK</C> for subgroups <M>H, K</M>; 
+requires as data a finitely presented group <M>G</M>; 
+subgroups <M>H, K</M> of <M>G</M>; 
 and a rewriting system <C>rws</C> for <M>G</M>.
 <P/>
 A simple example is given by taking <M>G</M> to be the free group on two
