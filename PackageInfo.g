@@ -7,8 +7,8 @@ SetPackageInfo( rec(
 
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
-Version := "1.31",
-Date := "14/10/2019",
+Version := "1.32",
+Date := "16/07/2020",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -71,7 +71,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">=4.10.1",
+  GAP := ">=4.11.0",
   NeededOtherPackages := [ [ "automata", ">= 1.14" ], 
                            [ "GAPDoc", ">= 1.6.2" ], 
                            [ "kbmag", ">= 1.5.8" ] ],
