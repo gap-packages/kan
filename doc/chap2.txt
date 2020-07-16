@@ -1,0 +1,575 @@
+  
+  [1X2 [33X[0;0YDouble Coset Rewriting Systems[133X[101X
+  
+  [33X[0;0YThe  [5XKan[105X  package provides functions for the computation of normal forms for
+  double coset representatives of finitely presented groups. The first version
+  of  the  package was released to support the paper [BGHW06], which describes
+  the algorithms used in this package.[133X
+  
+  
+  [1X2.1 [33X[0;0YRewriting Systems[133X[101X
+  
+  [1X2.1-1 KnuthBendixRewritingSystem[101X
+  
+  [33X[1;0Y[29X[2XKnuthBendixRewritingSystem[102X( [3Xgrp[103X, [3Xgensorder[103X, [3Xordering[103X, [3Xalph[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XReducedConfluentRewritingSystem[102X( [3Xgrp[103X, [3Xgensorder[103X, [3Xordering[103X, [3Xlim[103X, [3Xalph[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDisplayRwsRules[102X( [3Xrws[103X ) [32X operation[133X
+  
+  [33X[0;0YMethods  for  [10XKnuthBendixRewritingSystem[110X and [10XReducedConfluentRewritingSystem[110X
+  are  supplied  which  apply  to  a  finitely presented group. These start by
+  calling  [10XIsomorphismFpMonoid[110X  and  then  work with the resulting monoid. The
+  parameter  [10Xordering[110X will normally be [10X"shortlex"[110X or [10X"wreath"[110X, while [10Xgensorder[110X
+  is  an  integer  list for reordering the generators, and [10Xalph[110X is an alphabet
+  string  used when printing words. A [13Xpartial[113X rewriting system may be obtained
+  by  giving  a  [10Xlimit[110X to the number of rules calculated. As usual, [22XA,B[122X denote
+  the inverses of [22Xa,b[122X.[133X
+  
+  [33X[0;0YWe take as an example the fundamental group of the oriented surface of genus
+  2.  The generators are by default ordered [10X[A,a,B,b,C,c,D,d][110X, so the list [10XL =
+  [2,1,4,3,6,5,8,7][110X  is used to specify the order [10X[a,A,b,B,c,C,d,D][110X to be used
+  with  the  wreath  ordering.  Specifying  a  limit  [10X0[110X means that no limit is
+  prescribed.[133X
+  
+  [33X[0;0YThe  operation [10XDisplayRwsRules[110X prints out the rules using the letters in the
+  given alphabet [10Xalph4[110X rather than using the generators of the monoid.[133X
+  
+  [33X[0;0YAn  additional  method  for  [10XReducedForm(G,g)[110X  is  provided  for  a finitely
+  presented group [10XG[110X with a rewriting system and an element [10Xg[110X of [10XG[110X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XF4 := FreeGroup( 4 );;[127X[104X
+    [4X[25Xgap>[125X [27Xrels := [ Comm(F4.1,F4.2) * Comm(F4.3,F4.4) ];;[127X[104X
+    [4X[25Xgap>[125X [27XH4 := F4/rels;; [127X[104X
+    [4X[25Xgap>[125X [27XL := [2,1,4,3,6,5,8,7];;[127X[104X
+    [4X[25Xgap>[125X [27Xorder := "wreath";;[127X[104X
+    [4X[25Xgap>[125X [27Xalph4 := "aAbBcCdD";;[127X[104X
+    [4X[25Xgap>[125X [27Xrws4 := ReducedConfluentRewritingSystem( H4, L, order, 0, alph4 );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplayRwsRules( rws4 );[127X[104X
+    [4X[28X[ [ aA, id ], [ Aa, id ], [ bB, id ], [ Bb, id ], [ cC, id ], [ Cc, id ], [ dD\[128X[104X
+    [4X[28X, id ], [ Dd, id ], [ cd, dcBAba ], [ cBAbaD, Dc ], [ CD, BAbaDC ], [ Cd, dABa\[128X[104X
+    [4X[28XbC ] ][128X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xa := H4.1;;  b := H4.2;;  c := H4.3;;  d := H4.4;; [127X[104X
+    [4X[25Xgap>[125X [27XReducedForm( H4, c*d);[127X[104X
+    [4X[28Xf4*f3*f2^-1*f1^-1*f2*f1[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.1-2 NextWord[101X
+  
+  [33X[1;0Y[29X[2XNextWord[102X( [3Xrws[103X, [3Xw[103X, [3Xlimit[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XNextWords[102X( [3Xrws[103X, [3Xw[103X, [3Xlength[103X, [3Xlimit[103X ) [32X operation[133X
+  
+  [33X[0;0YThe  [10XNextWord[110X  operation  finds the next recognizable word after [10Xw[110X using the
+  rewriting  system  [10Xrws[110X.  The  third parameter is the maximum number of words
+  that  will  be  tested before giving up. (If no limit is provided the number
+  [22X100,000[122X is used.)[133X
+  
+  [33X[0;0YThe  [10XNextWords[110X  operation  applies [10XNextWord[110X repeatedly and returns a list of
+  the  specified length of recognizable words. (If, at any stage, the limit is
+  reached, a truncated list is returned.)[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xfree4 := FreeMonoidOfRewritingSystem( rws4 );; [127X[104X
+    [4X[25Xgap>[125X [27Xgens4 := GeneratorsOfMonoid( free4 );[127X[104X
+    [4X[28X[ f1, f1^-1, f2, f2^-1, f3, f3^-1, f4, f4^-1 ][128X[104X
+    [4X[25Xgap>[125X [27XNextWord( rws4, gens4[5]*gens4[7] ); [127X[104X
+    [4X[28Xf3*f4^-1[128X[104X
+    [4X[25Xgap>[125X [27XNextWords( rws4, last, 20, 100 );[127X[104X
+    [4X[28X[ f3^-1*f1, f3^-1*f1^-1, f3^-1*f2, f3^-1*f2^-1, f3^-1^2, f4*f1, f4*f1^-1, [128X[104X
+    [4X[28X  f4*f2, f4*f2^-1, f4*f3, f4*f3^-1, f4^2, f4^-1*f1, f4^-1*f1^-1, f4^-1*f2, [128X[104X
+    [4X[28X  f4^-1*f2^-1, f4^-1*f3, f4^-1*f3^-1, f4^-1^2, f1^3 ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.2 [33X[0;0YExample 2 -- free product of two cyclic groups[133X[101X
+  
+  [1X2.2-1 DoubleCosetRewritingSystem[101X
+  
+  [33X[1;0Y[29X[2XDoubleCosetRewritingSystem[102X( [3XG[103X, [3XH[103X, [3XK[103X, [3Xrws[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XIsDoubleCosetRewritingSystem[102X( [3Xdcrws[103X ) [32X property[133X
+  
+  [33X[0;0YA  [13Xdouble  coset  rewriting  system[113X  for the double cosets [22XH backslash G / K[122X
+  requires  as  data  a finitely presented group [22XG[122X; subgroups [22XH, K[122X of [22XG[122X; and a
+  rewriting system [10Xrws[110X for [22XG[122X.[133X
+  
+  [33X[0;0YA simple example is given by taking [22XG[122X to be the free group on two generators
+  [22Xa,b[122X,  a cyclic subgroup [22XH[122X with generator [22Xa^6[122X, and a second cyclic subgroup [22XK[122X
+  with generator [22Xa^4[122X. (Similar examples using different powers of [22Xa[122X are easily
+  constructed.)  Since [10Xgcd(6,4)=2[110X, we have [22XHa^2K=HK[122X, so the double cosets have
+  representatives  [22X[HK,  HaK,  Ha^iba^jK,  Ha^ibwba^jK][122X  where [22Xi ∈ [0..5][122X, [22Xj ∈
+  [0..3][122X, and [22Xw[122X is any word in [22Xa,b[122X.[133X
+  
+  [33X[0;0YIn the example the free group [22XG[122X is converted to a four generator monoid with
+  relations      defining      the      inverse     of     each     generator,
+  [10X[[Aa,id],[aA,id],[Bb,id],[bB,id]][110X,  where  [10Xid[110X is the empty word. The initial
+  rules  for  the double coset rewriting system comprise those of [22XG[122X plus those
+  given  by  the  generators  of  [22XH,K[122X,  which  are [22X[[Ha^6,H],[a^4K,K]][122X. In the
+  complete  rewrite system new rules involving [22XH[122X or [22XK[122X may arise, and there may
+  also be rules involving both [22XH[122X and [22XK[122X.[133X
+  
+  [33X[0;0YFor this example,[133X
+  
+  [30X    [33X[0;6Ythere are two [22XH[122X-rules, [22X[[Ha^4,HA^2],[HA^3,Ha^3]][122X,[133X
+  
+  [30X    [33X[0;6Ythere are two [22XK[122X-rules, [22X[[a^3K,AK],[A^2K,a^2K]][122X,[133X
+  
+  [30X    [33X[0;6Yand there are two [22XH[122X-[22XK[122X-rules, [22X[[Ha^2K,HK],[HAK,HaK]][122X.[133X
+  
+  [33X[0;0YHere is how the computation may be performed.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XG1 := FreeGroup( 2 );;[127X[104X
+    [4X[25Xgap>[125X [27XL1 := [2,1,4,3];;[127X[104X
+    [4X[25Xgap>[125X [27Xorder := "shortlex";;[127X[104X
+    [4X[25Xgap>[125X [27Xalph1 := "AaBb";;[127X[104X
+    [4X[25Xgap>[125X [27Xrws1 := ReducedConfluentRewritingSystem( G1, L1, order, 0, alph1 );[127X[104X
+    [4X[28XRewriting System for Monoid( [ f1, f1^-1, f2, f2^-1 ], ... ) with rules[128X[104X
+    [4X[28X[ [ f1*f1^-1, <identity ...> ], [ f1^-1*f1, <identity ...> ],[128X[104X
+    [4X[28X  [ f2*f2^-1, <identity ...> ], [ f2^-1*f2, <identity ...> ] ][128X[104X
+    [4X[25Xgap>[125X [27XDisplayRwsRules( rws1 );;[127X[104X
+    [4X[28X[ [ Aa, id ], [ aA, id ], [ Bb, id ], [ bB, id ] ][128X[104X
+    [4X[25Xgap>[125X [27XgenG1 := GeneratorsOfGroup( G1 );;[127X[104X
+    [4X[25Xgap>[125X [27XH1 := Subgroup( G1, [ genG1[1]^6 ] );;[127X[104X
+    [4X[25Xgap>[125X [27XK1 := Subgroup( G1, [ genG1[1]^4 ] );;[127X[104X
+    [4X[25Xgap>[125X [27Xdcrws1 := DoubleCosetRewritingSystem( G1, H1, K1, rws1 );;[127X[104X
+    [4X[25Xgap>[125X [27XIsDoubleCosetRewritingSystem( dcrws1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplayRwsRules( dcrws1 );;[127X[104X
+    [4X[28XG-rules:[128X[104X
+    [4X[28X[ [ Aa, id ], [ aA, id ], [ Bb, id ], [ bB, id ] ][128X[104X
+    [4X[28XH-rules:[128X[104X
+    [4X[28X[ [ Haaaa, HAA ],[128X[104X
+    [4X[28X  [ HAAA, Haaa ] ][128X[104X
+    [4X[28XK-rules:[128X[104X
+    [4X[28X[ [ aaaK, AK ],[128X[104X
+    [4X[28X  [ AAK, aaK ] ][128X[104X
+    [4X[28XH-K-rules:[128X[104X
+    [4X[28X[ [ HaaK, HK ],[128X[104X
+    [4X[28X  [ HAK, HaK ] ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YAn  example  of  obtaining  the  reduced form of a word using this rewriting
+  system is given in the following section.[133X
+  
+  [1X2.2-2 DisplayAsString[101X
+  
+  [33X[1;0Y[29X[2XDisplayAsString[102X( [3Xword[103X, [3Xalph[103X ) [32X operation[133X
+  
+  [33X[0;0YThis  operation  displays  a  double  coset  using  letters  of the alphabet
+  obtained  by  concatenating  [10X"HK"[110X  with the alphabet for the monoid obtained
+  above.  In  the  example  a  double  coset  [10Xw[110X  and  its  reduced form [10Xrw[110X are
+  displayed.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xfree := FreeMonoidOfRewritingSystem( dcrws1 );;[127X[104X
+    [4X[25Xgap>[125X [27Xmon := MonoidOfRewritingSystem( dcrws1 );; [127X[104X
+    [4X[25Xgap>[125X [27Xgens := GeneratorsOfMonoid( free );; [127X[104X
+    [4X[25Xgap>[125X [27XH := gens[1];;  K := gens[2];; [127X[104X
+    [4X[25Xgap>[125X [27XA := gens[3];;  a := gens[4];; [127X[104X
+    [4X[25Xgap>[125X [27XB := gens[5];;  b := gens[6];;[127X[104X
+    [4X[25Xgap>[125X [27Xalph2 := Concatenation( "HK", alph1 ); [127X[104X
+    [4X[28X"HKAaBb"[128X[104X
+    [4X[25Xgap>[125X [27Xw := H*a^5*b^3*a^5*K;[127X[104X
+    [4X[28Xm1*m4^5*m6^3*m4^5*m2[128X[104X
+    [4X[25Xgap>[125X [27XDisplayAsString( w, alph2 ); [127X[104X
+    [4X[28XHaaaaabbbaaaaaK[128X[104X
+    [4X[25Xgap>[125X [27Xrw := ReducedForm( dcrws1, w );[127X[104X
+    [4X[28Xm1*m3*m6^3*m4*m2[128X[104X
+    [4X[25Xgap>[125X [27XDisplayAsString( rw, alph2 ); [127X[104X
+    [4X[28XHAbbbaK[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.2-3 WordAcceptorOfReducedRws[101X
+  
+  [33X[1;0Y[29X[2XWordAcceptorOfReducedRws[102X( [3Xrws[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XWordAcceptorOfDoubleCosetRws[102X( [3Xrws[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIsWordAcceptorOfDoubleCosetRws[102X( [3Xaut[103X ) [32X property[133X
+  
+  [33X[0;0YUsing functions from the [5XAutomata[105X package, we may[133X
+  
+  [30X    [33X[0;6Ycompute a [13Xword acceptor[113X for the rewriting system of [22XG[122X;[133X
+  
+  [30X    [33X[0;6Ycompute a [13Xword acceptor[113X for the double coset rewriting system;[133X
+  
+  [30X    [33X[0;6Ytest  a  list  of  words  to  see  whether  they are recognised by the
+        automaton;[133X
+  
+  [30X    [33X[0;6Yobtain a rational expression for the language of the automaton.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XwaG1 := WordAcceptorOfReducedRws( rws1 );[127X[104X
+    [4X[28XAutomaton("det",6,"aAbB",[ [ 1, 4, 1, 4, 4, 4 ], [ 1, 3, 3, 1, 3, 3 ], [ 1, 2,\[128X[104X
+    [4X[28X 2, 2, 1, 2 ], [ 1, 1, 5, 5, 5, 5 ] ],[ 6 ],[ 2, 3, 4, 5, 6 ]);;[128X[104X
+    [4X[25Xgap>[125X [27Xwadc1 := WordAcceptorOfDoubleCosetRws( dcrws1 );[127X[104X
+    [4X[28X< deterministic automaton on 6 letters with 15 states >[128X[104X
+    [4X[25Xgap>[125X [27XPrint( wadc1 );[127X[104X
+    [4X[28XAutomaton("det",15,"HKaAbB",[ [ 2, 2, 2, 6, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ],\[128X[104X
+    [4X[28X [ 2, 2, 1, 2, 1, 1, 2, 1, 1, 2, 2, 1, 1, 2, 2 ], [ 2, 2, 13, 2, 10, 5, 2, 13,\[128X[104X
+    [4X[28X 2, 7, 11, 11, 12, 2, 2 ], [ 2, 2, 9, 2, 2, 14, 2, 9, 15, 2, 2, 2, 2, 7, 15 ],\[128X[104X
+    [4X[28X [ 2, 2, 2, 2, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8 ], [ 2, 2, 3, 2, 3, 3, 3, 2, 3,\[128X[104X
+    [4X[28X 3, 3, 3, 3, 3, 3 ] ],[ 4 ],[ 1 ]);;[128X[104X
+    [4X[25Xgap>[125X [27Xwords1 := [ "HK","HaK","HbK","HAK","HaaK","HbbK","HabK","HbaK","HbaabK"];;[127X[104X
+    [4X[25Xgap>[125X [27Xvalid1 := List( words1, w -> IsRecognizedByAutomaton( wadc1, w ) );[127X[104X
+    [4X[28X[ true, true, true, false, false, true, true, true, true ][128X[104X
+    [4X[25Xgap>[125X [27Xlang1 := FAtoRatExp( wadc1 );[127X[104X
+    [4X[28X((H(aaaUAA)BUH(a(aBUB)UABUB))(a(a(aa*BUB)UB)UA(AA*BUB)UB)*(a(a(aa*bUb)Ub)UA(AA\[128X[104X
+    [4X[28X*bUb))UH(aaaUAA)bUH(a(abUb)UAbUb))((a(a(aa*BUB)UB)UA(AA*BUB))(a(a(aa*BUB)UB)UA\[128X[104X
+    [4X[28X(AA*BUB)UB)*(a(a(aa*bUb)Ub)UA(AA*bUb))Ua(a(aa*bUb)Ub)UA(AA*bUb)Ub)*((a(a(aa*BU\[128X[104X
+    [4X[28XB)UB)UA(AA*BUB))(a(a(aa*BUB)UB)UA(AA*BUB)UB)*(a(aKUK)UAKUK)Ua(aKUK)UAKUK)U(H(a\[128X[104X
+    [4X[28XaaUAA)BUH(a(aBUB)UABUB))(a(a(aa*BUB)UB)UA(AA*BUB)UB)*(a(aKUK)UAKUK)UH(aKUK)[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.3 [33X[0;0YExample 3 -- the trefoil group[133X[101X
+  
+  [1X2.3-1 PartialDoubleCosetRewritingSystem[101X
+  
+  [33X[1;0Y[29X[2XPartialDoubleCosetRewritingSystem[102X( [3Xgrp[103X, [3XHgens[103X, [3XKgens[103X, [3Xrws[103X, [3Xlimit[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XWordAcceptorOfPartialDoubleCosetRws[102X( [3Xgrp[103X, [3Xprws[103X ) [32X attribute[133X
+  
+  [33X[0;0YIt  may  happen  that, even when [22XG[122X has a finite rewriting system, the double
+  coset  rewriting system is infinite. This is the case with the trefoil group
+  [22XT[122X  with  generators  [22X[c,d][122X  and  relator [22X[c^3 = d^2][122X when the wreath product
+  ordering is used with [22XC > c > D > d[122X. The group itself has a rewriting system
+  with just 6 rules.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XFT := FreeGroup( 2 );;[127X[104X
+    [4X[25Xgap>[125X [27XrelsT := [ FT.1^3*FT.2^-2 ];;[127X[104X
+    [4X[25Xgap>[125X [27XT := FT/relsT;;[127X[104X
+    [4X[25Xgap>[125X [27XgenT := GeneratorsOfGroup( T );;[127X[104X
+    [4X[25Xgap>[125X [27XU := Subgroup( T, [ genT[1] ] );;  [127X[104X
+    [4X[25Xgap>[125X [27XV := Subgroup( T, [ genT[2] ] );;[127X[104X
+    [4X[25Xgap>[125X [27XalphT := "cCdD";;[127X[104X
+    [4X[25Xgap>[125X [27XordT := [3,4,1,2];;[127X[104X
+    [4X[25Xgap>[125X [27XorderT := "wreath";;[127X[104X
+    [4X[25Xgap>[125X [27XrwsT := ReducedConfluentRewritingSystem( T, ordT, orderT, 0, alphT );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplayRwsRules( rwsT );;[127X[104X
+    [4X[28X[ [ dD, id ], [ Dd, id ], [ C, ccDD ], [ ccc, dd ], [ ddc, cdd ], [ Dc, dcDD ]\[128X[104X
+    [4X[28X ][128X[104X
+    [4X[25Xgap>[125X [27XaccT := WordAcceptorOfReducedRws( rwsT );[127X[104X
+    [4X[28X< deterministic automaton on 4 letters with 7 states >[128X[104X
+    [4X[25Xgap>[125X [27XPrint( "accT = ", accT );[127X[104X
+    [4X[28XaccT = Automaton("det",7,"dDcC",[ [ 6, 2, 2, 4, 6, 4, 6 ], [ 3, 2, 3, 2, 3, 2,\[128X[104X
+    [4X[28X 3 ], [ 7, 2, 2, 2, 2, 7, 5 ], [ 2, 2, 2, 2, 2, 2, 2 ] ],[ 1 ],[ 1, 3, 4, 5, 6\[128X[104X
+    [4X[28X, 7 ]);;[128X[104X
+    [4X[25Xgap>[125X [27XlangT := FAtoRatExp( accT );[127X[104X
+    [4X[28X(dcUc)((cdUd)c)*((cdUd)(dd*U@)Uc(DD*U@)UDD*U@)Ud(dd*U@)UDD*U@[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YIn  the following example we reduce the word [22Xw = d^5c^5[122X to [22Xdc^2d^6[122X and check
+  that only the latter is recognised by the automaton [10XaccT[110X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xfree := FreeMonoidOfRewritingSystem( rwsT );;[127X[104X
+    [4X[25Xgap>[125X [27Xgens := GeneratorsOfMonoid( free );; [127X[104X
+    [4X[25Xgap>[125X [27Xc := gens[1];;  C := gens[2];;  d := gens[3];;  D := gens[4];;[127X[104X
+    [4X[25Xgap>[125X [27Xw := d^5*c^5; [127X[104X
+    [4X[28Xf2^5*f1^5[128X[104X
+    [4X[25Xgap>[125X [27Xsw := WordToString( w, alphT ); [127X[104X
+    [4X[28X"dddddccccc"[128X[104X
+    [4X[25Xgap>[125X [27XIsRecognizedByAutomaton( accT, sw ); [127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27Xrw := ReducedForm( rwsT, w );[127X[104X
+    [4X[28Xf2*f1^2*f2^6[128X[104X
+    [4X[25Xgap>[125X [27Xsrw := WordToString( rw, alphT ); [127X[104X
+    [4X[28X"dccdddddd"[128X[104X
+    [4X[25Xgap>[125X [27XIsRecognizedByAutomaton( accT, srw );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YIn  earlier  versions  of [5XKan[105X, from about 1.01 up to 1.21, the complementary
+  automaton  and  language  were returned in the example above. This error has
+  now been rectified.[133X
+  
+  [33X[0;0YIn  even  earlier  versions  of [5XKan[105X (in 0.95 for example) a shorter rational
+  expression  for the language was obtained from [5XAutomata[105X. In what follows, we
+  check that the two expressions define the same language.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xalph := AlphabetOfRatExpAsList( langT );; [127X[104X
+    [4X[25Xgap>[125X [27Xa1 := RatExpOnnLetters( alph, [ ], [1] );;   ## y[127X[104X
+    [4X[25Xgap>[125X [27Xa2 := RatExpOnnLetters( alph, [ ], [2] );;   ## Y[127X[104X
+    [4X[25Xgap>[125X [27Xa3 := RatExpOnnLetters( alph, [ ], [3] );;   ## x[127X[104X
+    [4X[25Xgap>[125X [27Xa4 := RatExpOnnLetters( alph, [ ], [4] );;   ## X[127X[104X
+    [4X[25Xgap>[125X [27Xs1 := RatExpOnnLetters( alph, "star", a1 );; ## y*[127X[104X
+    [4X[25Xgap>[125X [27Xs2 := RatExpOnnLetters( alph, "star", a2 );; ## Y*[127X[104X
+    [4X[25Xgap>[125X [27Xa1a3 := RatExpOnnLetters( alph, "product", [ a1, a3 ] );;  ## yx [127X[104X
+    [4X[25Xgap>[125X [27Xu1 := RatExpOnnLetters( alph, "union", [ a1a3, a3 ] );;    ## yxUx[127X[104X
+    [4X[25Xgap>[125X [27Xa3a1 := RatExpOnnLetters( alph, "product", [ a3, a1 ] );;  ## xy[127X[104X
+    [4X[25Xgap>[125X [27Xu2 := RatExpOnnLetters( alph, "union", [ a3a1, a1 ] );;    ## xyUy[127X[104X
+    [4X[25Xgap>[125X [27Xu2a3 := RatExpOnnLetters( alph, "product", [ u2, a3 ] );;  ## (xyUy)x[127X[104X
+    [4X[25Xgap>[125X [27Xsu2a3 := RatExpOnnLetters( alph, "star", u2a3 );;          ## ((xyUy)x)*[127X[104X
+    [4X[25Xgap>[125X [27Xu2s1 := RatExpOnnLetters( alph, "product", [ u2, s1 ] );;  ## (xyUy)y*[127X[104X
+    [4X[25Xgap>[125X [27Xa3s2 := RatExpOnnLetters( alph, "product", [ a3, s2 ] );;  ## xY*[127X[104X
+    [4X[25Xgap>[125X [27Xu3 := RatExpOnnLetters( alph, "union", [u2s1,a3s2,s2] );; [127X[104X
+    [4X[25Xgap>[125X [27Xprod := RatExpOnnLetters( alph, "product", [u1,su2a3,u3] );;  [127X[104X
+    [4X[25Xgap>[125X [27Xa1s1 := RatExpOnnLetters( alph, "product", [ a1, s1 ] );;  ## yy*[127X[104X
+    [4X[25Xgap>[125X [27Xr := RatExpOnnLetters( alph, "union", [ prod, a1s1, s2] );[127X[104X
+    [4X[28X(yxUx)((xyUy)x)*((xyUy)y*UxY*UY*)Uyy*UY*[128X[104X
+    [4X[25Xgap>[125X [27XAreEqualLang( langT, r ); [127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YIf we now take subgroups [22XH=⟨ c ⟩[122X and [22XK = ⟨ d ⟩[122X we find that the double coset
+  rewriting system has an infinite number of [22XH[122X-rules. It turns out that only a
+  finite  number  of  these  are needed to produce the required automaton. The
+  function [10XPartialDoubleCosetRewritingSystem[110X allows a limit to be specified on
+  the  number  of  rules to be computed. In the listing below a limit of 20 is
+  used, but in fact 10 is sufficient.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XprwsT := PartialDoubleCosetRewritingSystem( T, U, V, rwsT, 20 );;[127X[104X
+    [4X[28X#I WARNING: reached supplied limit 20 on number of rules[128X[104X
+    [4X[25Xgap>[125X [27XDisplayRwsRules( prwsT );[127X[104X
+    [4X[28XG-rules:[128X[104X
+    [4X[28X[ [ C, ccDD ], [ dD, id ], [ Dc, dcDD ], [ Dd, id ], [ ccc, dd ], [ ddc, cdd ]\[128X[104X
+    [4X[28X ][128X[104X
+    [4X[28XH-rules:[128X[104X
+    [4X[28X[ [ Hc, H ],[128X[104X
+    [4X[28X  [ HD, Hd ],[128X[104X
+    [4X[28X  [ Hdd, H ],[128X[104X
+    [4X[28X  [ Hdcdd, Hdc ],[128X[104X
+    [4X[28X  [ HdcD, Hdcd ],[128X[104X
+    [4X[28X  [ Hdcdcdd, Hdcdc ],[128X[104X
+    [4X[28X  [ Hdccdd, Hdcc ],[128X[104X
+    [4X[28X  [ HdccD, Hdccd ],[128X[104X
+    [4X[28X  [ HdcdcD, Hdcdcd ],[128X[104X
+    [4X[28X  [ Hdcdcdcdd, Hdcdcdc ],[128X[104X
+    [4X[28X  [ Hdcdccdd, Hdcdcc ],[128X[104X
+    [4X[28X  [ Hdccdcdd, Hdccdc ],[128X[104X
+    [4X[28X  [ HdccdcDD, Hdccdc ] ][128X[104X
+    [4X[28XK-rules:[128X[104X
+    [4X[28X[ [ dK, K ],[128X[104X
+    [4X[28X  [ DK, K ] ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThis  list of partial rules is then used to produce a modified word acceptor
+  function.[133X
+  
+  [33X[0;0YWe  then  construct  the  double  coset  [22XHd^5c^5K[122X  and find its reduced form
+  (compare this with the earlier example).[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XpaccT := WordAcceptorOfPartialDoubleCosetRws( T, prwsT );;[127X[104X
+    [4X[28X< deterministic automaton on 6 letters with 6 states >[128X[104X
+    [4X[25Xgap>[125X [27XPrint( paccT, "\n" );[127X[104X
+    [4X[28XAutomaton("det",6,"HKyYxX",[ [ 2, 2, 2, 6, 2, 2 ], [ 2, 2, 1, 2, 2, 1 ], [ 2, \[128X[104X
+    [4X[28X2, 5, 2, 2, 5 ], [ 2, 2, 2, 2, 2, 2 ], [ 2, 2, 6, 2, 3, 2 ], [ 2, 2, 2, 2, 2, \[128X[104X
+    [4X[28X2 ] ],[ 4 ],[ 1 ]);;[128X[104X
+    [4X[25Xgap>[125X [27XplangT := FAtoRatExp( paccT );[127X[104X
+    [4X[28XH(yx(yx)*x)*(yx(yx)*KUK)[128X[104X
+    [4X[25Xgap>[125X [27XwordsT := ["HK", "HxK", "HyK", "HYK", "HyxK", "HyxxK", "HyyH", "HyxYK"];;[127X[104X
+    [4X[25Xgap>[125X [27XvalidT := List( wordsT, w -> IsRecognizedByAutomaton( paccT, w ) );[127X[104X
+    [4X[28X[ true, false, false, false, true, true, false, false ][128X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xpfree := FreeMonoidOfRewritingSystem( prwsT );; [127X[104X
+    [4X[25Xgap>[125X [27Xpgens := GeneratorsOfMonoid( pfree );; [127X[104X
+    [4X[25Xgap>[125X [27XH := pgens[1];;  K := pgens[2];; [127X[104X
+    [4X[25Xgap>[125X [27Xc := pgens[3];;  C := pgens[4];; [127X[104X
+    [4X[25Xgap>[125X [27Xd := pgens[5];;  D := pgens[6];;[127X[104X
+    [4X[25Xgap>[125X [27XpalphT := Concatenation( "HK", alphT ); [127X[104X
+    [4X[28X"HKcCdD"[128X[104X
+    [4X[25Xgap>[125X [27Xpw := H*d^5*c^5*K;;  DisplayAsString( pw, palphT );[127X[104X
+    [4X[28XHdddddcccccK[128X[104X
+    [4X[25Xgap>[125X [27Xrpw := ReducedForm( prwsT, pw );; [127X[104X
+    [4X[25Xgap>[125X [27Xspw := WordToString( rpw, palphT ); [127X[104X
+    [4X[28X"HdccK"[128X[104X
+    [4X[25Xgap>[125X [27Xok := IsRecognizedByAutomaton( paccT, spw ); [127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X2.4 [33X[0;0YExample 4 -- an infinite rewriting system[133X[101X
+  
+  [1X2.4-1 KBMagRewritingSystem[101X
+  
+  [33X[1;0Y[29X[2XKBMagRewritingSystem[102X( [3Xfpgrp[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XKBMagWordAcceptor[102X( [3Xfpgrp[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XKBMagFSAtoAutomataDFA[102X( [3Xfsa[103X, [3Xalph[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XWordAcceptorByKBMag[102X( [3Xgrp[103X, [3Xalph[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XWordAcceptorByKBMagOfDoubleCosetRws[102X( [3Xgrp[103X, [3Xdcrws[103X ) [32X operation[133X
+  
+  [33X[0;0YWhen  the  group  [22XG[122X  has  an  infinite  rewriting  system,  the double coset
+  rewriting system will also be infinite. In this case we may use the function
+  [10XKBMagWordAcceptor[110X  which  calls  [5XKBMag[105X to compute a word acceptor for [22XG[122X, and
+  [10XKBMagFSAtoAutomataDFA[110X  to  convert this to a deterministic automaton as used
+  by  the  [5XAutomata[105X  package. The resulting [10Xdfa[110X forms part of the double coset
+  automaton,  together with sufficient [22XH[122X-rules, [22XK[122X-rules and [22XH[122X-[22XK[122X-rules found by
+  the   function  [10XPartialDoubleCosetRewritingSystem[110X.  (Note  that  these  five
+  attributes and operations will not be available if the [5XKBMag[105X package has not
+  been loaded.)[133X
+  
+  [33X[0;0YIn  the  following  example  we  take a two generator group [22XG4[122X with relators
+  [22X[a^3,b^3,(a*b)^3][122X,  the  normal  forms  of  whose  elements  are some of the
+  strings  with  [22Xa[122X or [22Xa^-1[122X alternating with [22Xb[122X or [22Xb^-1[122X. The automatic structure
+  computed by [5XKBMag[105X has a word acceptor with 17 states.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XF4 := FreeGroup("a","b");;[127X[104X
+    [4X[25Xgap>[125X [27Xrels4 := [ F4.1^3, F4.2^3, (F4.1*F4.2)^3 ];;[127X[104X
+    [4X[25Xgap>[125X [27XG4 := F4/rels4;;[127X[104X
+    [4X[25Xgap>[125X [27Xalph4 := "AaBb";;[127X[104X
+    [4X[25Xgap>[125X [27XwaG4 := WordAcceptorByKBMag( G4, alph4 );;[127X[104X
+    [4X[25Xgap>[125X [27XPrint( waG4, "\n");[127X[104X
+    [4X[28XAutomaton("det",18,"aAbB",[ [ 2, 18, 18, 8, 10, 12, 13, 18, 18, 18, 18, 18, 18\[128X[104X
+    [4X[28X, 8, 17, 12, 18, 18 ], [ 3, 18, 18, 9, 11, 9, 12, 18, 18, 18, 18, 18, 18, 11, \[128X[104X
+    [4X[28X18, 11, 18, 18 ], [ 4, 6, 6, 18, 18, 18, 18, 18, 6, 12, 16, 18, 12, 18, 18, 18\[128X[104X
+    [4X[28X, 12, 18 ], [ 5, 5, 7, 18, 18, 18, 18, 14, 15, 5, 18, 18, 7, 18, 18, 18, 15, 1\[128X[104X
+    [4X[28X8 ] ],[ 1 ],[ 1 .. 17 ]);;[128X[104X
+    [4X[25Xgap>[125X [27XlangG4 := FAtoRatExp( waG4 );[127X[104X
+    [4X[28X((abUAb)AUbA)(bA)*(b(aU@)UB(aB)*(a(bU@)U@)U@)U(abUAb)(aU@)U((aBUB)(aB)*AUba(Ba\[128X[104X
+    [4X[28X)*BA)(bA)*(b(aU@)U@)U(aBUB)(aB)*(a(bU@)U@)Uba(Ba)*(BU@)UbUaUA(B(aB)*(a(bU@)UAU\[128X[104X
+    [4X[28X@)U@)U@[128X[104X
+    [4X[25Xgap>[125X [27XIsRecognizedByAutomaton( waG4, "Aba" );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsRecognizedByAutomaton( waG4, "AbaB" );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.4-2 DCrules[101X
+  
+  [33X[1;0Y[29X[2XDCrules[102X( [3Xdcrws[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XHrules[102X( [3Xdcrws[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XKrules[102X( [3Xdcrws[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XHKrules[102X( [3Xdcrws[103X ) [32X attribute[133X
+  
+  [33X[0;0YWe  now  take  [22XH[122X  to  be  generated by [22Xab[122X and [22XK[122X to be generated by [22Xba[122X. If we
+  specify  a  limits  of 50, 75, 100, 200 for the number of rules in a partial
+  double  coset  rewrite  system,  we  obtain  lists  of  [22XH[122X-rules, [22XK[122X-rules and
+  [22XH[122X-[22XK[122X-rules  of  increasing  length.  The  numbers  of states in the resulting
+  automata  also  increase.  We may deduce by hand (but not computationally --
+  see [BGHW06]) three infinite sets of rules and a limit for the automata.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xlim := 100;;[127X[104X
+    [4X[25Xgap>[125X [27XgenG4 := GeneratorsOfGroup( G4 );;[127X[104X
+    [4X[25Xgap>[125X [27Xa := genG4[1];;  b := genG4[2];; [127X[104X
+    [4X[25Xgap>[125X [27XH4 := Subgroup( G4, [ a*b ] );;  [127X[104X
+    [4X[25Xgap>[125X [27XK4 := Subgroup( G4, [ b*a ] );;[127X[104X
+    [4X[25Xgap>[125X [27XrwsG4 := KnuthBendixRewritingSystem( G4, "shortlex", [2,1,4,3], alph4 );;[127X[104X
+    [4X[25Xgap>[125X [27Xdcrws4 := PartialDoubleCosetRewritingSystem( G4, H4, K4, rwsG4, limit );;[127X[104X
+    [4X[28X#I using PartialDoubleCosetRewritingSystem with limit 100[128X[104X
+    [4X[28X#I  51 rules, and 1039 pairs[128X[104X
+    [4X[28X#I WARNING: reached supplied limit 100 on number of rules[128X[104X
+    [4X[25Xgap>[125X [27XPrint( Length( Rules( dcrws4 ) ), " rules found.\n" );[127X[104X
+    [4X[28X101 rules found.[128X[104X
+    [4X[25Xgap>[125X [27Xdcaut4 := WordAcceptorByKBMagOfDoubleCosetRws( G4, dcrws4 );;[127X[104X
+    [4X[25Xgap>[125X [27XPrint( "Double Coset Minimalized automaton:\n", dcaut4 );[127X[104X
+    [4X[28XDouble Coset Minimalized automaton:[128X[104X
+    [4X[28XAutomaton("det",44,"HKaAbB",[ [ 2, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2\[128X[104X
+    [4X[28X, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2\[128X[104X
+    [4X[28X, 2, 2 ], [ 2, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, \[128X[104X
+    [4X[28X2, 2, 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 2, 1 ], [ 2, 2, 2,\[128X[104X
+    [4X[28X 2, 3, 24, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 43, 2, 43, 2, 27, 2, 2, 2\[128X[104X
+    [4X[28X, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ], [ 2, 2, 2, 2, 44, 3, 29, 2\[128X[104X
+    [4X[28X, 8, 2, 10, 2, 12, 2, 14, 2, 16, 2, 18, 2, 20, 2, 22, 2, 2, 2, 2, 26, 2, 29, 2\[128X[104X
+    [4X[28X, 31, 2, 33, 2, 35, 2, 37, 2, 39, 2, 41, 2, 2 ], [ 2, 2, 2, 2, 21, 2, 2, 28, 2\[128X[104X
+    [4X[28X, 9, 2, 11, 2, 13, 2, 15, 2, 17, 2, 19, 2, 42, 2, 3, 2, 28, 3, 2, 7, 2, 30, 2,\[128X[104X
+    [4X[28X 32, 2, 34, 2, 36, 2, 38, 2, 40, 2, 2, 28 ], [ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2\[128X[104X
+    [4X[28X, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 2, 25, 25, 2, 2, 2, 2, 2, 2, 2, 2, 2,\[128X[104X
+    [4X[28X 2, 2, 2, 2, 2, 2, 23, 6 ] ],[ 4 ],[ 1 ]);;[128X[104X
+    [4X[25Xgap>[125X [27Xdclang4 := FAtoRatExp( dcaut4 );;[127X[104X
+    [4X[25Xgap>[125X [27XPrint( "Double Coset language of acceptor:\n", dclang4, "\n" );[127X[104X
+    [4X[28XDouble Coset language of acceptor:[128X[104X
+    [4X[28X(HbAbAbAbAbAbAbAbUHAb)(Ab)*(A(Ba(Ba)*bKUK)UK)UHbAbA(bA(bA(bA(bA(bAKUK)UK)UK)UK\[128X[104X
+    [4X[28X)UK)UH(A(B(aB)*(abUA)KUK)UaKUb(a(Ba)*BA(bA(bA(bA(bA(bA(bA(bA(bA)*(bKUK)UK)UK)U\[128X[104X
+    [4X[28XK)UK)UK)UK)UK)UAK)UK)[128X[104X
+    [4X[25Xgap>[125X [27Xok := DCrules(dcrws4);;[127X[104X
+    [4X[25Xgap>[125X [27Xalph4e := dcrws4!.alphabet;;[127X[104X
+    [4X[25Xgap>[125X [27XPrint("H-rules:\n");  DisplayAsString( Hrules(dcrws4), alph4e, true );[127X[104X
+    [4X[28XH-rules:[128X[104X
+    [4X[28X[ HB, Ha ][128X[104X
+    [4X[28X[ HaB, Hb ][128X[104X
+    [4X[28X[ Hab, H ][128X[104X
+    [4X[28X[ HbAB, HAba ][128X[104X
+    [4X[28X[ HbAbAB, HAbAba ][128X[104X
+    [4X[28X[ HbAbAbAB, HAbAbAba ][128X[104X
+    [4X[28X[ HbAbAbAbAB, HAbAbAbAba ][128X[104X
+    [4X[28X[ HbAbAbAbAbAB, HAbAbAbAbAba ][128X[104X
+    [4X[28X[ HbAbAbAbAbAbAB, HAbAbAbAbAbAba ][128X[104X
+    [4X[28X[ HbAbAbAbAbAbAbAB, HAbAbAbAbAbAbAba ][128X[104X
+    [4X[25Xgap>[125X [27XPrint("K-rules:\n");  DisplayAsString( Krules(dcrws4), alph4e, true );;[127X[104X
+    [4X[28XK-rules:[128X[104X
+    [4X[28X[ BK, aK ][128X[104X
+    [4X[28X[ BaK, bK ][128X[104X
+    [4X[28X[ baK, K ][128X[104X
+    [4X[28X[ BAbK, abAK ][128X[104X
+    [4X[28X[ BAbAbK, abAbAK ][128X[104X
+    [4X[28X[ BAbAbAbK, abAbAbAK ][128X[104X
+    [4X[28X[ BAbAbAbAbK, abAbAbAbAK ][128X[104X
+    [4X[28X[ BAbAbAbAbAbK, abAbAbAbAbAK ][128X[104X
+    [4X[28X[ BAbAbAbAbAbAbK, abAbAbAbAbAbAK ][128X[104X
+    [4X[28X[ BAbAbAbAbAbAbAbK, abAbAbAbAbAbAbAK ][128X[104X
+    [4X[25Xgap>[125X [27XPrint("HK-rules:\n");  DisplayAsString( HKrules(dcrws4), alph4e, true );;[127X[104X
+    [4X[28XHK-rules:[128X[104X
+    [4X[28X[ HbK, HAK ][128X[104X
+    [4X[28X[ HbAbK, HAbAK ][128X[104X
+    [4X[28X[ HbAbAbK, HAbAbAK ][128X[104X
+    [4X[28X[ HbAbAbAbK, HAbAbAbAK ][128X[104X
+    [4X[28X[ HbAbAbAbAbK, HAbAbAbAbAK ][128X[104X
+    [4X[28X[ HbAbAbAbAbAbK, HAbAbAbAbAbAK ][128X[104X
+    [4X[28X[ HbAbAbAbAbAbAbK, HAbAbAbAbAbAbAK ][128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
+  [1X2.4-3 WordToString[101X
+  
+  [33X[1;0Y[29X[2XWordToString[102X( [3Xword[103X, [3Xalph[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIdentityDoubleCoset[102X( [3Xdcrws[103X ) [32X operation[133X
+  
+  [33X[0;0YThe  [10XNextWord[110X  operation  (see  [14X2.1-2[114X)  may  be used to find normal forms of
+  increasing  length  for double coset representatives. In the example below a
+  limit  of  [22X50,000[122X (for the number of words tested) is specified since the [22X29[122X
+  numbers of words tested can be shown to be:[133X
+  
+  
+  [24X[33X[0;6Y\begin{array}{c} [\ 1,\ 1,\ 6,\ 9,\ 12,\ 4,\ 91,\ 12,\ 153,\ 12,\ 192,\ 52,\
+  1435,\  192,\  12,\ 2457,\ 192,\\ 12,\ 3072,\ 820,\ 22939,\ 3072,\ 19,\ 12,\
+  39321,\ 3072,\ 192,\ 12,\ 49152\ ] \end{array}[133X
+  
+  [124X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27Xidc := IdentityDoubleCoset( dcrws4 );[127X[104X
+    [4X[28Xm1*m2[128X[104X
+    [4X[25Xgap>[125X [27X## List of the next 29 normal forms for double cosets: [127X[104X
+    [4X[25Xgap>[125X [27XL4 := NextWords( dcrws4, idc, 29, 50000 );;[127X[104X
+    [4X[25Xgap>[125X [27XDisplayAsString( L4, alph4e, true );[127X[104X
+    [4X[28X[ HAK, HaK, HAbK, HbAK, HABAK, HAbAK, HABabK, HAbAbK, HbAbAK, HbaBAK, HABaBAK,\[128X[104X
+    [4X[28X HAbAbAK, HABaBabK, HAbABabK, HAbAbAbK, HbAbAbAK, HbaBAbAK, HbaBaBAK, HABaBaBA\[128X[104X
+    [4X[28XK, HAbAbAbAK, HABaBaBabK, HAbABaBabK, HAbAbABabK, HAbAbAbAbK, HbAbAbAbAK, HbaB\[128X[104X
+    [4X[28XAbAbAK, HbaBaBAbAK, HbaBaBaBAK, HABaBaBaBAK ][128X[104X
+    [4X[25Xgap>[125X [27Xw := NextWord( dcrws4, L4[29] );;[127X[104X
+    [4X[25Xgap>[125X [27XPrint( w, "\n" );[127X[104X
+    [4X[28Xm1*(m3*m6)^4*m3*m2[128X[104X
+    [4X[25Xgap>[125X [27Xs := WordToString( w, alph4e );;[127X[104X
+    [4X[25Xgap>[125X [27XPrint( s, "\n" );[127X[104X
+    [4X[28XHAbAbAbAbAK[128X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  
