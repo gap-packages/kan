@@ -4,7 +4,7 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
-## Version 1.32 for GAP 4.11.0 (16/07/20) 
+## Version 1.32 for GAP 4.11.0 (21/07/20) 
 
  * (16/07/20) fixed a problem in manual(2.2.1) reported by Daniel Longenecker  
 
