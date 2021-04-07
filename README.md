@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/gap-packages/kan.svg?branch=master)](https://travis-ci.com/gap-packages/kan)
+[![Build Status](https://github.com/gap-packages/kan/workflows/CI/badge.svg?branch=master)](https://github.com/gap-packages/kan/actions?query=workflow%3ACI+branch%3Amaster)
 [![Code Coverage](https://codecov.io/github/gap-packages/kan/coverage.svg?branch=master&token=)](https://codecov.io/gh/gap-packages/kan)
 
 # The GAP 4 package 'KAN' 
