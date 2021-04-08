@@ -28,6 +28,8 @@ gap> DisplayRwsRules( rws4 );
 bC ] ]
 true
 gap> a := H4.1;; b := H4.2;; c := H4.3;; d := H4.4;; 
+gap> c*d;
+f3*f4
 gap> ReducedForm( H4, c*d);
 f4*f3*f2^-1*f1^-1*f2*f1
 gap> free4 := FreeMonoidOfRewritingSystem( rws4 );; 

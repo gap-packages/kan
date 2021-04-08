@@ -19,6 +19,9 @@
 /doc/*.toc
 /doc/manual.pdf
 /doc/kanbib.xml.bib
+/doc/bib.xml.bib
+/doc/kan.xml
+/doc/title.xml
 
 /tst/example*.g
 /tmp/
