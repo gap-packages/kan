@@ -6,7 +6,7 @@
 
 ## Version 1.32dev for GAP 4.11.0 (21/07/20) 
 
- * 
+ * (08/04/21) Switch CI to use GitHub Actions 
 
 ## Version 1.32 for GAP 4.11.0 (16/07/20) 
 
