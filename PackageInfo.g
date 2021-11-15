@@ -7,8 +7,8 @@ SetPackageInfo( rec(
 
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
-Version := "1.32dev",
-Date := "21/07/2020",
+Version := "1.33",
+Date := "15/11/2021",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -26,7 +26,7 @@ Persons := [
     IsAuthor      := true,
     IsMaintainer  := true,
     Email         := "c.d.wensley@bangor.ac.uk",
-    WWWHome       := "http://pages.bangor.ac.uk/~mas023/",
+    WWWHome       := "https://github.com/gap-packages/kan",
     PostalAddress := Concatenation( [
                        "Dr. C.D. Wensley\n",
                        "School of Computer Science\n",
@@ -92,13 +92,13 @@ Keywords := [ "Kan extension",
 BannerString := Concatenation( 
     "Loading Kan ", String( ~.Version ), " (computing with Kan extensions)\n", 
     "by Anne Heyworth and ", 
-    "Chris Wensley (http://pages.bangor.ac.uk/~mas023/)\n", 
+    "Chris Wensley (https://github.com/cdwensley)\n", 
   "-----------------------------------------------------------------------\n" ),
 
 AutoDoc := rec(
     TitlePage := rec(
         Copyright := Concatenation(
-            "&copyright; 1996-2019 Anne Heyworth and Chris Wensley<P/>\n",
+            "&copyright; 1996-2021 Anne Heyworth and Chris Wensley<P/>\n",
             "The &Kan; package is free software; you can redistribute it ", 
             "and/or modify it under the terms of the GNU General ", 
             "Public License as published by the Free Software Foundation; ", 
