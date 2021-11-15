@@ -71,5 +71,5 @@
   [7Xhttps://github.com/gap-packages/kan/issues/new[107X.[133X
   
   [33X[0;0YAdditional  information can be found on the [13XComputational Higher-dimensional
-  Discrete Algebra[113X website at [7Xhttp://pages.bangor.ac.uk/~mas023/chda/[107X.[133X
+  Discrete Algebra[113X website at [7Xhttps://github.com/cdwensley[107X.[133X
   
