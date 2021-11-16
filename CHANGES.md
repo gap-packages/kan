@@ -4,6 +4,8 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
+## Version 1.33dev for GAP 4.11.1 (16/11/21) 
+
 ## Version 1.33 for GAP 4.11.1 (15/11/21) 
 
  * (15/11/21) more package homepage to https://github.com/cdwensley

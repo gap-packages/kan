@@ -7,8 +7,8 @@ SetPackageInfo( rec(
 
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
-Version := "1.33",
-Date := "15/11/2021",
+Version := "1.33dev",
+Date := "16/11/2021",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -26,7 +26,7 @@ Persons := [
     IsAuthor      := true,
     IsMaintainer  := true,
     Email         := "c.d.wensley@bangor.ac.uk",
-    WWWHome       := "https://github.com/gap-packages/kan",
+    WWWHome       := "https://github.com/cdwensley",
     PostalAddress := Concatenation( [
                        "Dr. C.D. Wensley\n",
                        "School of Computer Science\n",
@@ -46,13 +46,12 @@ AcceptDate := "05/2015",
 
 SourceRepository := rec( 
   Type := "git", 
-  URL := "https://github.com/gap-packages/kan"
-),
-IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://gap-packages.github.io/kan/",
-README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
-ArchiveURL      := Concatenation( ~.SourceRepository.URL, 
+  URL := "https://github.com/gap-packages/kan" ),
+  IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+  PackageWWWHome  := "https://gap-packages.github.io/kan/",
+  README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
+  PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
+  ArchiveURL      := Concatenation( ~.SourceRepository.URL, 
                                   "/releases/download/v", ~.Version, 
                                   "/", ~.PackageName, "-", ~.Version ), 
 ArchiveFormats  := ".tar.gz",
