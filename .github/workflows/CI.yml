@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: gap-actions/setup-gap-for-packages@v1
         with:
-          GAP_PKGS_TO_BUILD: "io nq profiling"
+          GAP_PKGS_TO_BUILD: "io kbmag profiling"
           GAPBRANCH: ${{ matrix.gap-branch }}
       - uses: gap-actions/run-test-for-packages@v1
 
@@ -38,7 +38,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: gap-actions/setup-gap-for-packages@v1
         with:
-          GAP_PKGS_TO_BUILD: "io nq profiling"
+          GAP_PKGS_TO_BUILD: "io kbmag profiling"
       - uses: gap-actions/compile-documentation-for-packages@v1
         with:
           use-latex: 'true'
