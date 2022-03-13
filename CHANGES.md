@@ -4,11 +4,13 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
-## Version 1.33dev for GAP 4.11.1 (16/11/21) 
+## Version 1.34 for GAP 4.11.1 (13/03/22) 
+
+ * (13/03/22) adjusted dcrws3.tst because of differences between 4r11 & dev
 
 ## Version 1.33 for GAP 4.11.1 (15/11/21) 
 
- * (15/11/21) more package homepage to https://github.com/cdwensley
+ * (15/11/21) move package homepage to https://github.com/cdwensley
  * (08/04/21) Switch CI to use GitHub Actions 
 
 ## Version 1.32 for GAP 4.11.0 (16/07/20) 

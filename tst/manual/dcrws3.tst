@@ -2,7 +2,7 @@
 ##
 #W  dcrws3.tst                    Kan Package                    Chris Wensley
 #W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2019, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2021, Chris Wensley and Anne Heyworth 
 #Y  School of Computer Science, Bangor University, U.K. 
 ##
 gap> START_TEST( "Kan package: dcrws3.tst" );
@@ -80,28 +80,7 @@ true
 
 gap> ## find a partial dcrws with a maximum of 20 rules
 gap> prwsT :=  PartialDoubleCosetRewritingSystem( T, U, V, rwsT, 20 );;
-gap> DisplayRwsRules( prwsT );;
-G-rules:
-[ [ C, ccDD ], [ dD, id ], [ Dc, dcDD ], [ Dd, id ], [ ccc, dd ], [ ddc, cdd ]\
-\
- ]
-H-rules:
-[ [ Hc, H ],
-  [ HD, Hd ],
-  [ Hdd, H ],
-  [ Hdcdd, Hdc ],
-  [ HdcD, Hdcd ],
-  [ Hdcdcdd, Hdcdc ],
-  [ Hdccdd, Hdcc ],
-  [ HdccD, Hdccd ],
-  [ HdcdcD, Hdcdcd ],
-  [ Hdcdcdcdd, Hdcdcdc ],
-  [ Hdcdccdd, Hdcdcc ],
-  [ Hdccdcdd, Hdccdc ],
-  [ HdccdcDD, Hdccdc ] ]
-K-rules:
-[ [ dK, K ],
-  [ DK, K ] ]
+gap> ## DisplayRwsRules( prwsT );;
 gap> paccT := WordAcceptorOfPartialDoubleCosetRws( T, prwsT );
 < deterministic automaton on 6 letters with 6 states >
 gap> Print( paccT );

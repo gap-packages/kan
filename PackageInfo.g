@@ -8,7 +8,7 @@ SetPackageInfo( rec(
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 Version := "1.33dev",
-Date := "16/11/2021",
+Date := "13/03/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -73,7 +73,7 @@ Dependencies := rec(
   GAP := ">=4.11.0",
   NeededOtherPackages := [ [ "automata", ">= 1.14" ], 
                            [ "GAPDoc", ">= 1.6.2" ], 
-                           [ "kbmag", ">= 1.5.8" ] ],
+                           [ "kbmag", ">= 1.5.9" ] ],
   SuggestedOtherPackages := [  ],
   ExternalConditions := [ ]
 ),
@@ -97,7 +97,7 @@ BannerString := Concatenation(
 AutoDoc := rec(
     TitlePage := rec(
         Copyright := Concatenation(
-            "&copyright; 1996-2021 Anne Heyworth and Chris Wensley<P/>\n",
+            "&copyright; 1996-2022 Anne Heyworth and Chris Wensley<P/>\n",
             "The &Kan; package is free software; you can redistribute it ", 
             "and/or modify it under the terms of the GNU General ", 
             "Public License as published by the Free Software Foundation; ", 
