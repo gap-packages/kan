@@ -73,7 +73,7 @@ Dependencies := rec(
   GAP := ">=4.11.0",
   NeededOtherPackages := [ [ "automata", ">= 1.14" ], 
                            [ "GAPDoc", ">= 1.6.2" ], 
-                           [ "kbmag", ">= 1.5.8" ] ],
+                           [ "kbmag", ">= 1.5.9" ] ],
   SuggestedOtherPackages := [  ],
   ExternalConditions := [ ]
 ),
