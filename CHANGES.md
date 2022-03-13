@@ -4,6 +4,10 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
+## Version 1.34dev for GAP 4.11.1 (13/03/22) 
+
+ * (
+
 ## Version 1.34 for GAP 4.11.1 (13/03/22) 
 
  * (13/03/22) adjusted dcrws3.tst because of differences between 4r11 & dev
