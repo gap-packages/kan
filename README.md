@@ -20,9 +20,9 @@ and in the `CHANGES.md` file.
 ## Distribution
 
  * The 'Kan' package is distributed with the accepted GAP packages: see
-     <http://www.gap-system.org/Packages/kan.html>
+     <https://www.gap-system.org/Packages/kan.html>
  * It may also be obtained from the GitHub repository at:
-     <http://gap-packages.github.io/kan/> 
+     <https://gap-packages.github.io/kan/>
 
 ## Copyright
 
@@ -34,7 +34,7 @@ it under the terms of the GNU General Public License as published by
 the Free Software Foundation; either version 2 of the License, or
 (at your option) any later version. 
 
-For details, see <http://www.gnu.org/licenses/gpl.html>
+For details, see <https://www.gnu.org/licenses/gpl.html>
 
 ## Installation
 

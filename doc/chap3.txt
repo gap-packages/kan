@@ -25,6 +25,9 @@
   the  various rewriting systems used to perform reduction of words to reduced
   form.[133X
   
+  [33X[0;0YOnly  minor  changes  have  been made in recent years. The latest version is
+  1.34 of March 2022.[133X
+  
   
   [1X3.2 [33X[0;0YWhat needs doing next?[133X[101X
   
