@@ -7,7 +7,7 @@ SetPackageInfo( rec(
 
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
-Version := "1.33dev",
+Version := "1.34",
 Date := "13/03/2022",
 License := "GPL-2.0-or-later",
 
