@@ -4,7 +4,7 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
-## Version 1.34dev for GAP 4.11.1 (13/03/22) 
+## Version 1.34dev for GAP 4.11.1 (12/04/22) 
 
  * (
 
@@ -69,7 +69,6 @@
 
  * (01/06/15) `PackageInfo.g` : Kan is now an accepted package  
  * (01/06/15) converted the bibliography to BibXMLext format 
-              and added an URL to Anne's thesis (`heyworth.ps.gz`)  
 
 ## 1.07 -> 1.11  (10/12/2014) 
 
