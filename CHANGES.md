@@ -127,8 +127,6 @@
 
 ## 0.95 -> 0.96  (13/11/2008)
 
- * (13/11/08) new Bangor website * move the Kan pages to 
-                  <http://www.maths.bangor.ac.uk/chda/kan/> 
  * (12/11/08)  temporary fix: added edited version of functions 
   from the Automata package in files `automata.gd` and `automata.gi` 
  * added GNU General Public License declaration 
