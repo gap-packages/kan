@@ -8,7 +8,7 @@ SetPackageInfo( rec(
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 Version := "1.34dev",
-Date := "08/04/2022",
+Date := "06/07/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -63,7 +63,7 @@ AbstractHTML :=
 PackageDoc := rec(
   BookName  := "Kan",
   ArchiveURLSubset := ["doc"],
-  HTMLStart := "doc/chap0.html",
+  HTMLStart := "doc/chap0_mj.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
   LongTitle := "Computing with Kan extensions" 
