@@ -8,7 +8,7 @@ SetPackageInfo( rec(
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 Version := "1.34dev",
-Date := "06/07/2022",
+Date := "23/12/2022",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -17,26 +17,15 @@ Persons := [
     FirstNames    := "Anne",
     IsAuthor      := true,
     IsMaintainer  := false, 
-    Place         := "Open University" 
-    ## Email         := "anne.heyworth@gmail.com" 
   ),
   rec(
     LastName      := "Wensley",
     FirstNames    := "Chris",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "c.d.wensley@bangor.ac.uk",
+    Email         := "cdwensley.maths@btinternet.com",
     WWWHome       := "https://github.com/cdwensley",
-    PostalAddress := Concatenation( [
-                       "Dr. C.D. Wensley\n",
-                       "School of Computer Science\n",
-                       "Bangor University\n",
-                       "Dean Street\n",
-                       "Bangor\n",
-                       "Gwynedd LL57 1UT\n",
-                       "UK"] ),
-    Place         := "Bangor",
-    Institution   := "Bangor University"
+    Place         := "Llanfairfechan",
   )
 ],
 
@@ -72,7 +61,6 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">=4.11.0",
   NeededOtherPackages := [ [ "automata", ">= 1.14" ], 
-                           [ "GAPDoc", ">= 1.6.2" ], 
                            [ "kbmag", ">= 1.5.9" ] ],
   SuggestedOtherPackages := [  ],
   ExternalConditions := [ ]
