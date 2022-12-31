@@ -1,4 +1,4 @@
-# CHANGES to the Kan package /Applications/gap/my-dev/pkg/kan/CHANGES.md
+# CHANGES to the Kan package
 
 ## ToDo: 
 
