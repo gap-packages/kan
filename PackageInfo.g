@@ -7,8 +7,8 @@ SetPackageInfo( rec(
 
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
-Version := "1.34",
-Date := "13/03/2022",
+Version := "1.35",
+Date := "09/02/2023",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -17,26 +17,15 @@ Persons := [
     FirstNames    := "Anne",
     IsAuthor      := true,
     IsMaintainer  := false, 
-    Place         := "Open University" 
-    ## Email         := "anne.heyworth@gmail.com" 
   ),
   rec(
     LastName      := "Wensley",
     FirstNames    := "Chris",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "c.d.wensley@bangor.ac.uk",
+    Email         := "cdwensley.maths@btinternet.com",
     WWWHome       := "https://github.com/cdwensley",
-    PostalAddress := Concatenation( [
-                       "Dr. C.D. Wensley\n",
-                       "School of Computer Science\n",
-                       "Bangor University\n",
-                       "Dean Street\n",
-                       "Bangor\n",
-                       "Gwynedd LL57 1UT\n",
-                       "UK"] ),
-    Place         := "Bangor",
-    Institution   := "Bangor University"
+    Place         := "Llanfairfechan",
   )
 ],
 
@@ -63,7 +52,7 @@ AbstractHTML :=
 PackageDoc := rec(
   BookName  := "Kan",
   ArchiveURLSubset := ["doc"],
-  HTMLStart := "doc/chap0.html",
+  HTMLStart := "doc/chap0_mj.html",
   PDFFile   := "doc/manual.pdf",
   SixFile   := "doc/manual.six",
   LongTitle := "Computing with Kan extensions" 
@@ -72,7 +61,6 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">=4.11.0",
   NeededOtherPackages := [ [ "automata", ">= 1.14" ], 
-                           [ "GAPDoc", ">= 1.6.2" ], 
                            [ "kbmag", ">= 1.5.9" ] ],
   SuggestedOtherPackages := [  ],
   ExternalConditions := [ ]
@@ -97,7 +85,7 @@ BannerString := Concatenation(
 AutoDoc := rec(
     TitlePage := rec(
         Copyright := Concatenation(
-            "&copyright; 1996-2022 Anne Heyworth and Chris Wensley<P/>\n",
+            "&copyright; 1996-2023 Anne Heyworth and Chris Wensley<P/>\n",
             "The &Kan; package is free software; you can redistribute it ", 
             "and/or modify it under the terms of the GNU General ", 
             "Public License as published by the Free Software Foundation; ", 
