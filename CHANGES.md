@@ -4,7 +4,7 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
-## Version 1.34dev for GAP 4.11.1 (23/11/22) 
+## Version 1.35 for GAP 4.12.2 (09/02/23) 
  * (23/12/22) changed email address; deleted location and institution 
 
 ## Version 1.34 for GAP 4.11.1 (13/03/22) 
