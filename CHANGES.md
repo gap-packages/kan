@@ -4,6 +4,9 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
+## Version 1.35dev for GAP 4.12.2 (16/02/23) 
+ * (16/02/23) now used PreImagesRepresentativeNC 
+
 ## Version 1.35 for GAP 4.12.2 (09/02/23) 
  * (23/12/22) changed email address; deleted location and institution 
 

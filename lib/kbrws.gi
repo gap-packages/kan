@@ -1,8 +1,8 @@
 ##############################################################################
 ##
-#W  kbrws.gi                     Kan Package                     Chris Wensley
-#W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
+#W  kbrws.gi                   Kan Package                     Chris Wensley
+#W                                                           & Anne Heyworth
+#Y  Copyright (C) 1996-2023, Chris Wensley and Anne Heyworth 
 ##
 ##  This file contains functions taken from the library files
 ##  rws.gi and kbsemi.gi, and modified to allow partial rewrite systems
@@ -261,7 +261,7 @@ function( G, g )
     mg := Image( hom, g ); 
     r := ReducedForm( rws, UnderlyingElement(mg) );
     rmg := ElementOfFpMonoid( fam, r ); 
-    rg := PreImagesRepresentative( hom, rmg ); 
+    rg := PreImagesRepresentativeNC( hom, rmg ); 
     return rg; 
 end ); 
 
