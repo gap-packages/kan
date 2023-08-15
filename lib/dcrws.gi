@@ -2,7 +2,7 @@
 ##
 #W  dcrws.gi                     Kan Package                     Chris Wensley
 #W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2017, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2023, Chris Wensley and Anne Heyworth 
 ##
 ##  This file contains generic methods for double coset rewriting systems
 ##
@@ -170,6 +170,8 @@ function( rws )
         fi;
     fi;
     cG:=0;  cH:=0;  cK:=0;  cHK:=0;
+    ## (15/8/23) make output same for GAP 4.12 and gapdev
+    rules := Set(rules);
     numr := Length( rules );
     type := ListWithIdenticalEntries( numr, 0 ); 
     if extended then

@@ -35,14 +35,14 @@ gap> DisplayRwsRules( dcrws1 );;
 G-rules:
 [ [ Aa, id ], [ aA, id ], [ Bb, id ], [ bB, id ] ]
 H-rules:
-[ [ Haaaa, HAA ],
-  [ HAAA, Haaa ] ]
+[ [ HAAA, Haaa ],
+  [ Haaaa, HAA ] ]
 K-rules:
-[ [ aaaK, AK ],
-  [ AAK, aaK ] ]
+[ [ AAK, aaK ],
+  [ aaaK, AK ] ]
 H-K-rules:
-[ [ HaaK, HK ],
-  [ HAK, HaK ] ]
+[ [ HAK, HaK ],
+  [ HaaK, HK ] ]
 
 gap> free := FreeMonoidOfRewritingSystem( dcrws1 );;
 gap> mon := MonoidOfRewritingSystem( dcrws1 );; 

@@ -26,7 +26,8 @@ gap> ordT := [3,4,1,2];;
 gap> orderT := "wreath";;
 gap> rwsT := ReducedConfluentRewritingSystem( T, ordT, orderT, 0, alphT );;
 gap> DisplayRwsRules( rwsT );;
-[ [ dD, id ], [ Dd, id ], [ C, ccDD ], [ ccc, dd ], [ ddc, cdd ], [ Dc, dcDD ]\
+[ [ C, ccDD ], [ dD, id ], [ Dc, dcDD ], [ Dd, id ], [ ccc, dd ], [ \
+ddc, cdd ]\
  ]
 gap> accT := WordAcceptorOfReducedRws( rwsT );
 < deterministic automaton on 4 letters with 7 states >
