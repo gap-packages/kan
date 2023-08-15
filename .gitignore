@@ -23,6 +23,8 @@
 /doc/kan.xml
 /doc/title.xml
 
-/tst/example*.g
+/tst/dcrws*.g
+/tst/history.g
+/tst/kbtest.g
 /tmp/
 /gh-pages/

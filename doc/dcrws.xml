@@ -47,7 +47,10 @@ Specifying a limit <C>0</C> means that no limit is prescribed.
 <P/>
 The operation <C>DisplayRwsRules</C> prints out the rules using the letters 
 in the given alphabet <C>alph4</C> rather than using the generators of the 
-monoid.
+monoid. 
+(As from September 2023 the rules are first converted to a set, 
+so that the output is the same in the latest released version 
+and in the development version.)
 <P/>
 <Index>ReducedForm</Index>
 An additional method for <C>ReducedForm(G,g)</C> is provided 
@@ -65,9 +68,9 @@ gap> order := "wreath";;
 gap> alph4 := "aAbBcCdD";;
 gap> rws4 := ReducedConfluentRewritingSystem( H4, L, order, 0, alph4 );;
 gap> DisplayRwsRules( rws4 );
-[ [ aA, id ], [ Aa, id ], [ bB, id ], [ Bb, id ], [ cC, id ], [ Cc, id ], [ dD\
-, id ], [ Dd, id ], [ cd, dcBAba ], [ cBAbaD, Dc ], [ CD, BAbaDC ], [ Cd, dABa\
-bC ] ]
+[ [ aA, id ], [ Aa, id ], [ bB, id ], [ Bb, id ], [ cC, id ], [ cd, dcBAba ], \
+[ Cc, id ], [ Cd, dABabC ], [ CD, BAbaDC ], [ dD, id ], [ Dd, id ], [ cBAbaD, \
+Dc ] ]
 true
 gap> a := H4.1;;  b := H4.2;;  c := H4.3;;  d := H4.4;; 
 gap> ReducedForm( H4, c*d);
@@ -180,14 +183,14 @@ gap> DisplayRwsRules( dcrws1 );;
 G-rules:
 [ [ Aa, id ], [ aA, id ], [ Bb, id ], [ bB, id ] ]
 H-rules:
-[ [ Haaaa, HAA ],
-  [ HAAA, Haaa ] ]
+[ [ HAAA, Haaa ],
+  [ Haaaa, HAA ] ]
 K-rules:
-[ [ aaaK, AK ],
-  [ AAK, aaK ] ]
+[ [ AAK, aaK ],
+  [ aaaK, AK ] ]
 H-K-rules:
-[ [ HaaK, HK ],
-  [ HAK, HaK ] ]
+[ [ HAK, HaK ],
+  [ HaaK, HK ] ]
 ]]>
 </Example> 
 
@@ -310,7 +313,8 @@ gap> ordT := [3,4,1,2];;
 gap> orderT := "wreath";;
 gap> rwsT := ReducedConfluentRewritingSystem( T, ordT, orderT, 0, alphT );;
 gap> DisplayRwsRules( rwsT );;
-[ [ dD, id ], [ Dd, id ], [ C, ccDD ], [ ccc, dd ], [ ddc, cdd ], [ Dc, dcDD ]\
+[ [ C, ccDD ], [ dD, id ], [ Dc, dcDD ], [ Dd, id ], [ ccc, dd ], [ \
+ddc, cdd ]\
  ]
 gap> accT := WordAcceptorOfReducedRws( rwsT );
 < deterministic automaton on 4 letters with 7 states >

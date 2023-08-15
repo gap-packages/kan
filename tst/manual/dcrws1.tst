@@ -2,7 +2,7 @@
 ##
 #W  dcrws1.tst                    Kan Package                    Chris Wensley
 #W                                                             & Anne Heyworth
-#Y  Copyright (C) 1996-2019, Chris Wensley and Anne Heyworth 
+#Y  Copyright (C) 1996-2023, Chris Wensley and Anne Heyworth 
 #Y  School of Computer Science, Bangor University, U.K. 
 ##
 gap> START_TEST( "Kan package: dcrws1.tst" );
@@ -23,9 +23,9 @@ gap> order := "wreath";;
 gap> alph4 := "aAbBcCdD";;
 gap> rws4 := ReducedConfluentRewritingSystem( H4, L, order, 0, alph4 );;
 gap> DisplayRwsRules( rws4 );
-[ [ aA, id ], [ Aa, id ], [ bB, id ], [ Bb, id ], [ cC, id ], [ Cc, id ], [ dD\
-, id ], [ Dd, id ], [ cd, dcBAba ], [ cBAbaD, Dc ], [ CD, BAbaDC ], [ Cd, dABa\
-bC ] ]
+[ [ aA, id ], [ Aa, id ], [ bB, id ], [ Bb, id ], [ cC, id ], [ cd, dcBAba ], \
+[ Cc, id ], [ Cd, dABabC ], [ CD, BAbaDC ], [ dD, id ], [ Dd, id ], [ cBAbaD, \
+Dc ] ]
 true
 gap> a := H4.1;; b := H4.2;; c := H4.3;; d := H4.4;; 
 gap> c*d;
