@@ -4,6 +4,7 @@
 ##  call this with GAP from within the package root directory 
 
 LoadPackage( "Kan" );
+LoadPackage( "GAPDoc" );
 LoadPackage( "AutoDoc" ); 
 
 AutoDoc(rec( 
