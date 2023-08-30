@@ -68,7 +68,7 @@
 
 <p>We take as an example the fundamental group of the oriented surface of genus 2. The generators are by default ordered <code class="code">[A,a,B,b,C,c,D,d]</code>, so the list <code class="code">L = [2,1,4,3,6,5,8,7]</code> is used to specify the order <code class="code">[a,A,b,B,c,C,d,D]</code> to be used with the wreath ordering. Specifying a limit <code class="code">0</code> means that no limit is prescribed.</p>
 
-<p>The operation <code class="code">DisplayRwsRules</code> prints out the rules using the letters in the given alphabet <code class="code">alph4</code> rather than using the generators of the monoid.</p>
+<p>The operation <code class="code">DisplayRwsRules</code> prints out the rules using the letters in the given alphabet <code class="code">alph4</code> rather than using the generators of the monoid. (As from September 2023 the rules are first converted to a set, so that the output is the same in the latest released version and in the development version.)</p>
 
 <p>An additional method for <code class="code">ReducedForm(G,g)</code> is provided for a finitely presented group <code class="code">G</code> with a rewriting system and an element <code class="code">g</code> of <code class="code">G</code>.</p>
 
@@ -83,9 +83,9 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">alph4 := "aAbBcCdD";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rws4 := ReducedConfluentRewritingSystem( H4, L, order, 0, alph4 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DisplayRwsRules( rws4 );</span>
-[ [ aA, id ], [ Aa, id ], [ bB, id ], [ Bb, id ], [ cC, id ], [ Cc, id ], [ dD\
-, id ], [ Dd, id ], [ cd, dcBAba ], [ cBAbaD, Dc ], [ CD, BAbaDC ], [ Cd, dABa\
-bC ] ]
+[ [ aA, id ], [ Aa, id ], [ bB, id ], [ Bb, id ], [ cC, id ], [ cd, dcBAba ], \
+[ Cc, id ], [ Cd, dABabC ], [ CD, BAbaDC ], [ dD, id ], [ Dd, id ], [ cBAbaD, \
+Dc ] ]
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">a := H4.1;;  b := H4.2;;  c := H4.3;;  d := H4.4;; </span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ReducedForm( H4, c*d);</span>
@@ -173,14 +173,14 @@ true
 G-rules:
 [ [ Aa, id ], [ aA, id ], [ Bb, id ], [ bB, id ] ]
 H-rules:
-[ [ Haaaa, HAA ],
-  [ HAAA, Haaa ] ]
+[ [ HAAA, Haaa ],
+  [ Haaaa, HAA ] ]
 K-rules:
-[ [ aaaK, AK ],
-  [ AAK, aaK ] ]
+[ [ AAK, aaK ],
+  [ aaaK, AK ] ]
 H-K-rules:
-[ [ HaaK, HK ],
-  [ HAK, HaK ] ]
+[ [ HAK, HaK ],
+  [ HaaK, HK ] ]
 
 </pre></div>
 
@@ -291,7 +291,8 @@ aaUAA)BUH(a(aBUB)UABUB))(a(a(aa*BUB)UB)UA(AA*BUB)UB)*(a(aKUK)UAKUK)UH(aKUK)
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">orderT := "wreath";;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rwsT := ReducedConfluentRewritingSystem( T, ordT, orderT, 0, alphT );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DisplayRwsRules( rwsT );;</span>
-[ [ dD, id ], [ Dd, id ], [ C, ccDD ], [ ccc, dd ], [ ddc, cdd ], [ Dc, dcDD ]\
+[ [ C, ccDD ], [ dD, id ], [ Dc, dcDD ], [ Dd, id ], [ ccc, dd ], [ \
+ddc, cdd ]\
  ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">accT := WordAcceptorOfReducedRws( rwsT );</span>
 &lt; deterministic automaton on 4 letters with 7 states &gt;

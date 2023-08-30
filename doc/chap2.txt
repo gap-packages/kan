@@ -31,7 +31,10 @@
   prescribed.[133X
   
   [33X[0;0YThe  operation [10XDisplayRwsRules[110X prints out the rules using the letters in the
-  given alphabet [10Xalph4[110X rather than using the generators of the monoid.[133X
+  given  alphabet  [10Xalph4[110X  rather  than using the generators of the monoid. (As
+  from  September  2023  the  rules  are first converted to a set, so that the
+  output  is  the  same  in the latest released version and in the development
+  version.)[133X
   
   [33X[0;0YAn  additional  method  for  [10XReducedForm(G,g)[110X  is  provided  for  a finitely
   presented group [10XG[110X with a rewriting system and an element [10Xg[110X of [10XG[110X.[133X
@@ -46,9 +49,9 @@
     [4X[25Xgap>[125X [27Xalph4 := "aAbBcCdD";;[127X[104X
     [4X[25Xgap>[125X [27Xrws4 := ReducedConfluentRewritingSystem( H4, L, order, 0, alph4 );;[127X[104X
     [4X[25Xgap>[125X [27XDisplayRwsRules( rws4 );[127X[104X
-    [4X[28X[ [ aA, id ], [ Aa, id ], [ bB, id ], [ Bb, id ], [ cC, id ], [ Cc, id ], [ dD\[128X[104X
-    [4X[28X, id ], [ Dd, id ], [ cd, dcBAba ], [ cBAbaD, Dc ], [ CD, BAbaDC ], [ Cd, dABa\[128X[104X
-    [4X[28XbC ] ][128X[104X
+    [4X[28X[ [ aA, id ], [ Aa, id ], [ bB, id ], [ Bb, id ], [ cC, id ], [ cd, dcBAba ], \[128X[104X
+    [4X[28X[ Cc, id ], [ Cd, dABabC ], [ CD, BAbaDC ], [ dD, id ], [ Dd, id ], [ cBAbaD, \[128X[104X
+    [4X[28XDc ] ][128X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xa := H4.1;;  b := H4.2;;  c := H4.3;;  d := H4.4;; [127X[104X
     [4X[25Xgap>[125X [27XReducedForm( H4, c*d);[127X[104X
@@ -143,14 +146,14 @@
     [4X[28XG-rules:[128X[104X
     [4X[28X[ [ Aa, id ], [ aA, id ], [ Bb, id ], [ bB, id ] ][128X[104X
     [4X[28XH-rules:[128X[104X
-    [4X[28X[ [ Haaaa, HAA ],[128X[104X
-    [4X[28X  [ HAAA, Haaa ] ][128X[104X
+    [4X[28X[ [ HAAA, Haaa ],[128X[104X
+    [4X[28X  [ Haaaa, HAA ] ][128X[104X
     [4X[28XK-rules:[128X[104X
-    [4X[28X[ [ aaaK, AK ],[128X[104X
-    [4X[28X  [ AAK, aaK ] ][128X[104X
+    [4X[28X[ [ AAK, aaK ],[128X[104X
+    [4X[28X  [ aaaK, AK ] ][128X[104X
     [4X[28XH-K-rules:[128X[104X
-    [4X[28X[ [ HaaK, HK ],[128X[104X
-    [4X[28X  [ HAK, HaK ] ][128X[104X
+    [4X[28X[ [ HAK, HaK ],[128X[104X
+    [4X[28X  [ HaaK, HK ] ][128X[104X
     [4X[28X[128X[104X
   [4X[32X[104X
   
@@ -256,7 +259,8 @@
     [4X[25Xgap>[125X [27XorderT := "wreath";;[127X[104X
     [4X[25Xgap>[125X [27XrwsT := ReducedConfluentRewritingSystem( T, ordT, orderT, 0, alphT );;[127X[104X
     [4X[25Xgap>[125X [27XDisplayRwsRules( rwsT );;[127X[104X
-    [4X[28X[ [ dD, id ], [ Dd, id ], [ C, ccDD ], [ ccc, dd ], [ ddc, cdd ], [ Dc, dcDD ]\[128X[104X
+    [4X[28X[ [ C, ccDD ], [ dD, id ], [ Dc, dcDD ], [ Dd, id ], [ ccc, dd ], [ \[128X[104X
+    [4X[28Xddc, cdd ]\[128X[104X
     [4X[28X ][128X[104X
     [4X[25Xgap>[125X [27XaccT := WordAcceptorOfReducedRws( rwsT );[127X[104X
     [4X[28X< deterministic automaton on 4 letters with 7 states >[128X[104X
