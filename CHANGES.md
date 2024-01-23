@@ -4,7 +4,7 @@
 
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
-## Version 1.36 for GAP 4.12.2 (16/08/23) 
+## Version 1.37 for GAP 4.12.2 (23/01/24) 
  * (15/08/23) fixed varying output from DisplayRwsRules 
  * (16/02/23) now used PreImagesRepresentativeNC 
 
