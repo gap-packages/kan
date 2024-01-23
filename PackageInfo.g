@@ -7,8 +7,8 @@ SetPackageInfo( rec(
 
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
-Version := "1.36",
-Date := "16/08/2023",
+Version := "1.37",
+Date := "23/01/2024",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -85,7 +85,7 @@ BannerString := Concatenation(
 AutoDoc := rec(
     TitlePage := rec(
         Copyright := Concatenation(
-            "&copyright; 1996-2023 Anne Heyworth and Chris Wensley<P/>\n",
+            "&copyright; 1996-2024 Anne Heyworth and Chris Wensley<P/>\n",
             "The &Kan; package is free software; you can redistribute it ", 
             "and/or modify it under the terms of the GNU General ", 
             "Public License as published by the Free Software Foundation; ", 
@@ -106,7 +106,7 @@ AutoDoc := rec(
             "<P/>\n",  
             "Bug reports, suggestions and comments are, of course, welcome.\n", 
             "Please contact the last author at ", 
-            "<Email>c.d.wensley@bangor.ac.uk</Email> ", 
+            "<Email>cdwensley.maths@btinternet.com</Email> ", 
             "or submit an issue at the GitHub repository ",
             "<URL>https://github.com/gap-packages/kan/issues/</URL>.\n" 
             ), 

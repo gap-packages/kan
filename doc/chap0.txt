@@ -6,10 +6,10 @@
                    [1X including double coset rewriting systems [101X
   
   
-                                      1.36
+                                      1.37
   
   
-                                 16 August 2023
+                                23 January 2024
   
   
                                  Anne Heyworth
@@ -34,13 +34,14 @@
   [33X[0;0Y[5XKan[105X became an accepted [5XGAP[105X package in May 2015.[133X
   
   [33X[0;0YBug  reports,  suggestions  and  comments  are,  of  course, welcome. Please
-  contact  the  last  author  at  [7Xmailto:c.d.wensley@bangor.ac.uk[107X or submit an
-  issue at the GitHub repository [7Xhttps://github.com/gap-packages/kan/issues/[107X.[133X
+  contact  the  last author at [7Xmailto:cdwensley.maths@btinternet.com[107X or submit
+  an          issue          at          the         GitHub         repository
+  [7Xhttps://github.com/gap-packages/kan/issues/[107X.[133X
   
   
   -------------------------------------------------------
   [1XCopyright[101X
-  [33X[0;0Y© 1996-2023 Anne Heyworth and Chris Wensley[133X
+  [33X[0;0Y© 1996-2024 Anne Heyworth and Chris Wensley[133X
   
   [33X[0;0YThe  [5XKan[105X  package is free software; you can redistribute it and/or modify it
   under  the  terms of the GNU General Public License as published by the Free
