@@ -68,7 +68,6 @@ Dependencies := rec(
 
 AvailabilityTest := ReturnTrue,
 
-Autoload := false, 
 
 TestFile := "tst/testall.g",
 
