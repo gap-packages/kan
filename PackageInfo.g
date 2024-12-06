@@ -8,7 +8,7 @@ SetPackageInfo( rec(
 PackageName := "kan",
 Subtitle := "including double coset rewriting systems",
 Version := "1.37",
-Date := "23/01/2024",
+Date := "06/12/2024",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -67,8 +67,6 @@ Dependencies := rec(
 ),
 
 AvailabilityTest := ReturnTrue,
-
-Autoload := false, 
 
 TestFile := "tst/testall.g",
 
