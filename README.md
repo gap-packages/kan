@@ -26,8 +26,8 @@ and in the `CHANGES.md` file.
 
 ## Copyright
 
-The 'Kan' package is Copyright {\copyright} Chris Wensley and Anne Heyworth, 
-1996--2024. 
+The 'Kan' package is Copyright © Chris Wensley and Anne Heyworth, 
+1996--2025. 
 
 'Kan' is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -41,11 +41,10 @@ For details, see <https://www.gnu.org/licenses/gpl.html>
  * unpack `kan-<version_number>.tar.gz` in the `pkg` subdirectory 
    of the GAP root directory.
  * From within GAP load the package with:
-
+    ```
     gap> LoadPackage("kan");
-
     true
-
+    ```
  * The documentation is in the `doc` subdirectory. 
  * To run the test file read `testall.g` from the `kan/tst/` directory. 
 
@@ -53,5 +52,5 @@ Contact
 -------
 If you have a question relating to 'Kan', encounter any problems, 
 or have a suggestion for extending the package in any way, please 
- - email: <cdwensley.maths@btinternet.com>  
- - or report an issue at: https://github.com/gap-packages/kan/issues/new
+ - email: <mailto:cdwensley.maths@btinternet.com>  
+ - or report an issue at: <https://github.com/gap-packages/kan/issues/new>
