@@ -22,6 +22,7 @@
 /doc/bib.xml.bib
 /doc/kan.xml
 /doc/title.xml
+/doc/_*.xml
 
 /tst/dcrws*.g
 /tst/history.g
