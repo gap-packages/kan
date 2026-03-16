@@ -77,8 +77,7 @@ At present the functions <C>RightCosetsAutomaton</C> and
 and <C>Iterators</C> for these are not yet available.
 </Description>
 </ManSection>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> F := FreeGroup(2);;
 gap> rels := [ F.2^2, (F.1*F.2)^2 ];;
 gap> G5 := F/rels;;
@@ -98,7 +97,6 @@ gap> Print( rc5 );
 Automaton("det",6,"HKAaBb",[ [ 2, 2, 2, 6, 2, 2 ], [ 2, 2, 1, 2, 1, 1 ], [ 2, \
 2, 3, 2, 2, 3 ], [ 2, 2, 2, 2, 5, 5 ], [ 2, 2, 2, 2, 2, 2 ], [ 2, 2, 2, 2, 2, \
 2 ] ],[ 4 ],[ 1 ]);;
-]]>
-</Example>
+]]></Example>
 </Section>
 </Chapter>

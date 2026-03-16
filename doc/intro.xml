@@ -20,11 +20,9 @@ Existing methods for computing double cosets in &GAP; are described
 in <Cite Key="SteveL" />.
 <P/>
 The package is loaded into &GAP; with the command
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> LoadPackage( "kan" ); 
-]]>
-</Example>
+]]></Example>
 
 The package may be obtained as a compressed tar file 
 <File>kan-version.number.tar.gz</File>
@@ -60,14 +58,12 @@ is correct by running a test file of the manual examples with the
 following command. 
 (The test file itself is <F>tst/fulltest.tst</F> or <F>tst/parttest.tst</F>, 
 depending whether or not <Package>KBMag</Package> is available.) 
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> ReadPackage( "kan", "tst/testall.g" );
 #I  Testing /Applications/gap/my-dev/pkg/kan/tst/fulltest.tst
 #I  No errors detected while testing package kan
 true
-]]>
-</Example>
+]]></Example>
 <P/>
 The information parameter <C>InfoKan</C> takes default value <C>0</C>.
 When raised to a higher value, additional information is printed out.
@@ -77,13 +73,11 @@ can be found in the documentation folder.
 The <Code>html</Code> versions, with or without MathJax, 
 may be rebuilt as follows. 
 <P/>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> InfoLevel( InfoKan );
 0
 gap> ReadPackage( "kan, "makedoc.g" ); 
-]]>
-</Example>
+]]></Example>
 <P/>
 Please send bug reports, suggestions and other comments to the second author,
 or use the GitHub issue tracker at 
