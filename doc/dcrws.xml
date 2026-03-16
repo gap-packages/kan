@@ -58,8 +58,7 @@ for a finitely presented group <C>G</C> with a rewriting system
 and an element <C>g</C> of <C>G</C>. 
 </Description>
 </ManSection>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> F4 := FreeGroup( 4 );;
 gap> rels := [ Comm(F4.1,F4.2) * Comm(F4.3,F4.4) ];;
 gap> H4 := F4/rels;; 
@@ -75,8 +74,7 @@ true
 gap> a := H4.1;;  b := H4.2;;  c := H4.3;;  d := H4.4;; 
 gap> ReducedForm( H4, c*d);
 f4*f3*f2^-1*f1^-1*f2*f1
-]]>
-</Example>
+]]></Example>
 
 <ManSection Label="nextwords">
    <Oper Name="NextWord"
@@ -96,8 +94,7 @@ and returns a list of the specified length of recognizable words.
 <P/>
 </Description>
 </ManSection>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> free4 := FreeMonoidOfRewritingSystem( rws4 );; 
 gap> gens4 := GeneratorsOfMonoid( free4 );
 [ f1, f1^-1, f2, f2^-1, f3, f3^-1, f4, f4^-1 ]
@@ -107,8 +104,7 @@ gap> NextWords( rws4, last, 20, 100 );
 [ f3^-1*f1, f3^-1*f1^-1, f3^-1*f2, f3^-1*f2^-1, f3^-1^2, f4*f1, f4*f1^-1, 
   f4*f2, f4*f2^-1, f4*f3, f4*f3^-1, f4^2, f4^-1*f1, f4^-1*f1^-1, f4^-1*f2, 
   f4^-1*f2^-1, f4^-1*f3, f4^-1*f3^-1, f4^-1^2, f1^3 ]
-]]>
-</Example>
+]]></Example>
 </Section>
 
 
@@ -161,8 +157,7 @@ and there are two <M>H</M>-<M>K</M>-rules, <M>[[Ha^2K,HK],[HAK,HaK]]</M>.
 Here is how the computation may be performed.
 </Description>
 </ManSection>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> G1 := FreeGroup( 2 );;
 gap> L1 := [2,1,4,3];;
 gap> order := "shortlex";;
@@ -191,8 +186,7 @@ K-rules:
 H-K-rules:
 [ [ HAK, HaK ],
   [ HaaK, HK ] ]
-]]>
-</Example> 
+]]></Example>
 
 An example of obtaining the reduced form of a word using this rewriting system 
 is given in the following section. 
@@ -208,8 +202,7 @@ In the example a double coset <Code>w</Code> and its reduced form
 </Description>
 </ManSection>
 <P/>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> free := FreeMonoidOfRewritingSystem( dcrws1 );;
 gap> mon := MonoidOfRewritingSystem( dcrws1 );; 
 gap> gens := GeneratorsOfMonoid( free );; 
@@ -226,8 +219,7 @@ gap> rw := ReducedForm( dcrws1, w );
 m1*m3*m6^3*m4*m2
 gap> DisplayAsString( rw, alph2 ); 
 HAbbbaK
-]]>
-</Example>
+]]></Example>
 
 <ManSection>
    <Attr Name="WordAcceptorOfReducedRws"
@@ -255,8 +247,7 @@ obtain a rational expression for the language of the automaton.
 </Description>
 </ManSection>
 <P/>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> waG1 := WordAcceptorOfReducedRws( rws1 );
 Automaton("det",6,"aAbB",[ [ 1, 4, 1, 4, 4, 4 ], [ 1, 3, 3, 1, 3, 3 ], [ 1, 2,\
  2, 2, 1, 2 ], [ 1, 1, 5, 5, 5, 5 ] ],[ 6 ],[ 2, 3, 4, 5, 6 ]);;
@@ -277,8 +268,7 @@ gap> lang1 := FAtoRatExp( wadc1 );
 (AA*BUB)UB)*(a(a(aa*bUb)Ub)UA(AA*bUb))Ua(a(aa*bUb)Ub)UA(AA*bUb)Ub)*((a(a(aa*BU\
 B)UB)UA(AA*BUB))(a(a(aa*BUB)UB)UA(AA*BUB)UB)*(a(aKUK)UAKUK)Ua(aKUK)UAKUK)U(H(a\
 aaUAA)BUH(a(aBUB)UABUB))(a(a(aa*BUB)UB)UA(AA*BUB)UB)*(a(aKUK)UAKUK)UH(aKUK)
-]]>
-</Example>
+]]></Example>
 </Section>
 
 
@@ -300,8 +290,7 @@ is used with <M>C > c > D > d</M>.
 The group itself has a rewriting system with just 6 rules. 
 </Description>
 </ManSection>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> FT := FreeGroup( 2 );;
 gap> relsT := [ FT.1^3*FT.2^-2 ];;
 gap> T := FT/relsT;;
@@ -324,15 +313,13 @@ accT = Automaton("det",7,"dDcC",[ [ 6, 2, 2, 4, 6, 4, 6 ], [ 3, 2, 3, 2, 3, 2,\
 , 7 ]);;
 gap> langT := FAtoRatExp( accT );
 (dcUc)((cdUd)c)*((cdUd)(dd*U@)Uc(DD*U@)UDD*U@)Ud(dd*U@)UDD*U@
-]]>
-</Example>
+]]></Example>
 
 In the following example we reduce the word <M>w = d^5c^5</M> 
 to <M>dc^2d^6</M> and check that only the latter is recognised 
 by the automaton <C>accT</C>. 
 <P/>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> free := FreeMonoidOfRewritingSystem( rwsT );;
 gap> gens := GeneratorsOfMonoid( free );; 
 gap> c := gens[1];;  C := gens[2];;  d := gens[3];;  D := gens[4];;
@@ -348,8 +335,7 @@ gap> srw := WordToString( rw, alphT );
 "dccdddddd"
 gap> IsRecognizedByAutomaton( accT, srw );
 true
-]]>
-</Example>
+]]></Example>
 
 In earlier versions of &kan;, from about 1.01 up to 1.21, 
 the complementary automaton and language were returned in the example above. 
@@ -359,8 +345,7 @@ In even earlier versions of &kan; (in 0.95 for example) a shorter rational
 expression for the language was obtained from &Automata;. 
 In what follows, we check that the two expressions define the same language. 
 
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> alph := AlphabetOfRatExpAsList( langT );; 
 gap> a1 := RatExpOnnLetters( alph, [ ], [1] );;   ## y
 gap> a2 := RatExpOnnLetters( alph, [ ], [2] );;   ## Y
@@ -383,8 +368,7 @@ gap> r := RatExpOnnLetters( alph, "union", [ prod, a1s1, s2] );
 (yxUx)((xyUy)x)*((xyUy)y*UxY*UY*)Uyy*UY*
 gap> AreEqualLang( langT, r ); 
 true
-]]>
-</Example>
+]]></Example>
 
 If we now take subgroups <M>H=\langle c \rangle</M> 
 and <M>K = \langle d \rangle</M> we find that 
@@ -394,8 +378,7 @@ the required automaton.
 The function <C>PartialDoubleCosetRewritingSystem</C> allows a limit to be 
 specified on the number of rules to be computed. 
 In the listing below a limit of 20 is used, but in fact 10 is sufficient.
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> prwsT := PartialDoubleCosetRewritingSystem( T, U, V, rwsT, 20 );;
 #I WARNING: reached supplied limit 20 on number of rules
 gap> DisplayRwsRules( prwsT );
@@ -419,8 +402,7 @@ H-rules:
 K-rules:
 [ [ dK, K ],
   [ DK, K ] ]
-]]>
-</Example>
+]]></Example>
 
 This list of partial rules is then used to produce a modified 
 word acceptor function. 
@@ -428,8 +410,7 @@ word acceptor function.
 We then construct the double coset <M>Hd^5c^5K</M> 
 and find its reduced form (compare this with the earlier example). 
 <P/>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> paccT := WordAcceptorOfPartialDoubleCosetRws( T, prwsT );;
 < deterministic automaton on 6 letters with 6 states >
 gap> Print( paccT, "\n" );
@@ -456,8 +437,7 @@ gap> spw := WordToString( rpw, palphT );
 "HdccK"
 gap> ok := IsRecognizedByAutomaton( paccT, spw ); 
 true
-]]>
-</Example>
+]]></Example>
 </Section>
 
 
@@ -499,8 +479,7 @@ The automatic structure computed by <Package>KBMag</Package>
 has a word acceptor with 17 states.
 </Description>
 </ManSection>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> F4 := FreeGroup("a","b");;
 gap> rels4 := [ F4.1^3, F4.2^3, (F4.1*F4.2)^3 ];;
 gap> G4 := F4/rels4;;
@@ -520,8 +499,7 @@ gap> IsRecognizedByAutomaton( waG4, "Aba" );
 true
 gap> IsRecognizedByAutomaton( waG4, "AbaB" );
 false
-]]>
-</Example>
+]]></Example>
 
 <ManSection>
    <Oper Name="DCrules"
@@ -544,8 +522,7 @@ We may deduce by hand (but not computationally -- see <Cite Key="BrGhHeWe" />)
 three infinite sets of rules and a limit for the automata.
 </Description>
 </ManSection>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> lim := 100;;
 gap> genG4 := GeneratorsOfGroup( G4 );;
 gap> a := genG4[1];;  b := genG4[2];; 
@@ -614,8 +591,7 @@ HK-rules:
 [ HbAbAbAbAbK, HAbAbAbAbAK ]
 [ HbAbAbAbAbAbK, HAbAbAbAbAbAK ]
 [ HbAbAbAbAbAbAbK, HAbAbAbAbAbAbAK ]
-]]>
-</Example>
+]]></Example>
 
 <ManSection>
    <Oper Name="WordToString"
@@ -636,8 +612,7 @@ is specified since the <M>29</M> numbers of words tested can be shown to be:
 </Display>
 </Description>
 </ManSection>
-<Example>
-<![CDATA[
+<Example><![CDATA[
 gap> idc := IdentityDoubleCoset( dcrws4 );
 m1*m2
 gap> ## List of the next 29 normal forms for double cosets: 
@@ -653,7 +628,6 @@ m1*(m3*m6)^4*m3*m2
 gap> s := WordToString( w, alph4e );;
 gap> Print( s, "\n" );
 HAbAbAbAbAK
-]]>
-</Example>
+]]></Example>
 </Section>
 </Chapter>
