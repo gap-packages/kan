@@ -3,52 +3,38 @@
 **ToDo:**
  * long-standing: see the ToDo list in section 3.2 in the manual 
 
-## Unreleased
+## 1.38 (2026-10-12)
 
-For GAP 4.14.0.
+ * (26/03/16) updated doc/history.xml
 
 ## 1.37 (2024-01-23)
-
-For GAP 4.12.2.
 
  * (15/08/23) fixed varying output from DisplayRwsRules 
  * (16/02/23) now used PreImagesRepresentativeNC 
 
 ## 1.35 (2023-02-09)
 
-For GAP 4.12.2.
-
  * (23/12/22) changed email address; deleted location and institution 
 
 ## 1.34 (2022-03-13)
 
-For GAP 4.11.1.
-
  * (13/03/22) adjusted dcrws3.tst because of differences between 4r11 & dev
 
 ## 1.33 (2021-11-15)
-
-For GAP 4.11.1.
 
  * (15/11/21) move package homepage to https://github.com/cdwensley
  * (08/04/21) Switch CI to use GitHub Actions 
 
 ## 1.32 (2020-07-16)
 
-For GAP 4.11.0.
-
  * (16/07/20) fixed a problem in manual(2.2.1) reported by Daniel Longenecker  
 
 ## 1.31 (2019-10-14)
-
-For GAP 4.10.2.
 
  * (14/10/19) made kbmag a RequiredPackage rather than a Suggested one 
  * (14/10/19) restructured the tests 
 
 ## 1.29 (2019-05-29)
-
-For GAP 4.10.1.
 
  * (16/02/19) added License field in PackageInfo.g 
 
